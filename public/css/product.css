@@ -1,0 +1,110 @@
+@import url(utilities/_reset.css);
+@import url(utilities/_media.css);
+@import url(utilities/_utilities.css);
+
+.title .buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+section.content{
+  margin-bottom: 100px;
+}
+.details {
+  background: var(--whiteColor);
+  /* background: var(--darkColor); */
+  border: 1px solid var(--darkFontColor);
+  /* height: 5000px; */
+  margin-bottom: 50px;
+}
+.details .main-info {
+  display: flex;
+}
+.details .main-info .img-holder {
+  width: 20%;
+  padding: 20px;
+  border-right: 1px solid var(--darkFontColor);
+}
+.details .main-info .img-holder img {
+  width: 100%;
+  cursor: zoom-in;
+}
+.details .main-info .text-info {
+  padding: 20px;
+  width: 80%;
+}
+.details .main-info .text-info .info-name {
+}
+.details .main-info .text-info .info-name h2 {
+}
+.details .main-info .text-info .info-name p {
+  margin-block: 10px;
+}
+.details .main-info .text-info .info-name p span {
+  color: var(--darkFontColor);
+}
+.details .main-info .text-info .info-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  gap: 10px;
+  margin-block: 50px;
+}
+.details .main-info .text-info .info-stats .stats-item {
+  border: 1px solid;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.details .main-info .text-info .info-stats .stats-item:hover{
+  transform: translateY(-3px);
+}
+.details .main-info .text-info .info-stats .stats-item .icon-holder {
+  margin-right: 15px;
+}
+.details .main-info .text-info .info-stats .stats-item .icon-holder i {
+  background: var(--successColor);
+  color: var(--whiteColor);
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+.details .main-info .text-info .info-stats .stats-item .info-stats-data {
+  border-left: 1px solid var(--darkFontColor);
+  padding-left: 15px;
+  text-align: center;
+  flex: 1;
+}
+.details .main-info .text-info .info-stats .stats-item .info-stats-data span {
+  color: var(--darkerBlueColor);
+}
+.details .main-info .text-info .info-stats .stats-item .info-stats-data h4 {
+  margin-top: 10px;
+}
+ .secondary-info .return-policy p a{
+  color: var(--mainColor);
+}
+.dark .secondary-info .return-policy p a{
+  color: var(--lightColor);
+}
+.dark .details {
+  background-color: var(--darkColor);
+}
+.dark .details,
+.dark .details .main-info .img-holder,
+.dark .details .main-info .text-info .info-stats .stats-item,
+.dark .details .main-info .text-info .info-stats .stats-item .info-stats-data {
+  border-color: var(--grayColor);
+}
+.dark
+  .details
+  .main-info
+  .text-info
+  .info-stats
+  .stats-item
+  .info-stats-data
+  span {
+  color: var(--softBlueColor);
+}

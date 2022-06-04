@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('admin.overview');
+})->name('dashboard');
+Route::get('/orders', function () {
+    return view('admin.orders');
+})->name('orders');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/categories', function(){
+//     return view('admin.categories');
+// })->name('categories');
+Route::get('/products', function () {
+    return view('admin.products');
+})->name('products');
 
-require __DIR__.'/auth.php';
+Route::get('categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('category/{id}', [CategoryController::class, 'show'])->name('showCategory');
+Route::post('categories/add', [CategoryController::class, 'store'])->name('addCategory');
+Route::post('category/edit/{id}', [CategoryController::class, 'update'])->name('editCategory');
+Route::delete('categories/delete/{id}', [CategoryController::class, 'destroy'])
+    ->name('deleteCategory');
+
+
+
+
+
+require __DIR__ . '/auth.php';

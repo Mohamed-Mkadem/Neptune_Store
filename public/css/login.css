@@ -1,0 +1,73 @@
+@import url(utilities/_reset.css);
+@import url(utilities/_media.css);
+@import url(utilities/_utilities.css);
+
+.login-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  font-family: var(--ff-elmessiri);
+}
+.login-wrapper .login-form {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 20px;
+  background-color: var(--darkColor);
+}
+.login-wrapper .login-form .logo {
+  color: var(--lightColor);
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  font-size: 31px;
+  cursor: pointer;
+}
+.login-wrapper .login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.login-wrapper .login-form input {
+  height: 45px;
+  border-radius: 8px;
+  outline: none;
+  padding: 5px 10px;
+  color: var(--lightColor);
+  background: var(--darkBg);
+  border: 1px solid var(--grayColor);
+}
+.login-wrapper .login-form input:focus {
+  border-color: var(--lightColor);
+}
+.login-wrapper .login-form input:invalid {
+  border-color: var(--darkRed);
+}
+
+.login-wrapper .login-form button {
+  height: 45px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 20px;
+  transition: var(--transition);
+}
+.login-wrapper .login-form button:hover {
+  background-color: var(--softBlueColor);
+}
+.login-wrapper .login-form-image {
+  background-image: url(../Assets/calculator.jpg);
+  width: 60%;
+  background-size: cover;
+}
+.errors {
+  margin-bottom: 26px;
+}
+.errors .error-message {
+  font-size: 20px;
+  color: #f72323;
+}

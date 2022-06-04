@@ -1,0 +1,208 @@
+/* Sustom properties */
+:root {
+    --mainColor: #405189;
+    --lightColor: #f3f3f9;
+    --whiteColor: #fff;
+    --darkBlueColor: #193287;
+    --successColor: #0ab39c;
+    --softGreenColor: #b1f3b4;
+    --darkerGreenColor: #0c8f12;
+    --softBlueColor: #a5d7ff;
+    --darkerBlueColor: #003b6a;
+    --softYellowColor: #fff497;
+    --softOrangeColor: #f95724;
+    --softBlueColor: #d0d5ef;
+    --yellow: #ffeb3b;
+    --darkBg: #1a1d21;
+    --darkColor: #292e32;
+    --darkFontColor: #bfbfbf;
+    --grayColor: #777;
+    --softRed: #ff8c84;
+    --darkRed: #c10000;
+    --ff-elmessiri: "el messiri";
+    --ff-cairo: "cairo";
+    --ff-roboto: "Roboto";
+    --transition: 0.3s ease;
+}
+/* Scroll bar */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--lightColor);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--mainColor);
+}
+/* Some variables to use directly in html */
+.d-none {
+    display: none;
+}
+.d-block {
+    display: block;
+}
+.light {
+    color: var(--lightColor);
+}
+.main {
+    color: var(--mainColor);
+}
+.white {
+    color: var(--whiteColor);
+}
+/* Buttons */
+.new {
+    padding: 7px 13px;
+    border-radius: 5px;
+    transition: var(--transition);
+    background: var(--softGreenColor);
+    color: var(--darkerGreenColor);
+}
+.new:hover {
+    background-color: #aeebb1;
+}
+.editBtn {
+    padding: 7px 13px;
+    border-radius: 5px;
+    transition: var(--transition);
+    background: var(--yellow);
+    color: var(--darkColor);
+}
+.editBtn:hover {
+    background: var(--softYellowColor);
+}
+.deleteBtn:hover {
+    background: rgb(218, 2, 2);
+}
+.deleteBtn {
+    background: red;
+    color: var(--lightColor);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+a.deleteBtn {
+    padding: 5px 20px;
+}
+.edit {
+    color: var(--darkColor);
+    font-size: 25px;
+    line-height: 1;
+}
+.dark .edit {
+    color: var(--lightColor);
+}
+.cancel {
+    background: #8b8b8b;
+    color: var(--lightColor);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+/* pop ups */
+.pop-up-holder {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 155;
+    display: none;
+}
+.pop-up-holder.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete-modal {
+    background-color: var(--lightColor);
+    min-height: max-content;
+    min-width: 400px;
+    padding: 20px;
+    font-weight: 600;
+    font-family: var(--ff-roboto);
+    border-radius: 5px;
+}
+.delete-modal.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.delete-modal.show i {
+    font-size: 30px;
+    color: var(--darkRed);
+}
+.delete-modal.show .deleteMessage {
+    margin-bottom: 5px;
+}
+.delete-modal.show .buttons button {
+    width: 90px;
+    height: 35px;
+    border: none;
+}
+.messages {
+    padding: 20px 10px;
+    border-radius: 4px;
+    width: max-content;
+    margin-bottom: 20px;
+}
+.messages.success {
+    background: var(--softGreenColor);
+    color: var(--darkerGreenColor);
+}
+.messages.fail {
+    background: var(--softRed);
+    color: var(--darkRed);
+}
+.sub-title {
+    margin-top: 25px;
+    font-family: var(--ff-elmessiri);
+    font-size: 22px;
+}
+/* Pagination Style */
+.pagination-holder{
+  margin-block: 20px;
+}
+.pagination-holder nav {
+    display: flex;
+    justify-content: center;
+}
+.pagination-holder nav ul {
+    display: flex;
+    gap: 10px;
+}
+.pagination-holder nav ul li.page-item {
+  padding: 3px 6px;
+  border-radius: 1px;
+  color: var(--lightColor);
+  background: var(--softBlueColor);
+  cursor: pointer;
+  color: var(--darkColor);
+  font-size: 20px;
+}
+.pagination-holder nav ul li.page-item.active {
+    background: var(--darkBlueColor);
+    color: var(--lightColor);
+}
+.pagination-holder nav ul li.page-item.disabled {
+  background: var(--darkFontColor);
+  cursor: no-drop;
+}
+.pagination-holder nav ul li.page-item{
+  color: #0c8f12;
+}

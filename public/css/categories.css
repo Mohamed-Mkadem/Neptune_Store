@@ -1,0 +1,33 @@
+@import url(utilities/_reset.css);
+@import url(utilities/_media.css);
+@import url(utilities/_utilities.css);
+
+.add-new {
+  background: var(--whiteColor);
+  padding: 20px;
+  border-radius: 5px;
+}
+.add-new form {
+  display: flex;
+  justify-content: space-around;
+}
+.add-new form input {
+  height: 50px;
+  width: 60%;
+  padding-left: 10px;
+  background: var(--lightColor);
+  outline: none;
+  border: 1px solid var(--darkerBlueColor);
+  border-radius: 4px;
+}
+.add-new form input:focus {
+  border-color: var(--darkColor);
+}
+.dark .add-new {
+  background-color: var(--darkColor);
+}
+.dark .add-new form input{
+    border-color: var(--grayColor);
+    background-color: var(--darkBg);
+    color: var(--lightColor);
+}

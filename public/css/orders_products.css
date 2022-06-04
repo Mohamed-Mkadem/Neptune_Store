@@ -1,0 +1,77 @@
+@import url(utilities/_reset.css);
+@import url(utilities/_media.css);
+@import url(utilities/_utilities.css);
+
+/* The page that lists the orders and the products are similar so i created the same html structure with some difference and i used the same css sheet, */
+
+/* I did this to make the table responsive */
+.table-responsive {
+  overflow-x: auto;
+}
+table tr {
+  display: grid;
+  grid-template-columns: 100px minmax(250px, 1fr) minmax(150px, 1fr) 100px 120px minmax(
+      200px,
+      1fr
+    );
+}
+/* The style of the products table, it's bigger than the order's one so i added the 2 columns to grid template columns */
+table.products tr {
+  display: grid;
+  grid-template-columns: 100px 100px minmax(250px, 1fr) minmax(150px, 1fr) 100px 150px 100px 100px 100px;
+}
+/* The layout of the categories page */
+table.categories tr {
+  grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
+}
+table.category tr {
+  grid-template-columns: 150px repeat(2, minmax(200px, 1fr)) 150px;
+}
+/*  */
+table {
+  min-width: 100%;
+  margin-top: 40px;
+}
+table thead {
+  background: #8ea8ff;
+  color: var(--lightColor);
+}
+table thead th {
+  padding-block: 10px;
+}
+table tbody tr {
+  color: var(--darkColor);
+}
+table tbody td {
+  padding-block: 10px;
+  text-align: center;
+}
+table tbody td a {
+  color: var(--darkColor);
+}
+table tbody tr:nth-child(even) {
+  background: var(--softBlueColor);
+}
+table tbody tr:nth-child(odd) {
+  background: var(--lightColor);
+}
+
+/* Dark Mode */
+.dark table,
+.dark table thead,
+.dark table tbody tr:nth-child(even) {
+  background-color: var(--darkColor);
+}
+
+.dark table thead,
+.dark table tbody tr:nth-child(odd),
+.dark table tbody td a {
+  color: var(--darkFontColor);
+}
+.dark table tbody tr:nth-child(even) {
+  color: var(--darkFontColor);
+}
+/* Dark background color */
+.dark table tbody tr:nth-child(odd) {
+  background-color: var(--darkBg);
+}
