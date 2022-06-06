@@ -2,6 +2,10 @@
 @import url(utilities/_media.css);
 @import url(utilities/_utilities.css);
 
+
+.add-new.subCategory{
+  
+}
 .add-new {
   background: var(--whiteColor);
   padding: 20px;

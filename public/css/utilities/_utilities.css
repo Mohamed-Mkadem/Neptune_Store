@@ -56,6 +56,9 @@
 .white {
     color: var(--whiteColor);
 }
+.underlined{
+    text-decoration: underline;
+}
 /* Buttons */
 .new {
     padding: 7px 13px;
@@ -175,8 +178,8 @@ a.deleteBtn {
     font-size: 22px;
 }
 /* Pagination Style */
-.pagination-holder{
-  margin-block: 20px;
+.pagination-holder {
+    margin-block: 20px;
 }
 .pagination-holder nav {
     display: flex;
@@ -187,22 +190,78 @@ a.deleteBtn {
     gap: 10px;
 }
 .pagination-holder nav ul li.page-item {
-  padding: 3px 6px;
-  border-radius: 1px;
-  color: var(--lightColor);
-  background: var(--softBlueColor);
-  cursor: pointer;
-  color: var(--darkColor);
-  font-size: 20px;
+    padding: 3px 6px;
+    border-radius: 1px;
+    color: var(--lightColor);
+    background: var(--softBlueColor);
+    cursor: pointer;
+    color: var(--darkColor);
+    font-size: 20px;
 }
 .pagination-holder nav ul li.page-item.active {
     background: var(--darkBlueColor);
     color: var(--lightColor);
 }
 .pagination-holder nav ul li.page-item.disabled {
-  background: var(--darkFontColor);
-  cursor: no-drop;
+    background: var(--darkFontColor);
+    cursor: no-drop;
 }
-.pagination-holder nav ul li.page-item{
-  color: #0c8f12;
+.pagination-holder nav ul li.page-item {
+    color: #0c8f12;
+}
+.empty {
+    text-align: center;
+    margin-block: 40px;
+}
+select {
+    width: 150px;
+    border-radius: 2px;
+    background: var(--lightColor);
+    padding-left: 5px;
+    cursor: pointer;
+}
+select option {
+}
+select option:hover {
+    background-color: #0c8f12;
+}
+.dark select {
+    background-color: var(--darkColor);
+    color: var(--lightColor);
+}
+.title .buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.pointer {
+    cursor: pointer;
+}
+input[readonly] {
+    cursor: no-drop;
+    background: var(--darkFontColor) !important;
+}
+.breadCrumb{
+background: var(--whiteColor);
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+.dark .breadCrumb{
+    background-color: var(--darkColor);
+}
+.breadCrumb a {
+    color: var(--mainColor);
+    font-size: 18px;
+    transition: var(--transition);
+    text-decoration: underline;
+}
+.breadCrumb a:hover{
+    color: var(--darkBlueColor);
+}
+.dark .breadCrumb a:hover{
+    color: var(--whiteColor);
+
+}
+.dark .breadCrumb a {
+    color: var(--lightColor);
 }

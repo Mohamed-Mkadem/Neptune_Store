@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,20 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
 Route::get('/', function () {
     return view('admin.overview');
 })->name('dashboard');
-Route::get('/orders', function () {
-    return view('admin.orders');
-})->name('orders');
 
-// Route::get('/categories', function(){
-//     return view('admin.categories');
-// })->name('categories');
-Route::get('/products', function () {
-    return view('admin.products');
-})->name('products');
 
+
+
+// Categories
 Route::get('categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('category/{id}', [CategoryController::class, 'show'])->name('showCategory');
 Route::post('categories/add', [CategoryController::class, 'store'])->name('addCategory');
@@ -36,7 +33,10 @@ Route::delete('categories/delete/{id}', [CategoryController::class, 'destroy'])
     ->name('deleteCategory');
 
 
-
-
-
-require __DIR__ . '/auth.php';
+// Sub Categories
+Route::post('subcategory/add', [SubCategoryController::class, 'store'])->name('addSubCategory');
+Route::post('subcategory/edit/{id}', [SubCategoryController::class, 'update'])->name('editSubCategory');
+Route::delete('subcategory/delete/{id}', [SubCategoryController::class, 'destroy'])->name('deleteSubCategory');
+Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->name('showSubCategory');
+// Products
+Route::get('products', [ProductController::class, 'index'])->name('products');

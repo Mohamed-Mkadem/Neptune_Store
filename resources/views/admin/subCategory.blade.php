@@ -62,18 +62,13 @@
                 <section class="content">
                     <!-- Title -->
                     <div class="title">
-                        <div>
-                            <h2 class=" title-message"> {{ $category->name }} </h2>
-                            <p class="breadCrumb">
-                                <a href=" {{ route('categories') }} ">Categories</a> /
-                                <a href=" {{ route('showCategory', $category->id) }} "> {{ $category->name }} </a>
-                            </p>
-                        </div>
+                        <h2 class=" title-message"> {{ $subCategory->category->name }} / {{ $subCategory->name }} </h2>
+
                         <div class="buttons">
 
                             <i class="fal fa-edit edit pointer enableEdit"></i>
 
-                            <form action=" {{ route('deleteCategory', $category->id) }} " method="post" id="delete_item"
+                            <form action=" {{ route('deleteSubCategory', $subCategory->id) }} " method="post" id="delete_item"
                                 class="delete_item">
                                 @csrf
                                 @method('DELETE')
@@ -84,7 +79,7 @@
                             </form>
                         </div>
                     </div>
-                    <!-- Add Category Section -->
+
                     {{-- Messages --}}
                     @if (session()->has('success'))
                         {{-- <div class="alert alert-success">
@@ -102,65 +97,74 @@
                             @endforeach
                         </div>
                     @endif
-                    {{-- Edit the category name --}}
-                    <div class="add-new">
-                        <form action=" {{ route('editCategory', $category->id) }} " method="post">
+                    <div class="add-new subCategory">
+                        <form action=" {{ route('editSubCategory', $subCategory->id) }} " method="post">
                             @csrf
-                            <input type="text" name="name" value=" {{ $category->name }} " id="cat_name"
-                                class="enableEditInput" placeholder="Category Name" required readonly>
-                            <button type="submit" class="editBtn">Edit Category</button>
+                            <input type="text" name="name" value=" {{ $subCategory->name }} " id="cat_name" class="enableEditInput" readonly
+                                placeholder="subCategory Name" required>
+
+                            <select name="parent_id" id="" class="enableEditInput" >
+                                @foreach ($categories as $item)
+                                    <option value=" {{ $item->id }} "> {{ $item->name }} </option>
+                                @endforeach
+                            </select>
+                            <button type="submit" class="editBtn">Edit subCategory</button>
                         </form>
                     </div>
-                    <!-- List Categories Section -->
-                    <h2 class="sub-title">Sub-Categories</h2>
-                    <div class="add-new add-new-subcategory">
-                        <form action=" {{ route('addSubCategory') }} " method="post">
-                            @csrf
-                            <input type="hidden" name="parent_id" value="{{ $category->id }}">
-                            <input type="text" name="name" id="cat_name" placeholder="Sub-Category Name" required>
-                            <button type="submit" class="new">New Sub-Category</button>
-                        </form>
-                    </div>
+                    <!-- List and add products Section -->
+                    <h2 class="sub-title">Products</h2>
+
                     <div class="table-responsive">
-                        @if (count($subCategory) > 0)
-                            <table class="category">
-                                <thead>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Created at</th>
-                                    <th>Actions</th>
-                                </thead>
-                                <tbody>
-                                    @foreach ($subCategory as $subCat)
-                                        <tr>
-                                            <td>#{{ $subCat->id }} </td>
-                                            <td><a
-                                                    href=" {{ route('showSubCategory', $subCat->id) }}" class="underlined">{{ $subCat->name }}</a>
-                                            </td>
-                                            <td>{{ $subCat->created_at->format('d/m/y') }}</td>
+                        <table class="category">
+                            <thead>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Created at</th>
+                                <th>Actions</th>
+                            </thead>
+                            <tbody>
 
-                                            <td>
-                                                <form action=" {{ route('deleteSubCategory', $subCat->id) }} "
-                                                    method="post" id="delete_item" class="delete_item">
-                                                    @csrf
-                                                    @method('DELETE')
+                                <tr>
+                                    <td>#1</td>
+                                    <td><a href=" ">Jackets</a></td>
+                                    <td>25 03 2022</td>
 
-                                                    <button type="submit" class="deleteBtn" id="deleteBtn">
-                                                        <i class="fal fa-trash"></i> Delete
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    <td>
+                                        <button type="button" class="deleteBtn" id="deleteBtn"
+                                            onclick="confirmDelete('hamma', '1')">
+                                            <i class="fal fa-trash"></i> Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#2</td>
+                                    <td><a href="category.html">Pants</a></td>
+                                    <td>25 03 2022</td>
+
+                                    <td>
+                                        <button type="button" class="deleteBtn" id="deleteBtn"
+                                            onclick="confirmDelete('hamma', '1')">
+                                            <i class="fal fa-trash"></i> Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#3</td>
+                                    <td><a href="category.html">Accessories</a></td>
+                                    <td>25 03 2022</td>
+
+                                    <td>
+                                        <button type="button" class="deleteBtn" id="deleteBtn"
+                                            onclick="confirmDelete('hamma', '1')">
+                                            <i class="fal fa-trash"></i> Delete
+                                        </button>
+                                    </td>
+                                </tr>
 
 
-
-                                </tbody>
-                            </table>
+                            </tbody>
+                        </table>
                     </div>
-                @else
-                    <h2 class="empty category">This Category hasn't Any sub category</h2>
-                    @endif
                 </section>
             </div>
         </main>

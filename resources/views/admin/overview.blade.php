@@ -9,7 +9,7 @@
         <div class="aside-links">
             <a href="{{ route('dashboard') }}" class="active"> <i class="fal fa-flag"></i>
                 <span>Overview</span></a>
-            <a href=" {{ route('orders') }} "> <i class="fal fa-cart-arrow-down"></i> <span>Orders</span></a>
+            <a href=" "> <i class="fal fa-cart-arrow-down"></i> <span>Orders</span></a>
             <a href="{{ route('categories') }}"> <i class="fal fa-list"></i> <span>Categories</span></a>
             <a href="products.html"> <i class="fal fa-tshirt"></i> <span>Products</span></a>
             <a href="statistics.html"> <i class="fal fa-chart-bar"></i> <span>Statistics</span></a>

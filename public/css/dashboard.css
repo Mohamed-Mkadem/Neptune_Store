@@ -32,7 +32,8 @@ aside.expanded {
 aside .aside-margin-toggler {
   position: absolute;
   right: 20px;
-  top: -40px;
+  top: 10px;
+  display: none;
   font-size: 20px;
 }
 aside .logo {

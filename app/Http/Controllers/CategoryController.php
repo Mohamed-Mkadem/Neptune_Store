@@ -12,12 +12,18 @@ class CategoryController extends Controller
         $categories = Category::paginate(15);
         return view('admin.categories', ['categories' => $categories]);
     }
+
+
     public function show($id)
     {
         $category = Category::find($id);
+        $subacategory = $category->subCategories()->paginate(15);
         // dd($category);
-        return view('admin.category', ['category' => $category]);
+        return view('admin.category', ['category' => $category, 'subCategory' => $subacategory]);
     }
+
+
+
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
@@ -27,6 +33,9 @@ class CategoryController extends Controller
         $category->update($request->all());
         return redirect()->back()->with('success', 'Category updated successfully');
     }
+
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -37,9 +46,13 @@ class CategoryController extends Controller
 
         return redirect()->back()->with('success', 'Category Added Successfully');
     }
+
+
+
+
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect()->back()->with('success', 'Category Deleted Successfully');
+        return redirect()->route('categories')->with('success', 'Category Deleted Successfully');
     }
 }

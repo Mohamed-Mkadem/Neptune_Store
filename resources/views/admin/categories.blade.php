@@ -91,40 +91,45 @@
                     </div>
                     <!-- List Categories Section -->
                     <div class="table-responsive">
-                        <table class="categories">
-                            <thead>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Created at</th>
-                                <th>Sub-categories</th>
-                                <th>Actions</th>
-                            </thead>
-                            <tbody>
-                                @foreach ($categories as $category)
-                                    <tr>
-                                        <td> #{{ $category->id }} </td>
-                                        <td><a href=" {{ route('showCategory', $category->id) }} "> {{ $category->name }}
-                                            </a></td>
-                                        <td>{{ $category->created_at->format('d/m/y') }} </td>
-                                        <td>25</td>
-                                        <td>
-                                            <form action=" {{ route('deleteCategory', $category->id) }} " method="post"
-                                                id="delete_item" class="delete_item">
-                                                @csrf
-                                                @method('DELETE')
+                        @if (count($categories) > 0)
+                            <table class="categories">
+                                <thead>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Created at</th>
+                                    <th>Sub-categories</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                            <td> #{{ $category->id }} </td>
+                                            <td><a href=" {{ route('showCategory', $category->id) }} " class="underlined">
+                                                    {{ $category->name }}
+                                                </a></td>
+                                            <td>{{ $category->created_at->format('d/m/y') }} </td>
+                                            <td>25</td>
+                                            <td>
+                                                <form action=" {{ route('deleteCategory', $category->id) }} "
+                                                    method="post" id="delete_item" class="delete_item">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                                <button type="submit" class="deleteBtn" id="deleteBtn">
-                                                    <i class="fal fa-trash"></i> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                                    <button type="submit" class="deleteBtn" id="deleteBtn">
+                                                        <i class="fal fa-trash"></i> Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                     </div>
                     <div class="pagination-holder">
                         {{ $categories->links() }}
+                    @else
+                        <h2 class="empty category">You didn't add Any Category yet</h2>
+                        @endif
                     </div>
                 </section>
             </div>
