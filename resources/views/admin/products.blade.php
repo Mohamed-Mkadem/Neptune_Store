@@ -53,7 +53,7 @@
                     <!-- Title -->
                     <div class="title">
                         <h2 class=" title-message">Products :</h2>
-                        <a href="newProduct.html" class="add-product new">+ Add Product</a>
+                        <a href=" {{ route('addProduct') }} " class="add-product new">+ Add Product</a>
                     </div>
                     <!-- Messages -->
                     <div class="messages d-none fail">
@@ -62,80 +62,52 @@
                     </div>
                     <!-- Start orders Table -->
                     <div class="table-responsive">
-                        <table class="products">
-                            <thead>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Categories</th>
-                                <th>Quantity</th>
-                                <th>Production Price</th>
-                                <th>Sale Price</th>
-                                <th>Ordered</th>
-                                <th>Actions</th>
-                            </thead>
-                            <tbody>
-                                <!-- Start Tr -->
-                                <tr>
-                                    <td>#1</td>
-                                    <td> <img src="../Assets/red.jpg" width="30" alt=""> </td>
-                                    <td><a href="product.html">T-shirt</a></td>
-                                    <td>Men / Jackets</td>
-                                    <td>254</td>
-                                    <td>$42</td>
-                                    <td>$81</td>
-                                    <td>142</td>
-                                    <td>
+                        @if (count($products) > 0)
+                            <table class="products">
 
-                                        <button type="button" class="deleteBtn" id="deleteBtn"
-                                            onclick="confirmDelete('hamma', '1')">
-                                            <i class="fal fa-trash"></i> Delete
-                                        </button>
+                                <thead>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Categories</th>
+                                    <th>Quantity</th>
+                                    <th>Production Price</th>
+                                    <th>Sale Price</th>
+                                    <th>Ordered</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    <!-- Start Tr -->
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td># {{ $product->id }} </td>
+                                            <td> <img src="{{ $product->image }}" width="30" alt=""> </td>
+                                            <td><a href="product.html">{{ $product->name }}</a></td>
+                                            <td>Men / Jackets</td>
+                                            <td>{{ $product->quantity }}</td>
+                                            <td>${{ $product->cost_price }}</td>
+                                            <td>${{ $product->price }}</td>
+                                            <td>142</td>
+                                            <td>
 
-                                    </td>
-                                </tr>
-                                <!-- End tr -->
-                                <!-- Start Tr -->
-                                <tr>
-                                    <td>#1</td>
-                                    <td> <img src="../Assets/red.jpg" width="30" alt=""> </td>
-                                    <td><a href="">T-shirt</a></td>
-                                    <td>Men / Jackets</td>
-                                    <td>254</td>
-                                    <td>$42</td>
-                                    <td>$81</td>
-                                    <td>142</td>
-                                    <td>
-                                        <button type="button" class="deleteBtn" onclick="confirmDelete('test', '1')">
-                                            <i class="fal fa-trash"></i> Delete
-                                        </button>
+                                                <button type="button" class="deleteBtn" id="deleteBtn"
+                                                    onclick="confirmDelete('hamma', '1')">
+                                                    <i class="fal fa-trash"></i> Delete
+                                                </button>
 
-                                    </td>
-                                </tr>
-                                <!-- End tr -->
-                                <!-- Start Tr -->
-                                <tr>
-                                    <td>#1</td>
-                                    <td> <img src="../Assets/red.jpg" width="30" alt=""> </td>
-                                    <td><a href="">T-shirt</a></td>
-                                    <td>Men / Jackets</td>
-                                    <td>254</td>
-                                    <td>$42</td>
-                                    <td>$81</td>
-                                    <td>142</td>
-                                    <td>
-                                        <button type="button" class="deleteBtn" onclick="confirmDelete('item', '6')">
-                                            <i class="fal fa-trash"></i> Delete
-                                        </button>
-
-                                    </td>
-                                </tr>
-                                <!-- End tr -->
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    <!-- End tr -->
 
 
 
-                            </tbody>
-                        </table>
+
+                                </tbody>
+                            </table>
+                        @else
+                            <h2 class="empty">You didn't have any products yet!</h2>
+                        @endif
                     </div>
 
 

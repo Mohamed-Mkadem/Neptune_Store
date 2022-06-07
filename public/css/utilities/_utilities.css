@@ -44,6 +44,18 @@
 .d-none {
     display: none;
 }
+.d-flex {
+    display: flex;
+}
+.j-c-end {
+    justify-content: end;
+}
+.j-c-center {
+    justify-content: center;
+}
+.j-c-start {
+    justify-content: start;
+}
 .d-block {
     display: block;
 }
@@ -56,8 +68,8 @@
 .white {
     color: var(--whiteColor);
 }
-.underlined{
-    text-decoration: underline;
+.p-15-25 {
+    padding: 15px 25px !important;
 }
 /* Buttons */
 .new {
@@ -162,7 +174,6 @@ a.deleteBtn {
     padding: 20px 10px;
     border-radius: 4px;
     width: max-content;
-    margin-bottom: 20px;
 }
 .messages.success {
     background: var(--softGreenColor);
@@ -177,58 +188,6 @@ a.deleteBtn {
     font-family: var(--ff-elmessiri);
     font-size: 22px;
 }
-/* Pagination Style */
-.pagination-holder {
-    margin-block: 20px;
-}
-.pagination-holder nav {
-    display: flex;
-    justify-content: center;
-}
-.pagination-holder nav ul {
-    display: flex;
-    gap: 10px;
-}
-.pagination-holder nav ul li.page-item {
-    padding: 3px 6px;
-    border-radius: 1px;
-    color: var(--lightColor);
-    background: var(--softBlueColor);
-    cursor: pointer;
-    color: var(--darkColor);
-    font-size: 20px;
-}
-.pagination-holder nav ul li.page-item.active {
-    background: var(--darkBlueColor);
-    color: var(--lightColor);
-}
-.pagination-holder nav ul li.page-item.disabled {
-    background: var(--darkFontColor);
-    cursor: no-drop;
-}
-.pagination-holder nav ul li.page-item {
-    color: #0c8f12;
-}
-.empty {
-    text-align: center;
-    margin-block: 40px;
-}
-select {
-    width: 150px;
-    border-radius: 2px;
-    background: var(--lightColor);
-    padding-left: 5px;
-    cursor: pointer;
-}
-select option {
-}
-select option:hover {
-    background-color: #0c8f12;
-}
-.dark select {
-    background-color: var(--darkColor);
-    color: var(--lightColor);
-}
 .title .buttons {
     display: flex;
     align-items: center;
@@ -241,27 +200,16 @@ input[readonly] {
     cursor: no-drop;
     background: var(--darkFontColor) !important;
 }
-.breadCrumb{
-background: var(--whiteColor);
-    padding: 2px 5px;
-    border-radius: 2px;
+textarea {
+    resize: none;
 }
-.dark .breadCrumb{
-    background-color: var(--darkColor);
+/* Layout */
+.row.three {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
 }
-.breadCrumb a {
-    color: var(--mainColor);
-    font-size: 18px;
-    transition: var(--transition);
-    text-decoration: underline;
+.mb-10 {
+    margin-bottom: 10px;
 }
-.breadCrumb a:hover{
-    color: var(--darkBlueColor);
-}
-.dark .breadCrumb a:hover{
-    color: var(--whiteColor);
-
-}
-.dark .breadCrumb a {
-    color: var(--lightColor);
+.t-center {
+    text-align: center;
 }

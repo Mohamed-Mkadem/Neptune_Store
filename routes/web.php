@@ -40,3 +40,5 @@ Route::delete('subcategory/delete/{id}', [SubCategoryController::class, 'destroy
 Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->name('showSubCategory');
 // Products
 Route::get('products', [ProductController::class, 'index'])->name('products');
+Route::get('product/add', [ProductController::class, 'create'])->name('addProduct');
+Route::post('product/store', [ProductController::class, 'store'])->name('storeProduct');

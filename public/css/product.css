@@ -7,7 +7,7 @@
   align-items: center;
   gap: 10px;
 }
-section.content{
+section.content {
   margin-bottom: 100px;
 }
 .details {
@@ -24,6 +24,7 @@ section.content{
   width: 20%;
   padding: 20px;
   border-right: 1px solid var(--darkFontColor);
+  border-bottom: 1px solid var(--darkFontColor);
 }
 .details .main-info .img-holder img {
   width: 100%;
@@ -32,6 +33,7 @@ section.content{
 .details .main-info .text-info {
   padding: 20px;
   width: 80%;
+  border-bottom: 1px solid var(--darkFontColor);
 }
 .details .main-info .text-info .info-name {
 }
@@ -58,7 +60,7 @@ section.content{
   cursor: pointer;
   transition: var(--transition);
 }
-.details .main-info .text-info .info-stats .stats-item:hover{
+.details .main-info .text-info .info-stats .stats-item:hover {
   transform: translateY(-3px);
 }
 .details .main-info .text-info .info-stats .stats-item .icon-holder {
@@ -83,16 +85,39 @@ section.content{
 .details .main-info .text-info .info-stats .stats-item .info-stats-data h4 {
   margin-top: 10px;
 }
- .secondary-info .return-policy p a{
+.secondary-info .return-policy p a {
   color: var(--mainColor);
 }
-.dark .secondary-info .return-policy p a{
+
+/* New Product */
+.add-form {
+  padding: 15px;
+}
+.add-form form input,
+.add-form form textarea {
+  border: 1px solid var(--darkFontColor);
+  outline: none;
+}
+.dark .add-form form input,
+.dark .add-form form textarea {
+  color: var(--lightColor);
+}
+.add-form form input:focus,
+.add-form form textarea:focus {
+  border: 1px solid var(--darkerBlueColor);
+}
+.dark .add-form form input:focus,
+.dark .add-form form textarea:focus {
+  border: 1px solid var(--lightColor);
+}
+.dark .secondary-info .return-policy p a {
   color: var(--lightColor);
 }
 .dark .details {
   background-color: var(--darkColor);
 }
 .dark .details,
+.dark .details .main-info .text-info,
 .dark .details .main-info .img-holder,
 .dark .details .main-info .text-info .info-stats .stats-item,
 .dark .details .main-info .text-info .info-stats .stats-item .info-stats-data {
