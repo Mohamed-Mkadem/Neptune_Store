@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(15);
-        return view('admin.categories', ['categories' => $categories]);
+        return view('admin.categories.categories', ['categories' => $categories]);
     }
 
 
@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $subacategory = $category->subCategories()->paginate(15);
         // dd($category);
-        return view('admin.category', ['category' => $category, 'subCategory' => $subacategory]);
+        return view('admin.categories.category', ['category' => $category, 'subCategory' => $subacategory]);
     }
 
 

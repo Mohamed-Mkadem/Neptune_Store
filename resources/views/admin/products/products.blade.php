@@ -82,19 +82,29 @@
                                         <tr>
                                             <td># {{ $product->id }} </td>
                                             <td> <img src="{{ $product->image }}" width="30" alt=""> </td>
-                                            <td><a href="product.html">{{ $product->name }}</a></td>
-                                            <td>Men / Jackets</td>
+                                            <td><a
+                                                    href=" {{ route('showProduct', $product->id) }} ">{{ $product->name }}</a>
+                                            </td>
+                                            <td>
+                                                @foreach ($product->subCategories as $subCat)
+                                                    - {{ $subCat->category->name }} / {{ $subCat->name }} <br>
+                                                @endforeach
+
+                                            </td>
                                             <td>{{ $product->quantity }}</td>
                                             <td>${{ $product->cost_price }}</td>
                                             <td>${{ $product->price }}</td>
                                             <td>142</td>
                                             <td>
+                                                 <form action=" {{ route('deleteProduct', $product->id) }} "
+                                                    method="post" id="delete_item" class="delete_item">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                                <button type="button" class="deleteBtn" id="deleteBtn"
-                                                    onclick="confirmDelete('hamma', '1')">
-                                                    <i class="fal fa-trash"></i> Delete
-                                                </button>
-
+                                                    <button type="submit" class="deleteBtn" id="deleteBtn">
+                                                        <i class="fal fa-trash"></i> Delete
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

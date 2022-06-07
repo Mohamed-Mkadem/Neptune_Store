@@ -57,7 +57,7 @@ class SubCategoryController extends Controller
     {
         $subCategory = SubCategory::findOrFail($id);
         $categories = Category::all();
-        return view('admin.subCategory', ['subCategory' => $subCategory, 'categories' => $categories]);
+        return view('admin.categories.subCategory', ['subCategory' => $subCategory, 'categories' => $categories]);
     }
 
     /**

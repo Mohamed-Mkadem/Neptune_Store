@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+
 class ProductController extends Controller
 {
     /**
@@ -15,9 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(15);
-
-        return view('admin.products', ['products' => $products]);
+        $products = Product::with('subCategories')->paginate(15);
+        // dd($products);
+        return view('admin.products.products', ['products' => $products]);
     }
 
     /**
@@ -29,7 +30,7 @@ class ProductController extends Controller
     {
         $categories = Category::with('subCategories')->get();
         // dd($categories);
-        return view('admin.newProduct', [
+        return view('admin.products.newProduct', [
             'categories' => $categories,
         ]);
     }
@@ -43,7 +44,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string','between:5,100' ],
+            'name' => ['required', 'string', 'between:5,100'],
             'cost_price' => ['required', 'numeric', 'between:1.0, 999.99'],
             'price' => ['required', 'numeric', 'between:1.0, 999.99'],
             'quantity' => ['required', 'integer', 'min:1'],
@@ -55,7 +56,7 @@ class ProductController extends Controller
         $product = Product::create($request->all());
         $product->subCategories()->attach($request->sub_category_id);
 
-            
+
         return redirect(route('addProduct'))->with('success', 'Product Added Successfully');
     }
 
@@ -65,9 +66,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        // dd($product);
+        $subCategories = $product->subCategories()->paginate();
+        // dd($subCategories);
+        return view('admin.products.product', ['product' => $product, 'subCategories' => $subCategories]);
     }
 
     /**
@@ -76,9 +81,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $product, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        // $subCategories = $product->subCategories()->paginate();
+        $categories = Category::with('subCategories')->get();
+        // dd($product);
+        return view('admin.products.editProduct', ['product' => $product,'categories' => $categories]);
     }
 
     /**
@@ -88,9 +97,25 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'between:5,100'],
+            'cost_price' => ['required', 'numeric', 'between:1.0, 999.99'],
+            'price' => ['required', 'numeric', 'between:1.0, 999.99'],
+            'quantity' => ['required', 'integer', 'min:1'],
+            'description' => ['required', 'string'],
+            'policy' => ['required', 'string'],
+            'image' => ['required', 'string'],
+            'sub_category_id' => ['required']
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        $product->update($request->all());
+        $product->subCategories()->sync($request->sub_category_id);
+
+        return redirect()->back()->with('success', 'Product Updated Successfully');
     }
 
     /**
@@ -99,8 +124,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->destroy($id);
+        return redirect(route('products'))->with('success', 'Product Deleted Successfully');
     }
 }

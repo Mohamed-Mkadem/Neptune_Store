@@ -41,4 +41,8 @@ Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->nam
 // Products
 Route::get('products', [ProductController::class, 'index'])->name('products');
 Route::get('product/add', [ProductController::class, 'create'])->name('addProduct');
+Route::get('product/{id}', [ProductController::class, 'show'])->name('showProduct');
 Route::post('product/store', [ProductController::class, 'store'])->name('storeProduct');
+Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
+Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
+Route::post('product/update/{id}', [ProductController::class, 'update'])->name('updateProduct');

@@ -87,9 +87,9 @@
                                     id="">
                             </div>
                             <div class="row three">
-                                <input type="text" class="row-item"  name="price" placeholder="Price" id="">
-                                <input type="text" class="row-item"  name="quantity" id="" placeholder="Quantity">
-                                <input type="text" class="row-item" name="cost_price" id="" placeholder="Cost Price">
+                                <input type="number" class="row-item" name="cost_price" id="" placeholder="Cost Price">
+                                <input type="number" class="row-item"  name="price" placeholder="Price" id="">
+                                <input type="number" class="row-item"  name="quantity" id="" placeholder="Quantity">
                             </div>
                             <div class="row">
                                 <textarea class="row-item" placeholder="Description" name="description" id="" cols="30" rows="10"></textarea>

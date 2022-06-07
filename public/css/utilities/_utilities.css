@@ -41,6 +41,11 @@
     background: var(--mainColor);
 }
 /* Some variables to use directly in html */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 .d-none {
     display: none;
 }
