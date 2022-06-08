@@ -96,8 +96,8 @@
                                             <td>${{ $product->price }}</td>
                                             <td>142</td>
                                             <td>
-                                                 <form action=" {{ route('deleteProduct', $product->id) }} "
-                                                    method="post" id="delete_item" class="delete_item">
+                                                <form action=" {{ route('deleteProduct', $product->id) }} " method="post"
+                                                    id="delete_item" class="delete_item">
                                                     @csrf
                                                     @method('DELETE')
 
@@ -115,6 +115,9 @@
 
                                 </tbody>
                             </table>
+                            <div class="pagination-holder">
+                                {{ $products->links() }}
+                            </div>
                         @else
                             <h2 class="empty">You didn't have any products yet!</h2>
                         @endif

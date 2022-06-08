@@ -84,6 +84,7 @@ aside .aside-links a.active {
   transition: var(--transition);
   font-family: var(--ff-roboto);
   /* margin-left: 250px; */
+  padding-bottom: 100px;
 }
 #main header {
   display: flex;

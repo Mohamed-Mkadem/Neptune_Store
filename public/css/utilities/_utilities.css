@@ -41,10 +41,10 @@
     background: var(--mainColor);
 }
 /* Some variables to use directly in html */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 .d-none {
     display: none;
@@ -217,4 +217,31 @@ textarea {
 }
 .t-center {
     text-align: center;
+}
+.empty {
+    text-align: center;
+    margin-block: 60px;
+}
+.empty .emptyMessage {
+    margin-bottom: 30px;
+    font-size: 35px;
+}
+.breadCrumb {
+}
+.breadCrumb a {
+    font-size: 18px;
+    color: var(--mainColor);
+    text-decoration: underline;
+}
+.dark .breadCrumb a {
+    color: var(--softBlueColor);
+}
+select {
+    background: var(--lightColor);
+    width: 120px;
+    padding-inline: 5px;
+}
+.dark select{
+    background-color: var(--darkColor);
+    color: var(--lightColor);
 }

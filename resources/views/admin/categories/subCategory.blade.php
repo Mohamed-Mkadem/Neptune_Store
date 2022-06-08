@@ -68,8 +68,8 @@
 
                             <i class="fal fa-edit edit pointer enableEdit"></i>
 
-                            <form action=" {{ route('deleteSubCategory', $subCategory->id) }} " method="post" id="delete_item"
-                                class="delete_item">
+                            <form action=" {{ route('deleteSubCategory', $subCategory->id) }} " method="post"
+                                id="delete_item" class="delete_item">
                                 @csrf
                                 @method('DELETE')
 
@@ -100,10 +100,10 @@
                     <div class="add-new subCategory">
                         <form action=" {{ route('editSubCategory', $subCategory->id) }} " method="post">
                             @csrf
-                            <input type="text" name="name" value=" {{ $subCategory->name }} " id="cat_name" class="enableEditInput" readonly
-                                placeholder="subCategory Name" required>
+                            <input type="text" name="name" value=" {{ $subCategory->name }} " id="cat_name"
+                                class="enableEditInput" readonly placeholder="subCategory Name" required>
 
-                            <select name="parent_id" id="" class="enableEditInput" >
+                            <select name="parent_id" id="" class="enableEditInput pointer">
                                 @foreach ($categories as $item)
                                     <option value=" {{ $item->id }} "> {{ $item->name }} </option>
                                 @endforeach
@@ -113,58 +113,50 @@
                     </div>
                     <!-- List and add products Section -->
                     <h2 class="sub-title">Products</h2>
+                    @if (count($subCategory->products) > 0)
 
-                    <div class="table-responsive">
-                        <table class="category">
-                            <thead>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Created at</th>
-                                <th>Actions</th>
-                            </thead>
-                            <tbody>
+                        <div class="table-responsive">
+                            <table class="category">
+                                <thead>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Created at</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($subCategory->products as $product)
+                                        <tr>
+                                            <td>#{{ $product->id }}</td>
+                                            <td><a
+                                                    href=" {{ route('showProduct', $product->id) }} ">{{ $product->name }}</a>
+                                            </td>
+                                            <td>{{ $product->created_at->format('d/m/yy') }}</td>
 
-                                <tr>
-                                    <td>#1</td>
-                                    <td><a href=" ">Jackets</a></td>
-                                    <td>25 03 2022</td>
+                                            <td>
+                                                  <form action=" {{ route('deleteProduct', $product->id) }} "
+                                                    method="post" id="delete_item" class="delete_item">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                    <td>
-                                        <button type="button" class="deleteBtn" id="deleteBtn"
-                                            onclick="confirmDelete('hamma', '1')">
-                                            <i class="fal fa-trash"></i> Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#2</td>
-                                    <td><a href="category.html">Pants</a></td>
-                                    <td>25 03 2022</td>
+                                                    <button type="submit" class="deleteBtn" id="deleteBtn">
+                                                        <i class="fal fa-trash"></i> Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
-                                    <td>
-                                        <button type="button" class="deleteBtn" id="deleteBtn"
-                                            onclick="confirmDelete('hamma', '1')">
-                                            <i class="fal fa-trash"></i> Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#3</td>
-                                    <td><a href="category.html">Accessories</a></td>
-                                    <td>25 03 2022</td>
-
-                                    <td>
-                                        <button type="button" class="deleteBtn" id="deleteBtn"
-                                            onclick="confirmDelete('hamma', '1')">
-                                            <i class="fal fa-trash"></i> Delete
-                                        </button>
-                                    </td>
-                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
 
-                            </tbody>
-                        </table>
-                    </div>
+                        @else
+                        <div class="empty">
+                            <h2 class="emptyMessage">You didn't add any product to this Sub-Category</h2>
+                            <a href=" {{route('addProduct')}}  " class="new">Add Some Product</a>
+                        </div>
+                    @endif
                 </section>
             </div>
         </main>

@@ -56,7 +56,9 @@ class SubCategoryController extends Controller
     public function show(SubCategory $subCategory, $id)
     {
         $subCategory = SubCategory::findOrFail($id);
-        $categories = Category::all();
+        $categories = Category::paginate();
+        // dd($categories);
+        // dd($subCategory);
         return view('admin.categories.subCategory', ['subCategory' => $subCategory, 'categories' => $categories]);
     }
 

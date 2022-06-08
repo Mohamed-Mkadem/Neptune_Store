@@ -134,8 +134,8 @@
                                     @foreach ($subCategory as $subCat)
                                         <tr>
                                             <td>#{{ $subCat->id }} </td>
-                                            <td><a
-                                                    href=" {{ route('showSubCategory', $subCat->id) }}" class="underlined">{{ $subCat->name }}</a>
+                                            <td><a href=" {{ route('showSubCategory', $subCat->id) }}"
+                                                    class="underlined">{{ $subCat->name }}</a>
                                             </td>
                                             <td>{{ $subCat->created_at->format('d/m/y') }}</td>
 
@@ -159,7 +159,9 @@
                             </table>
                     </div>
                 @else
-                    <h2 class="empty category">This Category hasn't Any sub category</h2>
+                    <div class="empty">
+                        <h2 class="emptyMessage">This Category hasn't Any Sub-Category</h2>
+                    </div>
                     @endif
                 </section>
             </div>

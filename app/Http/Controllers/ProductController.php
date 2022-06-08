@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('subCategories')->paginate(15);
+        $products = Product::with('subCategories')->paginate();
         // dd($products);
         return view('admin.products.products', ['products' => $products]);
     }
@@ -43,16 +43,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'between:5,100'],
-            'cost_price' => ['required', 'numeric', 'between:1.0, 999.99'],
-            'price' => ['required', 'numeric', 'between:1.0, 999.99'],
-            'quantity' => ['required', 'integer', 'min:1'],
-            'description' => ['required', 'string'],
-            'policy' => ['required', 'string'],
-            'image' => ['required', 'string'],
-            'sub_category_id' => ['required']
-        ]);
+        // ,  Rule::unique('product_sub_category', 'sub_category_id')->where(function ($query) use ($request) {
+        //         return $query->where('parent_id', $request->sub_category_id);
+        //     })
+
+            $ids = $request->sub_category_id;
+            $names = [];
+            $products = Product::all();
+            for($i = 0; $i< count($ids); $i++){
+          
+            }
+            dd($products);
+
+        // $request->validate([
+        //     'name' => ['required', 'string'],
+        //     'cost_price' => ['required', 'numeric', 'between:1.0, 999.99'],
+        //     'price' => ['required', 'numeric', 'between:1.0, 999.99'],
+        //     'quantity' => ['required', 'integer', 'min:1'],
+        //     'description' => ['required', 'string'],
+        //     'policy' => ['required', 'string'],
+        //     'image' => ['required', 'string'],
+        //     'sub_category_id' => ['required']
+        // ]);
         $product = Product::create($request->all());
         $product->subCategories()->attach($request->sub_category_id);
 

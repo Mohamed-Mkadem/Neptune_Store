@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('product_sub_category', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('product_id')->constrained('products')->on('id');
-            $table->unsignedBigInteger('sub_category_id')->constrained('sub_categories')->on('id');
-            $table->timestamps();
+            $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
+            $table->foreignId('sub_category_id')->constrained('sub_categories')->cascadeOnDelete();
+            $table->unique(['product_id', 'sub_category_id']);
         });
     }
 

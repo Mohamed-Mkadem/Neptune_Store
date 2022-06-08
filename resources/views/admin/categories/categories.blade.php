@@ -104,7 +104,8 @@
                                     @foreach ($categories as $category)
                                         <tr>
                                             <td> #{{ $category->id }} </td>
-                                            <td><a href=" {{ route('showCategory', $category->id) }} " class="underlined">
+                                            <td><a href=" {{ route('showCategory', $category->id) }} "
+                                                    class="underlined">
                                                     {{ $category->name }}
                                                 </a></td>
                                             <td>{{ $category->created_at->format('d/m/y') }} </td>
@@ -127,10 +128,10 @@
                     </div>
                     <div class="pagination-holder">
                         {{ $categories->links() }}
-                    @else
-                        <h2 class="empty category">You didn't add Any Category yet</h2>
-                        @endif
                     </div>
+                @else
+                    <h2 class="empty category">You didn't add Any Category yet</h2>
+                    @endif
                 </section>
             </div>
         </main>
