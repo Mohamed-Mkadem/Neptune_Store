@@ -17,22 +17,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 require __DIR__ . '/auth.php';
+
+
+
+
+
+// Dashboard Page
 Route::get('/', function () {
     return view('admin.overview');
 })->name('dashboard');
-
-
-
-
-// Categories
+// Login Page
+Route::get('/admin', function () {
+    return view('admin.login');
+})->name('adminLogin');
+// Categories 
 Route::get('categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('category/{id}', [CategoryController::class, 'show'])->name('showCategory');
 Route::post('categories/add', [CategoryController::class, 'store'])->name('addCategory');
 Route::post('category/edit/{id}', [CategoryController::class, 'update'])->name('editCategory');
-Route::delete('categories/delete/{id}', [CategoryController::class, 'destroy'])
-    ->name('deleteCategory');
-
-
+Route::delete('categories/delete/{id}', [CategoryController::class, 'destroy'])->name('deleteCategory');
 // Sub Categories
 Route::post('subcategory/add', [SubCategoryController::class, 'store'])->name('addSubCategory');
 Route::post('subcategory/edit/{id}', [SubCategoryController::class, 'update'])->name('editSubCategory');
@@ -46,3 +49,8 @@ Route::post('product/store', [ProductController::class, 'store'])->name('storePr
 Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
 Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
 Route::post('product/update/{id}', [ProductController::class, 'update'])->name('updateProduct');
+// Orders
+
+Route::get('/orders', function (){
+    return view('admin.orders.orders');
+})->name('orders');

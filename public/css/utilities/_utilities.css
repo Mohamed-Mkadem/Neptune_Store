@@ -1,4 +1,4 @@
-/* Sustom properties */
+/* Custom properties */
 :root {
     --mainColor: #405189;
     --lightColor: #f3f3f9;
@@ -24,6 +24,11 @@
     --ff-roboto: "Roboto";
     --transition: 0.3s ease;
 }
+/* 
+---------------------
+---------------------------------------Components------------------------------------
+---------------------
+*/
 /* Scroll bar */
 /* width */
 ::-webkit-scrollbar {
@@ -41,10 +46,8 @@
     background: var(--mainColor);
 }
 /* Some variables to use directly in html */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.pointer {
+    cursor: pointer;
 }
 .d-none {
     display: none;
@@ -75,6 +78,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .p-15-25 {
     padding: 15px 25px !important;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.t-center {
+    text-align: center;
 }
 /* Buttons */
 .new {
@@ -188,6 +197,7 @@ a.deleteBtn {
     background: var(--softRed);
     color: var(--darkRed);
 }
+/* Titles */
 .sub-title {
     margin-top: 25px;
     font-family: var(--ff-elmessiri);
@@ -198,26 +208,13 @@ a.deleteBtn {
     align-items: center;
     gap: 10px;
 }
-.pointer {
-    cursor: pointer;
-}
-input[readonly] {
-    cursor: no-drop;
-    background: var(--darkFontColor) !important;
-}
-textarea {
-    resize: none;
-}
-/* Layout */
+
+
+/* Layouts */
 .row.three {
     grid-template-columns: repeat(3, minmax(200px, 1fr));
 }
-.mb-10 {
-    margin-bottom: 10px;
-}
-.t-center {
-    text-align: center;
-}
+
 .empty {
     text-align: center;
     margin-block: 60px;

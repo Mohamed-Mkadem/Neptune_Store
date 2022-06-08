@@ -43,28 +43,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // ,  Rule::unique('product_sub_category', 'sub_category_id')->where(function ($query) use ($request) {
-        //         return $query->where('parent_id', $request->sub_category_id);
-        //     })
+       
 
-            $ids = $request->sub_category_id;
-            $names = [];
-            $products = Product::all();
-            for($i = 0; $i< count($ids); $i++){
-          
-            }
-            dd($products);
-
-        // $request->validate([
-        //     'name' => ['required', 'string'],
-        //     'cost_price' => ['required', 'numeric', 'between:1.0, 999.99'],
-        //     'price' => ['required', 'numeric', 'between:1.0, 999.99'],
-        //     'quantity' => ['required', 'integer', 'min:1'],
-        //     'description' => ['required', 'string'],
-        //     'policy' => ['required', 'string'],
-        //     'image' => ['required', 'string'],
-        //     'sub_category_id' => ['required']
-        // ]);
+        $request->validate([
+            'name' => ['required', 'string'],
+            'cost_price' => ['required', 'numeric', 'between:1.0, 999.99'],
+            'price' => ['required', 'numeric', 'between:1.0, 999.99'],
+            'quantity' => ['required', 'integer', 'min:1'],
+            'description' => ['required', 'string'],
+            'policy' => ['required', 'string'],
+            'image' => ['required', 'string'],
+            'sub_category_id' => ['required']
+        ]);
         $product = Product::create($request->all());
         $product->subCategories()->attach($request->sub_category_id);
 

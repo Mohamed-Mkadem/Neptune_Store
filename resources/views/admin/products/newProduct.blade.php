@@ -1,24 +1,26 @@
 @extends('layouts.admin_layout')
 @push('title')
-    {{-- <title> Products - NEPTUNE </title> --}}
+    <title> New Product - NEPTUNE </title>
 @endpush
 @push('styles')
-    <link rel="stylesheet" href="/CSS/categories.css">
-    <link rel="stylesheet" href="/CSS/product.css">
+    <link rel="stylesheet" href="../CSS/categories.css">
+    <link rel="stylesheet" href="../CSS/product.css">
 @endpush
 
 @section('content')
     <div class="main-wrapper">
         <aside id="aside" class="">
             <i class="far fa-times-circle light aside-margin-toggler"></i>
-            <a class="logo" href="dashboard.html"> <span class="word-logo">NEPTUNE</span> <span
+            <a class="logo" href="{{ route('dashboard') }}"> <span class="word-logo">NEPTUNE</span> <span
                     class="letter-logo">N</span></a>
 
             <div class="aside-links">
-                <a href="dashboard.html"> <i class="fal fa-flag"></i> <span>Overview</span></a>
-                <a href="orders.html"> <i class="fal fa-cart-arrow-down"></i> <span>Orders</span></a>
-                <a href="categories.html"> <i class="fal fa-list"></i> <span>Categories</span></a>
-                <a href="products.html" class="active"> <i class="fal fa-tshirt"></i> <span>Products</span></a>
+                <a href="{{ route('dashboard') }}"> <i class="fal fa-flag"></i>
+                    <span>Overview</span></a>
+                <a href=" {{route('orders')}} "> <i class="fal fa-cart-arrow-down"></i> <span>Orders</span></a>
+                <a href="{{ route('categories') }}"> <i class="fal fa-list"></i> <span>Categories</span></a>
+                <a href=" {{ route('products') }} " class="active"> <i class="fal fa-tshirt"></i>
+                    <span>Products</span></a>
                 <a href="statistics.html"> <i class="fal fa-chart-bar"></i> <span>Statistics</span></a>
                 <a href="cutomers.html"> <i class="fal fa-user"></i> <span>Customers</span></a>
                 <a href="tickets.html"> <i class="fal fa-user-headset"></i> <span>Tickets</span></a>
@@ -54,7 +56,7 @@
                     <div class="title">
                         <h2 class=" title-message">Add New Product</h2>
                     </div>
-                                        {{-- Messages --}}
+                    {{-- Messages --}}
                     @if (session()->has('success'))
                         {{-- <div class="alert alert-success">
                             {{ session()->get('success') }}
@@ -77,23 +79,24 @@
                     <!-- Start Adding new product Section -->
 
                     <div class="add-form details">
-                        <form action=" {{route('storeProduct')}} " method="POST">
+                        <form action=" {{ route('storeProduct') }} " method="POST">
                             @csrf
 
                             <div class="row">
-                                <input type="text" class="row-item"  name="name" placeholder="Product Name" required
+                                <input type="text" class="row-item" name="name" placeholder="Product Name" required
                                     id="">
-                                <input type="text" class="row-item"  name="image" placeholder="Image Url" required
+                                <input type="text" class="row-item" name="image" placeholder="Image Url" required
                                     id="">
                             </div>
                             <div class="row three">
-                                <input type="number" class="row-item" name="cost_price" id="" placeholder="Cost Price">
-                                <input type="number" class="row-item"  name="price" placeholder="Price" id="">
-                                <input type="number" class="row-item"  name="quantity" id="" placeholder="Quantity">
+                                <input type="number" class="row-item" name="cost_price" id=""
+                                    placeholder="Cost Price">
+                                <input type="number" class="row-item" name="price" placeholder="Price" id="">
+                                <input type="number" class="row-item" name="quantity" id="" placeholder="Quantity">
                             </div>
                             <div class="row">
                                 <textarea class="row-item" placeholder="Description" name="description" id="" cols="30" rows="10"></textarea>
-                                <textarea class="row-item"  placeholder="Return Policy" name="policy" id="" cols="30" rows="10"></textarea>
+                                <textarea class="row-item" placeholder="Return Policy" name="policy" id="" cols="30" rows="10"></textarea>
                             </div>
                             <div class="row three">
                                 <!-- Start Row item -->
@@ -102,16 +105,15 @@
                                         <h2 class="section-name mb-10"> {{ $category->name }} </h2>
                                         <div class="section-values">
                                             @if (count($category->subCategories) > 0)
-                                                    
-                                            @foreach ($category->subCategories as $subCat)
-                                            
-                                            <label for="{{ (int)$subCat->id}}" class="pointer d-block mb-10">
-                                                <input type="checkbox" name="sub_category_id[]"  id="{{ (int)$subCat->id}}" value="{{$subCat->id}}" >  {{$subCat->name}}
-                                            </label>
-                                            @endforeach
+                                                @foreach ($category->subCategories as $subCat)
+                                                    <label for="{{ (int) $subCat->id }}" class="pointer d-block mb-10">
+                                                        <input type="checkbox" name="sub_category_id[]"
+                                                            id="{{ (int) $subCat->id }}" value="{{ $subCat->id }}">
+                                                        {{ $subCat->name }}
+                                                    </label>
+                                                @endforeach
                                             @else
-
-                                            <span>Empty</span>
+                                                <span>Empty</span>
                                             @endif
                                         </div>
                                     </div>

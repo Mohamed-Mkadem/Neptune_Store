@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 @push('title')
-    {{-- <title> Products - NEPTUNE </title> --}}
+    <title> {{$product->name}} - NEPTUNE </title>
 @endpush
 @push('styles')
     <link rel="stylesheet" href="/CSS/categories.css">
@@ -11,14 +11,16 @@
     <div class="main-wrapper">
         <aside id="aside" class="">
             <i class="far fa-times-circle light aside-margin-toggler"></i>
-            <a class="logo" href="dashboard.html"> <span class="word-logo">NEPTUNE</span> <span
+            <a class="logo" href="{{ route('dashboard') }}"> <span class="word-logo">NEPTUNE</span> <span
                     class="letter-logo">N</span></a>
 
             <div class="aside-links">
-                <a href="dashboard.html"> <i class="fal fa-flag"></i> <span>Overview</span></a>
-                <a href="orders.html"> <i class="fal fa-cart-arrow-down"></i> <span>Orders</span></a>
-                <a href="categories.html"> <i class="fal fa-list"></i> <span>Categories</span></a>
-                <a href="products.html" class="active"> <i class="fal fa-tshirt"></i> <span>Products</span></a>
+                <a href="{{ route('dashboard') }}"> <i class="fal fa-flag"></i>
+                    <span>Overview</span></a>
+                <a href=" {{ route('orders') }} "> <i class="fal fa-cart-arrow-down"></i> <span>Orders</span></a>
+                <a href="{{ route('categories') }}"> <i class="fal fa-list"></i> <span>Categories</span></a>
+                <a href=" {{ route('products') }} " class="active"> <i class="fal fa-tshirt"></i>
+                    <span>Products</span></a>
                 <a href="statistics.html"> <i class="fal fa-chart-bar"></i> <span>Statistics</span></a>
                 <a href="cutomers.html"> <i class="fal fa-user"></i> <span>Customers</span></a>
                 <a href="tickets.html"> <i class="fal fa-user-headset"></i> <span>Tickets</span></a>
@@ -111,12 +113,8 @@
                                                     <label for="{{ (int) $subCat->id }}" class="pointer d-block mb-10">
                                                         <input type="checkbox" name="sub_category_id[]"
                                                             id="{{ (int) $subCat->id }}" value="{{ $subCat->id }}"
-                                                            @foreach ($product->subCategories as $prod) 
-                                                            
-                                                            @if ($prod->id === $subCat->id )
-                                                                checked
-                                                            @endif
-                                                            
+                                                            @foreach ($product->subCategories as $prod) @if ($prod->id === $subCat->id)
+                                                                checked @endif
                                                             @endforeach>
                                                         {{ $subCat->name }}
                                                     </label>
