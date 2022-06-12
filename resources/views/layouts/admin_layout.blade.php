@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+    @include('admin.components.sidebar')
     @yield('content')
     <!-- Including Javascript -->
     <script src="/JS/dashboard.js"></script>

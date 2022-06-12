@@ -25,7 +25,7 @@ table.categories tr {
   grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
 }
 table.category tr {
-  grid-template-columns: 150px repeat(2, minmax(200px, 1fr)) 150px;
+  grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
 }
 /*  */
 table {

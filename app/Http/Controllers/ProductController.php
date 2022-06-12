@@ -43,7 +43,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       
+
 
         $request->validate([
             'name' => ['required', 'string'],
@@ -89,7 +89,7 @@ class ProductController extends Controller
         // $subCategories = $product->subCategories()->paginate();
         $categories = Category::with('subCategories')->get();
         // dd($product);
-        return view('admin.products.editProduct', ['product' => $product,'categories' => $categories]);
+        return view('admin.products.editProduct', ['product' => $product, 'categories' => $categories]);
     }
 
     /**
@@ -131,5 +131,13 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->destroy($id);
         return redirect(route('products'))->with('success', 'Product Deleted Successfully');
+    }
+
+
+    // The logic of the customer 
+    public function collection()
+    {
+        $products = Product::paginate();
+        return view('customer.collection', ['products' => $products]);
     }
 }

@@ -23,7 +23,7 @@ require __DIR__ . '/auth.php';
 
 
 // Dashboard Page
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('admin.overview');
 })->name('dashboard');
 // Login Page
@@ -51,6 +51,15 @@ Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('editP
 Route::post('product/update/{id}', [ProductController::class, 'update'])->name('updateProduct');
 // Orders
 
-Route::get('/orders', function (){
+Route::get('/orders', function () {
     return view('admin.orders.orders');
 })->name('orders');
+
+
+// Customer Pages
+
+Route::get('/', function () {
+    return view('customer.home');
+})->name('home');
+
+Route::get('/collection', [ProductController::class, 'collection'])->name('collection');

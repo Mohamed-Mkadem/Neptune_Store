@@ -62,6 +62,10 @@
     .details .main-info .text-info .info-stats {
         grid-template-columns: 1fr !important;
     }
+    /* customer home page */
+    .home .showcase q {
+        font-size: 35px;
+    }
 }
 /* ------------------------------ */
 @media (max-width: 500px) {
@@ -108,6 +112,33 @@
     .add-new-subcategory form button {
         height: 45px;
     }
+    /* Customer home page */
+    .home .nav-bar .top-menu .login-register a,
+    .home .nav-bar .top-menu .c-info span {
+        display: block;
+    }
+    .home .nav-bar nav ul li a {
+        padding: 10px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .home .nav-bar nav ul li a::after {
+        width: 0;
+        height: 0;
+    }
+    .home .nav-bar .logo {
+        margin-block: 15px;
+    }
+    .home .nav-bar nav {
+        padding: 0;
+    }
+    .home .nav-bar nav ul li a i {
+        display: none;
+    }
+    .product-showcase.list .card .product-options {
+        gap: 5px;
+    }
 }
 /* ------------------------------ */
 @media (max-width: 767px) {
@@ -147,6 +178,13 @@
     .login-wrapper .login-form-image {
         display: none;
     }
+    /* Customer home page */
+    .home .nav-bar nav ul {
+        gap: 0;
+    }
+    .home .showcase q {
+        font-size: 23px;
+    }
 }
 @media (min-width: 500px) and (max-width: 767px) {
     .details .main-info {
@@ -161,5 +199,28 @@
     }
     .details .main-info .text-info .info-stats {
         grid-template-columns: 1fr !important;
+    }
+}
+@media (max-width: 800px) {
+    /* customer Home page */
+    .product-showcase.list .card {
+        flex-direction: column !important;
+        align-items: center;
+        height: max-content !important;
+    }
+    .product-showcase.list .card .product-image {
+        width: 50%;
+    }
+    .product-showcase.list .card span {
+        margin: 15px auto 30px;
+    }
+    .product-showcase.list .card .product-info {
+        align-items: center;
+    }
+    .product-showcase.list .product-description {
+        text-align: center;
+    }
+    .product-showcase.list .product-description li {
+        list-style: none !important;
     }
 }
