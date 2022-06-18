@@ -100,7 +100,7 @@
                                         <tr>
                                             <td>#{{ $product->id }}</td>
                                             <td><a
-                                                    href=" {{ route('showProduct', $product->id) }} ">{{ $product->name }}</a>
+                                                    href=" {{ route('showAdminProduct', $product->id) }} ">{{ $product->name }}</a>
                                             </td>
                                             <td>{{ $product->created_at->format('d/m/yy') }}</td>
 

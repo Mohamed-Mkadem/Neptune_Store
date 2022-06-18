@@ -44,7 +44,7 @@ Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->nam
 // Products
 Route::get('products', [ProductController::class, 'index'])->name('products');
 Route::get('product/add', [ProductController::class, 'create'])->name('addProduct');
-Route::get('product/{id}', [ProductController::class, 'show'])->name('showProduct');
+Route::get('admin/product/{id}', [ProductController::class, 'show'])->name('showAdminProduct');
 Route::post('product/store', [ProductController::class, 'store'])->name('storeProduct');
 Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
 Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
@@ -58,8 +58,11 @@ Route::get('/orders', function () {
 
 // Customer Pages
 
-Route::get('/', function () {
-    return view('customer.home');
-})->name('home');
+Route::get('/', [CategoryController::class, 'home'])->name('home');
 
-Route::get('/collection', [ProductController::class, 'collection'])->name('collection');
+Route::get('collection', [ProductController::class, 'collection'])->name('collection');
+Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('showProduct');
+Route::get('filter/{id}', [ProductController::class, 'filter']);
+Route::get('product/', [ProductController::class, 'formSearch'])->name('formSearch');
+Route::get('collection/category/{id}', [ProductController::class, 'showCategoryProducts'])->name('showCategoryProducts');
+Route::get('filter-products', [ProductController::class, 'filter'])->name('filterProducts');

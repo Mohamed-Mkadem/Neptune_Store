@@ -10,7 +10,7 @@
                 <a href="" class="main">Register</a>
             </div>
         </div>
-        <a href="home.html">
+        <a href="{{ route('home') }}">
             <h2 class="logo pointer ff-elmessiri main">NEPTUNE</h2>
         </a>
 
@@ -24,6 +24,7 @@
                 <li><a href=""> <i class="fal fa-tshirt"></i> <span>About</span> </a></li>
                 <li><a href=""> <i class="fal fa-envelope"></i> <span>Contact</span> </a></li>
                 <li><a href=""> <i class="fal fa-shopping-cart"></i> <span>Cart</span> </a></li>
+                <li> <i class="fal fa-search pointer" id="show-search-form"></i></li>
             </ul>
         </nav>
     </div>

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -137,7 +139,120 @@ class ProductController extends Controller
     // The logic of the customer 
     public function collection()
     {
+        $categories = Category::with('subCategories')->get();
+        // dd($categories);
         $products = Product::paginate();
-        return view('customer.collection', ['products' => $products]);
+        return view('customer.collection', ['products' => $products, 'categories' => $categories]);
+    }
+
+    // Product Page Function
+    public function showProduct($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('customer.product', ['product' => $product]);
+    }
+
+    public function showCategoryProducts($id)
+    {
+        // Getting the target category
+        $category  = Category::findOrFail($id);
+        // Getting the subCategories that belongs to the target category
+        $subCategories = SubCategory::where("parent_id", $id)->get();
+
+        // Pushing the "id"s of the subCategories to an array
+        $ids = [];
+        foreach ($subCategories as $subCat) {
+            $ids[] = $subCat->id;
+        }
+
+        //  Getting the Products that belongs to the subCategories from the pivot table 
+
+        $products_ids = DB::table('product_sub_category')
+            ->select('product_id')
+            ->whereIn('sub_category_id', $ids)->get();
+        // Extracting the "id"s from the product_ids collection
+        $products_ids_final = [];
+
+        foreach ($products_ids as $product) {
+            $products_ids_final[] = $product->product_id;
+        }
+
+        // Removing the duplicate ids
+        $products_ids_final = array_unique($products_ids_final);
+
+
+        // And Finally getting the products from the product model
+        $products = Product::whereIn('id', $products_ids_final)->paginate();
+
+        // $products = Product::whereIn('id', $products_ids)->get();
+        return view('customer.category', ['category' => $category, 'products' => $products]);
+    }
+
+
+    // Filter Product
+
+    public function filter(Request $request)
+    {
+        //    $category =  Category::findOrFail($request->input('category_id'));
+        if ($request->has('category_id')) {
+            // Getting the target category
+            $category =  Category::findOrFail($request->input('category_id'));
+            // Getting The subCategories as collection then i will extract the ids
+            if ($request->input('subCategories')) {
+                $subCategories = SubCategory::whereIn('id', $request->input('subCategories'))->get();
+            } else {
+                $subCategories = SubCategory::where('parent_id', $category->id)->get();
+            }
+            
+            // Extracting the ids andputting them in array
+            $sub_categories_ids = [];
+            foreach ($subCategories as $subCat) {
+                $sub_categories_ids[] = $subCat->id;
+            }
+            // Getting the Product IDS That belongs to the selected sub Categories
+
+            $products_ids = DB::table('product_sub_category')->select('product_id')->whereIn('sub_category_id', $sub_categories_ids)->get();
+            // Extracting the ids and putting them into array
+            $products_ids_final_list = [];
+            foreach ($products_ids as $product) {
+                $products_ids_final_list[] = $product->product_id;
+            }
+            // Removing the duplicate ids
+            $products_ids = array_unique($products_ids_final_list);
+
+            // Getting the min and the max values
+            $min = $request->input('min') ?? 0;
+            $max = $request->input('max') ?? 100000;
+
+
+            $products = Product::whereIn('id', $products_ids)
+                ->whereBetween('price', [$min, $max])
+                ->paginate();
+            // dd($products);
+            return view('customer.filter_results', ['products' => $products]);
+        } else {
+            //  In case that the user didn't specify any Category
+            $min = $request->input('min') ?? 0;
+            $max = $request->input('max') ?? 100000;
+
+
+            $products = Product::whereBetween('price', [$min, $max])->paginate();
+            // dd($products);
+            return view('customer.filter_results', ['products' => $products]);
+        }
+    }
+
+    // Search using the form
+    public function formSearch(Request $request)
+    {
+
+        $target = $request->input('target');
+        $searched_products = Product::where('name', 'like', '%' . $target . '%')->paginate();
+
+
+        return view('customer.search_results', ['searched_products' => $searched_products]);
     }
 }
+// I finished the creation of the main logic بفضل الله 
+// The problem of the pagination for the searched products 

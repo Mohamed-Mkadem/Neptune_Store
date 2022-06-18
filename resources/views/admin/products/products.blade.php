@@ -66,7 +66,7 @@
                                             <td># {{ $product->id }} </td>
                                             <td> <img src="{{ $product->image }}" width="30" alt=""> </td>
                                             <td><a
-                                                    href=" {{ route('showProduct', $product->id) }} ">{{ $product->name }}</a>
+                                                    href=" {{ route('showAdminProduct', $product->id) }} ">{{ $product->name }}</a>
                                             </td>
                                             <td>
                                                 @foreach ($product->subCategories as $subCat)

@@ -23,6 +23,7 @@
     --ff-cairo: "cairo";
     --ff-roboto: "Roboto";
     --transition: 0.3s ease;
+    scroll-behavior: smooth;
 }
 /* 
 ---------------------
@@ -46,6 +47,9 @@
     background: var(--mainColor);
 }
 /* Some variables to use directly in html */
+.ff-elmessiri{
+    font-family: var(--ff-elmessiri);
+}
 .pointer {
     cursor: pointer;
 }
@@ -202,6 +206,11 @@ a.deleteBtn {
     margin-top: 25px;
     font-family: var(--ff-elmessiri);
     font-size: 22px;
+
+}
+.sub-title.result-message{
+    color: var(--mainColor);
+    font-size: 30px;
 }
 .title .buttons {
     display: flex;
@@ -211,8 +220,22 @@ a.deleteBtn {
 
 /* Layouts */
 .container {
-    width: 95%;
-    margin: auto;
+  width: 95%;
+  margin: auto;
+  max-width: 1500px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 30px;
+  font-family: var(--ff-roboto);
+}
+.row-item {
+  background: var(--whiteColor);
+
+  border-radius: 4px;
+  padding: 20px 10px;
 }
 .row.three {
     grid-template-columns: repeat(3, minmax(200px, 1fr));

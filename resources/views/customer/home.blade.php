@@ -3,8 +3,10 @@
     <title> Home - NEPTUNE </title>
 @endsection
 @section('showcase_message')
-    <q class="ff-elmessiri">We don't do Fashion, We do <span>Greatness</span> </q>
-    <a href="#collection" class="explore light">Explore</a>
+    <div class="showcase ">
+        <q class="ff-elmessiri">We don't do Fashion, We do <span>Greatness</span> </q>
+        <a href="#collection" class="explore light">Explore</a>
+    </div>
 @endsection
 
 @section('content')
@@ -15,36 +17,20 @@
 
             <h2 class="section-title" id="collection"> Collection </h2>
             <div class="home-row">
+                @foreach ($categories as $cat)
+                    
                 <!-- Start col -->
                 <div class="col pointer">
                     <div class="col-item">
                         <img src="../Assets/men.jpg" alt="">
                         <div class="layer">
-                            <a href="">MEN</a>
+                            <a href=" {{route('showCategoryProducts', $cat->id)}} "> {{$cat->name}} </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
                 <!-- End col -->
-                <!-- Start col -->
-                <div class="col pointer">
-                    <div class="col-item">
-                        <img src="../Assets/women.jpg" alt="">
-                        <div class="layer">
-                            <a href="">WOMEN</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End col -->
-                <!-- Start col -->
-                <div class="col pointer">
-                    <div class="col-item">
-                        <img src="../Assets/kids.jpg" alt="">
-                        <div class="layer">
-                            <a href="">KIDS</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End col -->
+                
             </div>
         </div>
     </section>
@@ -54,83 +40,39 @@
     <section class="arrivals">
         <div class="container">
             <h2 class="section-title ff-elmessiri main t-center">New Arrivals</h2>
-            <div class="home-row arrivals">
+            <div class="product-showcase home">
+                @foreach ($products as $product)
                 <!-- Start Col -->
-                <div class="col pointer">
-                    <div class="col-item">
-                        <div class="img-holder">
-                            <img src="../Assets/Amazon Essentials Boys and Toddlers' Light-Weight Water-Resistant Packable Hooded Puffer Coat.jpg"
-                                alt="">
+                 <div class="card">
+                        <div class="product-image">
+                            <img src=" {{ $product->image }} " alt="">
                             <div class="options">
                                 <a href=""><i class="fal fa-shopping-cart"></i></a>
-                                <a href=""><i class="fal fa-eye"></i></a>
+                                <a href=" {{ route('showProduct', $product->id) }}  "><i class="fal fa-eye"></i></a>
                                 <a href=""><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
-                        <div class="info">
-                            <p class="product-name">Nike Essentials T-shirt</p>
-                            <span class="price">$229.9</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Col -->
-                <!-- Start Col -->
-                <div class="col pointer">
-                    <div class="col-item">
-                        <div class="img-holder">
-                            <img src="../Assets/Amazon Essentials Boys and Toddlers' Light-Weight Water-Resistant Packable Hooded Puffer Coat.jpg"
-                                alt="">
-                            <div class="options">
-                                <a href=""><i class="fal fa-shopping-cart"></i></a>
-                                <a href=""><i class="fal fa-eye"></i></a>
-                                <a href=""><i class="fal fa-heart"></i></a>
+                        <div class="product-info">
+                            <h3 class="product-name"> {{ $product->name }} </h3>
+                            <div class="product-description ">
+                                <ul>
+                                    {!! $product->description !!}
+                                </ul>
+                            </div>
+                            <span class="product-price">${{ $product->price }} </span>
+                            <div class="product-options">
+                                <a href="" class="add-to-cart btn"> <i class="fal fa-shopping-cart"></i> Add To
+                                    Cart</a>
+                                <a href=" {{ route('showProduct', $product->id) }} " class="details btn"> <i
+                                        class="fal fa-eye"></i> Details</a>
+                                <a href="" class="save btn"> <i class="fal fa-heart"></i> Save </a>
                             </div>
                         </div>
-                        <div class="info">
-                            <p class="product-name">Nike Essentials T-shirt</p>
-                            <span class="price">$229.9</span>
-                        </div>
                     </div>
-                </div>
                 <!-- End Col -->
-                <!-- Start Col -->
-                <div class="col pointer">
-                    <div class="col-item">
-                        <div class="img-holder">
-                            <img src="../Assets/Amazon Essentials Boys and Toddlers' Light-Weight Water-Resistant Packable Hooded Puffer Coat.jpg"
-                                alt="">
-                            <div class="options">
-                                <a href=""><i class="fal fa-shopping-cart"></i></a>
-                                <a href=""><i class="fal fa-eye"></i></a>
-                                <a href=""><i class="fal fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <p class="product-name">Nike Essentials T-shirt</p>
-                            <span class="price">$229.9</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Col -->
-                <!-- Start Col -->
-                <div class="col pointer">
-                    <div class="col-item">
-                        <div class="img-holder">
-                            <img src="../Assets/Amazon Essentials Boys and Toddlers' Light-Weight Water-Resistant Packable Hooded Puffer Coat.jpg"
-                                alt="">
-                            <div class="options">
-                                <a href=""><i class="fal fa-shopping-cart"></i></a>
-                                <a href=""><i class="fal fa-eye"></i></a>
-                                <a href=""><i class="fal fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="info ">
-                            <p class="product-name">Nike Essentials T-shirt</p>
-                            <span class="price">$229.9</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Col -->
+                    
+                @endforeach
+
             </div>
         </div>
     </section>

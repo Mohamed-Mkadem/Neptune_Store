@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -54,5 +55,13 @@ class CategoryController extends Controller
     {
         Category::destroy($id);
         return redirect()->route('categories')->with('success', 'Category Deleted Successfully');
+    }
+
+    public function home()
+    {
+        $categories = Category::paginate();
+        $products = Product::limit(3)->latest()->get();
+
+        return view('customer.home', ['categories' => $categories, 'products' => $products]);
     }
 }
