@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
@@ -57,7 +58,7 @@ Route::get('/orders', function () {
 
 
 // Customer Pages
-
+Route::get('cart', [CartController::class, 'index'])->name('cart');
 Route::get('/', [CategoryController::class, 'home'])->name('home');
 
 Route::get('collection', [ProductController::class, 'collection'])->name('collection');

@@ -6,8 +6,16 @@
                 <span> <i class="fal fa-phone-alt"></i> +216 20 000 000</span>
             </div>
             <div class="login-register">
-                <a href="" class="main">Login</a>
-                <a href="" class="main">Register</a>
+                @guest
+                    <a href="{{ route('login') }}" class="main">Login</a>
+                    <a href=" {{ route('register') }} " class="main">Register</a>
+                @endguest
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="main">Logout</button>
+                    </form>
+                @endauth
             </div>
         </div>
         <a href="{{ route('home') }}">
@@ -19,11 +27,13 @@
                 <li><a href="{{ route('home') }}" class=" {{ request()->is('/') ? 'active' : '' }} "> <i
                             class="fal fa-home"></i> <span>Home</span>
                     </a></li>
-                <li><a href=" {{ route('collection') }} " class=" {{ request()->is('collection*') ? 'active' : '' }} ">
+                <li><a href=" {{ route('collection') }} "
+                        class=" {{ request()->is('collection*') ? 'active' : '' }} ">
                         <i class="fal fa-tshirt"></i> <span>Collection</span> </a></li>
                 <li><a href=""> <i class="fal fa-tshirt"></i> <span>About</span> </a></li>
                 <li><a href=""> <i class="fal fa-envelope"></i> <span>Contact</span> </a></li>
-                <li><a href=""> <i class="fal fa-shopping-cart"></i> <span>Cart</span> </a></li>
+                <li><a href="{{ route('cart') }}" class=" {{ request()->is('cart') ? 'active' : '' }}"> <i
+                            class="fal fa-shopping-cart"></i> <span>Cart</span> </a></li>
                 <li> <i class="fal fa-search pointer" id="show-search-form"></i></li>
             </ul>
         </nav>

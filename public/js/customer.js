@@ -8,7 +8,13 @@ let showSearchBtn = document.getElementById("show-search-form"),
     closeFilterBtn = document.getElementById("close-filter-form"),
     catButtons = document.querySelectorAll(".catBtn"),
     subCategoriesHolder = document.getElementById("subCategoriesHolder"),
-    productShowcase = document.getElementById("product-showcase");
+    productShowcase = document.getElementById("product-showcase"),
+    inputs = document.querySelectorAll(".input"),
+    inputHolders = document.querySelectorAll(".input-field"),
+    showPasswordBtns = document.querySelectorAll(".show-password-btn"),
+    signUpForm = document.getElementById("sign-up-form"),
+    incBtns = document.querySelectorAll(".incBtn"),
+    decBtns = document.querySelectorAll(".decBtn");
 
 // The logic of the form (open/close)
 
@@ -124,4 +130,66 @@ function dec() {
             number.value = parseInt(number.value) - 1;
         }
     }
+}
+// The logic of the Registration and login pages
+if (inputs && inputHolders) {
+    inputs.forEach((input) => {
+        input.addEventListener("focus", () => {
+            inputHolders.forEach((holder) => {
+                holder.classList.remove("focus");
+            });
+            input.parentElement.classList.add("focus");
+        });
+    });
+}
+if (showPasswordBtns) {
+    showPasswordBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            if (btn.previousElementSibling.getAttribute("type") == "password") {
+                btn.previousElementSibling.setAttribute("type", "text");
+            } else if (
+                btn.previousElementSibling.getAttribute("type") == "text"
+            ) {
+                btn.previousElementSibling.setAttribute("type", "password");
+            }
+        });
+    });
+}
+if (signUpForm) {
+    errorMessage = document.getElementById("error-message");
+    password = document.getElementById("password");
+    confirmPassword = document.getElementById("confirm_password");
+
+    signUpForm.addEventListener("submit", (e) => {
+        if (password.value !== confirmPassword.value) {
+            e.preventDefault();
+            console.log(password.value);
+            console.log(confirmPassword.value);
+            console.log(errorMessage);
+            errorMessage.innerHTML = "passwords does not match";
+        }
+    });
+}
+console.log(incBtns);
+console.log(decBtns);
+
+// The logic of incrementig/decrementing the quantity of products in the cart
+if (incBtns) {
+    incBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            btn.previousElementSibling.value =
+                parseInt(btn.previousElementSibling.value) + 1;
+            console.log(btn.previousElementSibling.value);
+        });
+    });
+}
+if (decBtns) {
+    decBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            if (btn.nextElementSibling.value > 1) {
+                btn.nextElementSibling.value =
+                    parseInt(btn.nextElementSibling.value) - 1;
+            }
+        });
+    });
 }
