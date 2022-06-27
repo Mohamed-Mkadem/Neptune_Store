@@ -14,6 +14,8 @@ let showSearchBtn = document.getElementById("show-search-form"),
     showPasswordBtns = document.querySelectorAll(".show-password-btn"),
     signUpForm = document.getElementById("sign-up-form"),
     incBtns = document.querySelectorAll(".incBtn"),
+    addToCartBtns = document.querySelectorAll(".addToCartBtn"),
+    removeFromCartBtns = document.querySelectorAll(".remove-product"),
     decBtns = document.querySelectorAll(".decBtn");
 
 // The logic of the form (open/close)
@@ -38,6 +40,7 @@ if (listLayout) {
     listLayout.forEach((listBtn) => {
         listBtn.addEventListener("click", () => {
             productShowcase.classList.add("list");
+            window.localStorage.setItem("showcase_layout", "list");
         });
     });
 }
@@ -45,8 +48,16 @@ if (gridLayout) {
     gridLayout.forEach((gridBtn) => {
         gridBtn.addEventListener("click", () => {
             productShowcase.classList.remove("list");
+            window.localStorage.setItem("showcase_layout", "grid");
         });
     });
+}
+if (productShowcase) {
+    if (window.localStorage.getItem("showcase_layout") == "list") {
+        productShowcase.classList.add("list");
+    } else {
+        productShowcase.classList.remove("list");
+    }
 }
 if (window.innerWidth < 500) {
     productShowcase.classList.add("list");
@@ -74,7 +85,7 @@ function getSubCategories(id) {
     var thrUrl = "api/subCategories" + "/" + id;
     myRequest.open("GET", thrUrl, true);
 
-    // function execute after request is successful
+    // function execute after connection is successful
     myRequest.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let myData = JSON.parse(this.responseText);
@@ -104,7 +115,6 @@ function getSubCategories(id) {
                     input.setAttribute("name", "subCategories[]");
 
                     subCategoriesHolder.appendChild(label);
-                    console.log(subCategoriesHolder);
                 }
             } else {
                 // In Case that the Category is empty this message appears
@@ -119,12 +129,12 @@ function getSubCategories(id) {
 
 // The logic of the qunatity to add to the cart
 function inc() {
-    let number = document.querySelector('[name="number"]');
+    let number = document.querySelector('[name="quantity"]');
     number.value = parseInt(number.value) + 1;
 }
 
 function dec() {
-    let number = document.querySelector('[name="number"]');
+    let number = document.querySelector('[name="quantity"]');
     if (parseInt(number.value) > 0) {
         if (number.value != 1) {
             number.value = parseInt(number.value) - 1;
@@ -163,15 +173,11 @@ if (signUpForm) {
     signUpForm.addEventListener("submit", (e) => {
         if (password.value !== confirmPassword.value) {
             e.preventDefault();
-            console.log(password.value);
-            console.log(confirmPassword.value);
-            console.log(errorMessage);
+
             errorMessage.innerHTML = "passwords does not match";
         }
     });
 }
-console.log(incBtns);
-console.log(decBtns);
 
 // The logic of incrementig/decrementing the quantity of products in the cart
 if (incBtns) {
@@ -179,7 +185,6 @@ if (incBtns) {
         btn.addEventListener("click", () => {
             btn.previousElementSibling.value =
                 parseInt(btn.previousElementSibling.value) + 1;
-            console.log(btn.previousElementSibling.value);
         });
     });
 }
@@ -193,3 +198,24 @@ if (decBtns) {
         });
     });
 }
+
+// function addToCart(id) {
+//     var myRequest = new XMLHttpRequest();
+//     var theUrl = "http://127.0.0.1:8000/cartadd/" + id;
+//     myRequest.open("POST", theUrl, true);
+//     myRequest.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             let cartMessage = document.createElement("div");
+//             let p = document.createElement("p");
+//             p.innerText = "Item Added To Cart";
+//             cartMessage.appendChild(p);
+//             cartMessage.setAttribute("class", "cart-message");
+//             document.body.prepend(cartMessage);
+//             setTimeout(() => {
+//                 document.body.removeChild(cartMessage);
+//             }, 5000);
+//         }
+//     };
+//     myRequest.send();
+// }
+

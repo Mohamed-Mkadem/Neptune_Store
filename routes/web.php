@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboradController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +26,7 @@ require __DIR__ . '/auth.php';
 
 
 // Dashboard Page
-Route::get('/dashboard', function () {
-    return view('admin.overview');
-})->name('dashboard');
+Route::get('/dashboard', [DashboradController::class, 'index'])->name('dashboard');
 // Login Page
 Route::get('/admin', function () {
     return view('admin.login');
@@ -51,15 +51,21 @@ Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('dele
 Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
 Route::post('product/update/{id}', [ProductController::class, 'update'])->name('updateProduct');
 // Orders
-
-Route::get('/orders', function () {
-    return view('admin.orders.orders');
-})->name('orders');
-
+Route::get('orders', [OrderController::class, 'customerIndex'])->name('customerOrders');
+Route::get('admin/orders', [OrderController::class, 'adminIndex'])->name('orders');
+Route::get('admin/order/{id}', [OrderController::class, 'adminShow'])->name('show');
+Route::get('order/{id}', [OrderController::class, 'customerShow'])->name('showOrder');
+Route::post('order/update', [OrderController::class, 'update'])->name('updateOrder');
 
 // Customer Pages
 Route::get('cart', [CartController::class, 'index'])->name('cart');
+Route::post('cartadd/', [CartController::class, 'store'])->name('addToCart');
+Route::post('cartupdate/', [CartController::class, 'update'])->name('updateCartItem');
+Route::get('cartremove/{id}', [CartController::class, 'destroy'])->name('removeItem');
 Route::get('/', [CategoryController::class, 'home'])->name('home');
+// Order Logic
+Route::get('checkout', [OrderController::class, 'create'])->name('checkout');
+Route::post('order/new', [OrderController::class, 'store'])->name('newOrder');
 
 Route::get('collection', [ProductController::class, 'collection'])->name('collection');
 Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('showProduct');

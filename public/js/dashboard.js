@@ -1,17 +1,19 @@
 // Setting the Variables
-let layoutToggler = document.getElementById("layoutToggler"),
-    aside = document.getElementById("aside"),
-    main = document.querySelector("#main"),
-    currentWidth = window.innerWidth,
-    asideMarginToggler = document.querySelector(".aside-margin-toggler"),
-    root = document.documentElement,
-    modeToggler = document.querySelector(".mode-switcher"),
-    popUpHolder = document.querySelector(".pop-up-holder"),
-    deleteModal = document.querySelector(".delete-modal"),
-    deleteForm = document.getElementById("delete_form"),
-    enableBtn = document.querySelector(".enableEdit"),
-    editCategory = document.querySelector(".enableEditInput");
-    console.log(enableBtn);
+layoutToggler = document.getElementById("layoutToggler");
+aside = document.getElementById("aside");
+main = document.querySelector("#main");
+currentWidth = window.innerWidth;
+asideMarginToggler = document.querySelector(".aside-margin-toggler");
+root = document.documentElement;
+modeToggler = document.querySelector(".mode-switcher");
+popUpHolder = document.querySelector(".pop-up-holder");
+deleteModal = document.querySelector(".delete-modal");
+deleteForm = document.getElementById("delete_form");
+enableBtn = document.querySelector(".enableEdit");
+editCategory = document.querySelector(".enableEditInput");
+updateOrderForms = document.querySelectorAll(".order_update");
+mainWrapper = document.querySelector(".main-wrapper");
+console.log(enableBtn);
 // Those some functionnalities i made, I use the if statement to check if the element exists on the page before making the event listener, i didn't use all those variables in all the pages and i included this script in all pages so it will give me an error when i add an event listener to an element that didn't exist
 // Hangling the layout full width or boxed
 if (layoutToggler) {
@@ -77,22 +79,49 @@ window.onclick = function (event) {
         popUpHolder.classList.remove("show");
     }
 };
+
+
 let forms = document.querySelectorAll(".delete_item");
-console.log(forms);
-forms.forEach((form) => {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (confirm("Are you sure to delete this ?") == true) {
-            e.target.submit();
-        }
+confirmDelete = document.getElementById("confirm_deletion");
+cancelDeletion = document.getElementById("cancel_deletion");
+
+if (forms) {
+    forms.forEach((form) => {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            popUpHolder.classList.add("show");
+            confirmDelete.addEventListener("click", () => {
+                e.target.submit();
+            });
+
+            cancelDeletion.addEventListener("click", () => {
+                popUpHolder.classList.remove("show");
+            });
+        });
     });
-});
+}
 
 // Edit Category name logic
 
 if (enableBtn && editCategory) {
     enableBtn.addEventListener("click", () => {
         editCategory.removeAttribute("readonly");
-        // console.log("yes");
+    });
+}
+if (updateOrderForms) {
+    updateOrderForms.forEach((form) => {
+        form.addEventListener("submit", (e) => {
+            if (
+                form.firstElementChild.nextElementSibling.value === "Canceled"
+            ) {
+                e.preventDefault();
+                if (
+                    confirm("Are You Sure You Want To Cancel This Order") ===
+                    true
+                ) {
+                    e.target.submit();
+                }
+            }
+        });
     });
 }

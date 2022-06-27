@@ -11,10 +11,14 @@
                     <a href=" {{ route('register') }} " class="main">Register</a>
                 @endguest
                 @auth
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="main">Logout</button>
-                    </form>
+                    <div class="d-flex a-i-center gap-15 ">
+                        <a href=" {{ route('customerOrders') }} " class="main "> My Orders </a>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="main logout-btn">Logout</button>
+                        </form>
+                    </div>
                 @endauth
             </div>
         </div>

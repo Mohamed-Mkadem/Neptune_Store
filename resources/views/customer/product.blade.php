@@ -6,8 +6,6 @@
 
 @section('content')
     <div class="container">
-
-
         <section class="product-details">
             <div class="product-image-holder">
                 <img src="{{ $product->image }}" alt="">
@@ -19,8 +17,7 @@
                 </div>
                 <div class="product-categories">
                     @foreach ($product->subCategories as $subCat)
-                    <p> {{$subCat->category->name}}/ {{$subCat->name}} </p>
-                        
+                        <p> {{ $subCat->category->name }}/ {{ $subCat->name }} </p>
                     @endforeach
                     {{-- <p> Kids / Jackets </p> --}}
                 </div>
@@ -29,14 +26,23 @@
                         {!! $product->description !!}
                     </ul>
                 </div>
-                <p class="product-price">${{ $product->price }} <span> ${{$product->price * 1.3}}  </span></p>
+                <p class="product-price"><x-currency :amount=" $product->price"  />  <span> <x-currency :amount=" $product->price * 1.1"  />  </span>  </p>
                 <div class="cart-options">
-                    <div class="quantity-holder">
-                        <button onclick="dec()">-</button>
-                        <input name="number" readonly type="number" min="2" value="1">
-                        <button onclick="inc()">+</button>
-                    </div>
-                    <a href="" class="add-to-cart btn"> <i class="fal fa-shopping-cart"></i> Add To Cart</a>
+                    <form action="{{ route('addToCart') }}" method="post">
+                        @csrf
+                        <div class="d-flex">
+                            <div class="quantity-holder mr-15">
+                                <div onclick="dec()">-</div>
+                                <input name="quantity" readonly type="number" min="1" value="1">
+                                <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                <div onclick="inc()">+</div>
+                            </div>
+                            <button class=" btn addToCartBtn"> <i
+                                    class="fal fa-shopping-cart"></i> Add To Cart
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </section>
@@ -54,7 +60,7 @@
             <div class="row-item">
                 <h2 class="row-title">Return Policy</h2>
                 <p>
-                    {{$product->policy}}
+                    {{ $product->policy }}
                 </p>
             </div>
             {{-- End Col --}}

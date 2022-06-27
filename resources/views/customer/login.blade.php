@@ -19,10 +19,16 @@
     <div class="register-wrapper">
         <div class="register-holder">
             <h2 class="main ff-elmessiri pointer">NEPTUNE</h2>
-            <div class="errors">
-                <p id="error-message" class="error-message"></p>
-            </div>
-            <form action="" method="post" id="sign-up-form">
+
+            @if ($errors->any())
+                <div class="errors">
+                    @foreach ($errors->all() as $error)
+                        <p id="error-message" class="error-message"> {{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+            <form action=" {{ route('login') }}" method="post" id="sign-up-form">
+                @csrf
                 <div class="input-field">
                     <i class="fal fa-envelope"></i>
                     <input type="email" class="input" name="email" id="email" placeholder="Email">
@@ -34,7 +40,7 @@
                 </div>
 
                 <button type="submit" class="mb-10">SIGN IN</button>
-                <a href="{{route('register')}}" class="main d-block">Don't Have An Account? Create One</a>
+                <a href="{{ route('register') }}" class="main d-block">Don't Have An Account? Create One</a>
             </form>
         </div>
     </div>

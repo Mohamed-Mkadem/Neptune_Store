@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 @push('title')
-    <title> {{$product->name}} - NEPTUNE </title>
+    <title> {{ $product->name }} - NEPTUNE </title>
 @endpush
 @push('styles')
     <link rel="stylesheet" href="/CSS/categories.css">
@@ -8,26 +8,10 @@
 @endpush
 
 @section('content')
-    <div class="main-wrapper">
+
         <main id="main">
             <!-- Header -->
-            <header>
-                <!-- Layout Toggler -->
-                <i class="far fa-bars layout-toggler" id="layoutToggler"></i>
-
-
-                <h3 class="date">June 31, 2022</h3>
-
-
-
-                <div class="top-menu-actions">
-                    <i class="fal fa-eclipse-alt mode-switcher"></i>
-                    <a href="settings.html">
-                        <i class="fas fa-cog"></i>
-                    </a>
-                </div>
-
-            </header>
+            @include('admin.components.header')
             <!-- Start main Content -->
             <div class="container">
 
@@ -70,13 +54,12 @@
                             </div>
                             <div class="row three">
                                 <input type="number" class="row-item"
-                                    value=" {{ old('cost_price', $product->cost_price) }} " name="cost_price" id=""
-                                    placeholder="Cost Price">
+                                    value=" {{ old('cost_price', $product->cost_price) }} " name="cost_price"
+                                    id="" placeholder="Cost Price">
                                 <input type="number" class="row-item" value=" {{ old('price', $product->price) }} "
                                     name="price" placeholder="Price" id="">
-                                <input type="number" class="row-item"
-                                    value=" {{ old('quantity', $product->quantity) }} " name="quantity" id=""
-                                    placeholder="Quantity">
+                                <input type="number" class="row-item" value=" {{ old('quantity', $product->quantity) }} "
+                                    name="quantity" id="" placeholder="Quantity">
                             </div>
                             <div class="row">
                                 <textarea class="row-item" placeholder="Description" name="description" id="" cols="30" rows="10">{{ old('description', $product->description) }}</textarea>
@@ -117,5 +100,5 @@
                 </section>
             </div>
         </main>
-    </div>
+
 @endsection

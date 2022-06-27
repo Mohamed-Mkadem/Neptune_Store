@@ -16,6 +16,9 @@
 </head>
 
 <body>
+    {{-- <div class="cart-message">
+        <p> Added To Cart Successfully </p>
+    </div> --}}
     @include('customer.components.search_form')
 
     <div class="main-wrapper home">

@@ -254,7 +254,7 @@ aside .aside-links a.active {
   margin-bottom: 13px;
 }
 .row-item .row-info table tbody tr td h5.product-name a,
-.row-item .row-info table tbody tr td h5.cat-name a {
+.row-item .row-info table tbody tr td h5.customer-name a {
   color: inherit;
 }
 .row-item .row-info table tbody tr td div span {

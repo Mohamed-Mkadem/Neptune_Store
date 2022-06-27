@@ -26,6 +26,7 @@
                 <p class="error-message" id="errorMessage"></p>
             </div>
             <form action="" method="post" id="adminForm">
+                @csrf
                 <input type="email" name="email"  id="adminEmail" placeholder="E-mail">
                 <input type="password" placeholder="Password" name="password"  id="adminPassword">
                 <button type="submit">Login</button>

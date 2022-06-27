@@ -54,7 +54,7 @@ class ProductController extends Controller
             'quantity' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'string'],
             'policy' => ['required', 'string'],
-            'image' => ['required', 'string'],
+            'image' => ['required', 'string'], // Add the url rule on the production
             'sub_category_id' => ['required']
         ]);
         $product = Product::create($request->all());
@@ -75,7 +75,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         // dd($product);
         $subCategories = $product->subCategories()->paginate();
-        // dd($subCategories);
         return view('admin.products.product', ['product' => $product, 'subCategories' => $subCategories]);
     }
 
@@ -131,8 +130,19 @@ class ProductController extends Controller
     public function destroy(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-        $product->destroy($id);
-        return redirect(route('products'))->with('success', 'Product Deleted Successfully');
+        // dd($product->ordered);
+        if($product->ordered > 0){
+            $product->destroy($id);
+            return redirect(route('products'))->with('success', 'Product Deleted Successfully');
+        }else{
+            $product->forceDelete();
+            return redirect(route('products'))->with('success', 'Product Deleted Successfully');
+        }
+
+
+
+        
+
     }
 
 

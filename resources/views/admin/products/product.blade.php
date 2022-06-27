@@ -9,27 +9,11 @@
 
 
 @section('content')
-    <div class="main-wrapper">
+
 
         <main id="main">
             <!-- Header -->
-            <header>
-                <!-- Layout Toggler -->
-                <i class="far fa-bars layout-toggler" id="layoutToggler"></i>
-
-
-                <h3 class="date">June 31, 2022</h3>
-
-
-
-                <div class="top-menu-actions">
-                    <i class="fal fa-eclipse-alt mode-switcher"></i>
-                    <a href="settings.html">
-                        <i class="fas fa-cog"></i>
-                    </a>
-                </div>
-
-            </header>
+              @include('admin.components.header')
             <!-- Start main Content -->
             <div class="container">
 
@@ -78,7 +62,7 @@
                                         </div>
                                         <div class="info-stats-data">
                                             <span>Ordered</span>
-                                            <h4>143</h4>
+                                            <h4> {{$product->ordered}} </h4>
                                         </div>
 
                                     </div>
@@ -102,7 +86,7 @@
                                         </div>
                                         <div class="info-stats-data">
                                             <span>Cost Price</span>
-                                            <h4> ${{ $product->cost_price }}</h4>
+                                            <h4><x-currency :amount=" $product->cost_price" /></h4>
                                         </div>
 
                                     </div>
@@ -114,7 +98,18 @@
                                         </div>
                                         <div class="info-stats-data">
                                             <span>Sale Price</span>
-                                            <h4>${{ $product->price }}</h4>
+                                            <h4><x-currency :amount=" $product->price" /></h4>
+                                        </div>
+
+                                    </div>
+                                    <div class="stats-item">
+                                        <div class="icon-holder">
+                                            <i class="fas fa-sack-dollar"></i>
+                                        </div>
+                                        <div class="info-stats-data">
+                                            <span>Earnings</span>
+                                            {{-- <h4><x-currency :amount=" ($product->price - $product->cost_price) * $product->ordered " /></h4> --}}
+                                            <h4><x-currency :amount=" $product->earnings " /></h4>
                                         </div>
 
                                     </div>
@@ -143,5 +138,5 @@
                 </section>
             </div>
         </main>
-    </div>
+
 @endsection

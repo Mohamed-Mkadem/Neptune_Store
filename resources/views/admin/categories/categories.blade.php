@@ -10,26 +10,10 @@
 
 
 @section('content')
-    <div class="main-wrapper">
+
         <main id="main">
             <!-- Header -->
-            <header>
-                <!-- Layout Toggler -->
-                <i class="far fa-bars layout-toggler" id="layoutToggler"></i>
-
-
-                <h3 class="date">June 31, 2022</h3>
-
-
-
-                <div class="top-menu-actions">
-                    <i class="fal fa-eclipse-alt mode-switcher"></i>
-                    <a href="settings.html">
-                        <i class="fas fa-cog"></i>
-                    </a>
-                </div>
-
-            </header>
+              @include('admin.components.header')
             <!-- Start main Content -->
             <div class="container">
                 <section class="content">
@@ -107,5 +91,5 @@
                 </section>
             </div>
         </main>
-    </div>
+
 @endsection

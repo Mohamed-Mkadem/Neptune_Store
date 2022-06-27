@@ -51,7 +51,7 @@ section.content {
 }
 .details .main-info .text-info .info-stats {
     display: grid;
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(179px, 1fr));
     gap: 10px;
     margin-block: 50px;
 }

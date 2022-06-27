@@ -5,6 +5,17 @@ body {
     background-color: var(--lightColor);
     /* background-color: var(--mainColor); */
     font-family: var(--ff-roboto);
+    position: relative;
+}
+.cart-message {
+    position: fixed;
+    padding: 20px 25px;
+    background: var(--softGreenColor);
+    color: var(--darkerGreenColor);
+    transition: var(--transition);
+    bottom: 50px;
+    left: 20px;
+    z-index: 9999999999999999999999999999999999999999999999999999999999999999;
 }
 
 .nav-bar .top-menu {
@@ -43,7 +54,7 @@ body {
 }
 .nav-bar nav {
     padding-block: 10px;
-    border-top: 1px solid var(--mainColor);
+    border-block: 1px solid var(--mainColor);
     /* border-top: 1px solid var(--lightColor); */
     overflow-y: hidden;
 }
@@ -509,11 +520,14 @@ footer .copyright a {
     transition: var(--transition);
     opacity: 0;
 }
+.product-showcase .options button,
 .product-showcase .options a {
     color: var(--whiteColor);
     font-size: 20px;
     transition: var(--transition);
+    background: transparent;
 }
+.product-showcase .options button:hover,
 .product-showcase .options a:hover {
     transform: translateY(-5px);
 }
@@ -601,11 +615,12 @@ footer .copyright a {
 .product-showcase.list .card .product-image img:hover {
     transform: scale(1.5);
 }
-.product-showcase.list .card .product-options a.btn {
+
+.product-showcase.list .card .product-options .btn {
     background: var(--darkerBlueColor);
     color: var(--lightColor);
     padding: 8px 15px;
-
+    height: 37px;
     transition: var(--transition);
     border-radius: 4px;
 }
@@ -613,7 +628,7 @@ footer .copyright a {
     display: flex;
     gap: 20px;
 }
-.product-showcase.list .card .product-options a.btn:hover {
+.product-showcase.list .card .product-options .btn:hover {
     letter-spacing: 1px;
 }
 .product-showcase.list .card .product-options a.details {
@@ -655,6 +670,7 @@ footer .copyright a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 15px;
 }
 .product-details .product-info .product-name-save {
     display: flex;
@@ -722,14 +738,20 @@ footer .copyright a {
 .product-details .product-info .cart-options .quantity-holder input[readonly] {
     background-color: transparent !important;
 }
-.product-details .product-info .cart-options .quantity-holder button {
+.product-details .product-info .cart-options .quantity-holder div,
+.product-details .product-info .cart-options .quantity-holder button.btn {
     width: 45px;
     background: var(--darkerBlueColor);
     font-weight: bold;
     color: var(--whiteColor);
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
 }
-.product-details .product-info .cart-options a {
+.product-details .product-info .cart-options button {
     background: var(--darkerBlueColor);
     color: var(--whiteColor);
     padding: 10px 20px;
@@ -737,7 +759,7 @@ footer .copyright a {
     transition: var(--transition);
     height: 40px;
 }
-.product-details .product-info .cart-options a:hover {
+.product-details .product-info .cart-options button:hover {
     background-color: transparent;
     color: var(--darkerBlueColor);
     border: 1px solid var(--darkerBlueColor);
@@ -769,78 +791,78 @@ footer .copyright a {
 
 ---------------------------------------------*/
 .register-wrapper {
-  background: var(--lightColor);
-  height: 100vh;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background: var(--lightColor);
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .register-wrapper .register-holder {
-  padding: 20px;
-  background: var(--whiteColor);
-  text-align: center;
-  width: clamp(400px, 500px, 600px);
-  box-shadow: 0 0 10px 4px #d0d5ef7a;
-  border-radius: 8px;
+    padding: 20px;
+    background: var(--whiteColor);
+    text-align: center;
+    width: clamp(400px, 500px, 600px);
+    box-shadow: 0 0 10px 4px #d0d5ef7a;
+    border-radius: 8px;
 }
 .register-wrapper .register-holder h2 {
-  margin-bottom: 25px;
-  font-size: 35px;
-  letter-spacing: 1px;
+    margin-bottom: 25px;
+    font-size: 35px;
+    letter-spacing: 1px;
 }
 
 .register-wrapper .register-holder .errors {
 }
 .register-wrapper .register-holder .errors p {
-  margin-bottom: 20px;
-  color: var(--darkRed);
-  font-family: var(--ff-roboto);
-  letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: var(--darkRed);
+    font-family: var(--ff-roboto);
+    letter-spacing: 1px;
 }
 .register-wrapper .register-holder form {
 }
 .register-wrapper .register-holder form .input-field {
-  display: flex;
-  align-items: center;
-  height: 45px;
-  margin-bottom: 20px;
-  border-radius: 100vmax;
-  padding-inline: 15px;
-  overflow: hidden;
-  background-color: var(--lightColor);
-  border: 1px solid var(--softBlueColor);
+    display: flex;
+    align-items: center;
+    height: 45px;
+    margin-bottom: 20px;
+    border-radius: 100vmax;
+    padding-inline: 15px;
+    overflow: hidden;
+    background-color: var(--lightColor);
+    border: 1px solid var(--softBlueColor);
 }
 .register-wrapper .register-holder form .input-field i {
-  color: var(--grayColor);
+    color: var(--grayColor);
 }
 
 .register-wrapper .register-holder form .input-field input {
-  height: 100%;
-  border: none;
-  width: 100%;
-  padding-left: 10px;
-  outline: none;
-  background-color: transparent;
+    height: 100%;
+    border: none;
+    width: 100%;
+    padding-left: 10px;
+    outline: none;
+    background-color: transparent;
 }
 .register-wrapper .register-holder form .input-field.focus {
-  border-color: var(--darkerBlueColor);
+    border-color: var(--darkerBlueColor);
 }
 .register-wrapper .register-holder form .input-field input::placeholder {
-  color: var(--grayColor);
+    color: var(--grayColor);
 }
 .register-wrapper .register-holder form button {
-  background: var(--mainColor);
-  color: var(--whiteColor);
-  width: 150px;
-  height: 40px;
-  border-radius: 100vmax;
-  transition: var(--transition);
+    background: var(--mainColor);
+    color: var(--whiteColor);
+    width: 150px;
+    height: 40px;
+    border-radius: 100vmax;
+    transition: var(--transition);
 }
 .register-wrapper .register-holder form button:hover {
-  background-color: var(--lightColor);
-  color: var(--mainColor);
-  border: 1px solid var(--mainColor);
+    background-color: var(--lightColor);
+    color: var(--mainColor);
+    border: 1px solid var(--mainColor);
 }
 /* ---------------------------------------------
 
@@ -851,105 +873,277 @@ footer .copyright a {
 -----------------------------------------------*/
 
 h2.title {
-  color: var(--mainColor);
-  margin-top: 50px;
+    color: var(--mainColor);
+    margin-top: 50px;
 }
 .cart-holder {
-  margin-block: 50px;
-  background: var(--whiteColor);
-  padding: 20px;
-  box-shadow: 0 0 15px -3px #c3c3c3;
+    margin-block: 50px;
+    background: var(--whiteColor);
+    padding: 20px;
+    box-shadow: 0 0 15px -3px #c3c3c3;
 }
 .table-responsive {
-  overflow-x: auto;
+    overflow-x: auto;
 }
 .cart-holder table tr {
-  display: grid;
-  grid-template-columns: 250px repeat(4, minmax(200px, 250px));
-  text-align: center;
-  align-items: center;
-  position: relative;
+    display: grid;
+    grid-template-columns: 250px repeat(4, minmax(200px, 250px));
+    text-align: center;
+    align-items: center;
+    position: relative;
 }
 .cart-holder table tr:not(thead tr) {
-  border-bottom: 1px solid var(--softBlueColor);
+    border-bottom: 1px solid var(--softBlueColor);
 }
 .cart-holder table tbody tr td .remove-product {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  color: var(--darkRed);
-  font-size: 20px;
-  cursor: pointer;
-  margin-left: 10px;
-  padding: 10px;
-  border-radius: 50%;
-  transition: var(--transition);
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: var(--darkRed);
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 50%;
+    transition: var(--transition);
 }
 .cart-holder table tbody tr td .remove-product:hover {
-  background-color: var(--darkRed);
-  color: var(--whiteColor);
+    background-color: var(--darkRed);
+    color: var(--whiteColor);
 }
 .cart-holder table th {
-  padding-block: 15px;
-  color: var(--mainColor);
-  background: aliceblue;
-  margin-bottom: 15px;
+    padding-block: 15px;
+    color: var(--mainColor);
+    background: aliceblue;
+    margin-bottom: 15px;
 }
 
 .cart-holder table tr td {
-  padding-block: 10px;
+    padding-block: 10px;
 }
 
 .cart-holder table tr td .name {
 }
 .cart-holder table tr td .quantity-holder {
-  display: flex;
-  justify-content: center;
-  height: 40px;
+    display: flex;
+    justify-content: center;
+    height: 40px;
 }
-.cart-holder table tr td .quantity-holder button {
-  background: var(--darkerBlueColor);
-  color: var(--whiteColor);
-  height: 100%;
-  width: 40px;
-  font-weight: bold;
+.cart-holder table tr td .quantity-holder div {
+    background: var(--darkerBlueColor);
+    color: var(--whiteColor);
+    height: 100%;
+    width: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
 }
 .cart-holder table tr td .quantity-holder input {
-  background: var(--lightColor) !important;
-  border: none;
-  text-align: center;
-  height: 100%;
-  color: var(--darkerBlueColor);
-  width: 100px;
+    background: var(--lightColor) !important;
+    border: none;
+    text-align: center;
+    height: 100%;
+    color: var(--darkerBlueColor);
+    width: 100px;
+    user-select: none;
+    outline: none;
 }
 .cart-holder table tr td .total,
 .cart-holder table tr td .unit-price {
-  color: var(--mainColor);
-  font-size: 20px;
+    color: var(--mainColor);
+    font-size: 20px;
 }
 .actions {
-  display: flex;
-  justify-content: space-between;
-  margin-block: 20px;
-  overflow-x: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-block: 20px;
+    overflow-x: auto;
 }
 .actions a {
-  background: var(--successColor);
-  color: var(--whiteColor);
-  padding: 10px 45px;
-  border-radius: 5px;
-  transition: var(--transition);
-  letter-spacing: 1px;
-  height: 40px;
+    background: var(--successColor);
+    color: var(--whiteColor);
+    padding: 10px 45px;
+    border-radius: 5px;
+    transition: var(--transition);
+    letter-spacing: 1px;
+    height: 40px;
 }
 .actions a:hover {
-  background-color: var(--whiteColor);
-  border: 1px solid var(--successColor);
-  color: var(--successColor);
+    background-color: var(--whiteColor);
+    border: 1px solid var(--successColor);
+    color: var(--successColor);
 }
 .actions p.total-cost {
-  font-size: 25px;
-  color: var(--darkerBlueColor);
-  font-weight: bold;
-  padding-right: 15px;
+    font-size: 25px;
+    color: var(--darkerBlueColor);
+    font-weight: bold;
+    padding-right: 15px;
+}
+.empty-block {
+    text-align: center;
+    padding-block: 55px;
+}
+
+.empty-block a {
+    background: var(--mainColor);
+    color: var(--whiteColor);
+    padding: 10px 15px;
+    margin-top: 15px;
+    display: block;
+    width: max-content;
+    margin: 15px auto;
+    transition: var(--transition);
+    height: 39px;
+    border-radius: 2px;
+}
+.empty-block a:hover {
+    background-color: transparent;
+    border: 1px solid var(--mainColor);
+    color: var(--mainColor);
+}
+.cart-holder table tr td form .button {
+    color: var(--successColor);
+    font-size: 20px;
+    outline: none;
+    transition: var(--transition);
+}
+.cart-holder table tr td form .button:hover {
+    color: var(--darkerGreenColor);
+}
+/* ----------------------------------
+
+
+-------------------------Checkout Page
+
+
+------------------------------------*/
+/* .checkout-holder{} */
+.checkout-holder {
+    margin-block: 50px;
+    box-shadow: 0 0 10px 3px #d0d5ef87;
+    display: flex;
+    justify-content: space-between;
+}
+.checkout-holder .row-item {
+    width: 50%;
+    max-width: 50%;
+}
+.checkout-holder .row-item .row {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.checkout-holder .row-item .row input {
+    height: 40px;
+    border: 1px solid var(--darkFontColor);
+    padding: 10px;
+    color: var(--darkerBlueColor);
+    outline: none;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+.checkout-holder .row-item .row input::placeholder {
+    color: #777777d9;
+}
+.checkout-holder .row-item .row input:focus {
+    border-color: var(--darkerBlueColor);
+}
+.checkout-holder .row-item .row select {
+    border: 1px solid var(--darkFontColor);
+    padding: 3px;
+    color: var(--darkerBlueColor);
+    cursor: pointer;
+    overflow-y: scroll !important;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
+}
+.checkout-holder .row-item p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--mainColor);
+}
+.checkout-holder .row-item label {
+    color: var(--darkerBlueColor);
+}
+.checkout-holder .row-item label input[type="radio"] {
+    margin-left: 5px;
+}
+.checkout-holder .row-item button {
+    background: var(--darkerBlueColor);
+    color: var(--whiteColor);
+    width: 120px;
+    height: 40px;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+.checkout-holder .row-item button:hover {
+    background-color: var(--whiteColor);
+    color: var(--darkerBlueColor);
+    border: 1px solid var(--darkerBlueColor);
+}
+/* Cart info section */
+.checkout-holder .row-item.cart-info {
+    background: var(--darkerBlueColor);
+    padding-left: 15px;
+}
+.checkout-holder .row-item h4 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--darkerBlueColor);
+    margin-bottom: 15px;
+}
+.checkout-holder .row-item.cart-info h4 {
+    color: var(--lightColor);
+    margin-bottom: 0;
+}
+.checkout-holder .row-item.cart-info a {
+    color: var(--lightColor);
+    text-decoration: underline;
+    letter-spacing: 1px;
+}
+.checkout-holder .row-item.cart-info p {
+    color: var(--lightColor);
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.checkout-holder .row-item.cart-info p span {
+    font-weight: 300;
+    color: var(--whiteColor);
+}
+.checkout-holder .row-item.cart-info div.total {
+    border-top: 1px solid var(--lightColor);
+    padding-top: 10px;
+}
+.checkout-holder .row-item.cart-info p.total {
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--whiteColor);
+}
+.checkout-holder .row-item.cart-info h5 {
+    font-size: 18px;
+    color: var(--lightColor);
+}
+.checkout-holder .row-item.cart-info h5.total {
+    font-weight: 900;
+    color: var(--whiteColor);
+}
+.checkout-holder .row-item.cart-info div.d-flex {
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+/* ----------------------------------
+    
+    
+-------------------------Orders Page
+    
+    
+------------------------------------*/
+.logout-btn {
+    font-size: 16px;
 }

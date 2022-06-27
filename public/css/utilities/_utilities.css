@@ -68,11 +68,20 @@
 .j-c-start {
     justify-content: start;
 }
+.j-c-between{
+    justify-content: space-between;
+}
+.a-i-center{
+    align-items: center;
+}
 .d-block {
     display: block;
 }
 .light {
     color: var(--lightColor);
+}
+.bg-white {
+    background: var(--whiteColor);
 }
 .main {
     color: var(--mainColor);
@@ -86,8 +95,17 @@
 .mb-10 {
     margin-bottom: 10px;
 }
+.mb-15{
+    margin-bottom: 15px;
+}
+.mr-15{
+    margin-right: 15px;
+}
 .t-center {
     text-align: center;
+}
+.gap-15{
+    gap: 15px;
 }
 /* Buttons */
 .new {

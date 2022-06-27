@@ -18,8 +18,11 @@
 </head>
 
 <body>
-    @include('admin.components.sidebar')
-    @yield('content')
+    <div class="main-wrapper">
+        @include('admin.components.sidebar')
+
+        @yield('content')
+    </div>
     <!-- Including Javascript -->
     <script src="/JS/dashboard.js"></script>
     @stack('script')

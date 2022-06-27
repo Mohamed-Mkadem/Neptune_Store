@@ -225,6 +225,13 @@
     .product-showcase.list .product-description li {
         list-style: none !important;
     }
+    .checkout-holder {
+        flex-direction: column-reverse;
+    }
+    .checkout-holder .row-item {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }
 @media (max-width: 900px) {
     .product-details {

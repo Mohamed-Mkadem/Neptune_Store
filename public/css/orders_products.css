@@ -6,72 +6,119 @@
 
 /* I did this to make the table responsive */
 .table-responsive {
-  overflow-x: auto;
+    overflow-x: auto;
 }
 table tr {
-  display: grid;
-  grid-template-columns: 100px minmax(250px, 1fr) minmax(150px, 1fr) 100px 120px minmax(
-      200px,
-      1fr
-    );
+    display: grid;
+    grid-template-columns: 100px minmax(250px, 1fr) minmax(150px, 1fr) 100px 120px minmax(
+            200px,
+            1fr
+        );
 }
 /* The style of the products table, it's bigger than the order's one so i added the 2 columns to grid template columns */
 table.products tr {
-  display: grid;
-  grid-template-columns: 100px 100px minmax(250px, 1fr) minmax(150px, 1fr) 100px 150px 100px 100px 100px;
+    display: grid;
+    grid-template-columns: 100px 100px minmax(250px, 1fr) minmax(150px, 1fr) 100px 150px 100px 100px 100px;
 }
 /* The layout of the categories page */
 table.categories tr {
-  grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
+    grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
 }
 table.category tr {
-  grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
+    grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
+}
+/* The layout of the order details page */
+table.order_items tr {
+    grid-template-columns: 150px minmax(200px, 1fr) 150px 200px 200px;
+}
+table.order_details tr {
+    grid-template-columns: 100px minmax(200px, 1fr) 150px 100px  150px 300px;
+}
+table.order_details tr td form button {
+    color: var(--successColor);
+    font-size: 18px;
+    background-color: transparent;
+    outline: none;
+    transition: var(--transition);
+}
+table.order_details tr td form button:hover {
+    color: var(--darkerGreenColor);
+}
+table.customer_orders tr {
+  grid-template-columns: 150px repeat(3, minmax(200px, 1fr));
 }
 /*  */
 table {
-  min-width: 100%;
-  margin-top: 40px;
+    min-width: 100%;
+    margin-top: 40px;
+}
+#main .content .title + .table-responsive table {
+    margin-top: 0;
 }
 table thead {
-  background: #8ea8ff;
-  color: var(--lightColor);
+    background: #8ea8ff;
+    color: var(--lightColor);
 }
 table thead th {
-  padding-block: 10px;
+    padding-block: 10px;
 }
 table tbody tr {
-  color: var(--darkColor);
+    color: var(--darkColor);
 }
 table tbody td {
-  padding-block: 10px;
-  text-align: center;
+    padding-block: 10px;
+    text-align: center;
+}
+table tbody td span {
+    padding: 5px;
+}
+table tbody td.Shipped span {
+    color: var(--softOrangeColor);
+    background-color: var(--softYellowColor);
+}
+table tbody td.Delivered span {
+    color: #0ab39c;
+    background-color: rgba(10, 179, 156, 0.1);
+}
+table tbody td.Complete span {
+    color: #cddc39;
+    background-color: rgb(205 220 57 / 25%);
+}
+table tbody td.Canceled span {
+    color: #f06548;
+    background-color: rgba(240, 101, 72, 0.1);
+}
+table tbody td.Processing span {
+    color: #3577f1;
+    background-color: rgba(53, 119, 241, 0.1);
 }
 table tbody td a {
-  color: var(--darkColor);
+    color: var(--darkColor);
+    text-decoration: underline;
 }
 table tbody tr:nth-child(even) {
-  background: var(--softBlueColor);
+    background: var(--softBlueColor);
 }
 table tbody tr:nth-child(odd) {
-  background: var(--lightColor);
+    background: var(--lightColor);
 }
 
 /* Dark Mode */
 .dark table,
 .dark table thead,
 .dark table tbody tr:nth-child(even) {
-  background-color: var(--darkColor);
+    background-color: var(--darkColor);
 }
 
 .dark table thead,
 .dark table tbody tr:nth-child(odd),
 .dark table tbody td a {
-  color: var(--darkFontColor);
+    color: var(--darkFontColor);
 }
 .dark table tbody tr:nth-child(even) {
-  color: var(--darkFontColor);
+    color: var(--darkFontColor);
 }
 /* Dark background color */
 .dark table tbody tr:nth-child(odd) {
-  background-color: var(--darkBg);
+    background-color: var(--darkBg);
 }
