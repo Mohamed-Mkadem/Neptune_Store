@@ -88,8 +88,8 @@
                 @foreach ($products as $product)
                     <div class="card">
                         <div class="product-image">
-                            {{-- <img src=" {{ $product->image }} " alt=""> --}}
-                            <img src=" {{asset('Assets/Columbia Boys Glennaker Rain Jacket.jpg')}} " alt="">
+                            <img src=" {{ $product->image }} " alt="">
+                            
                             <div class="options">
                                 <form action=" {{ route('addToCart') }} " method="POST">
                                     @csrf

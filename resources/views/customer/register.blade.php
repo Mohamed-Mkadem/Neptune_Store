@@ -34,25 +34,25 @@
                 @csrf
                 <div class="input-field">
                     <i class="fal fa-user"></i>
-                    <input type="text" class="input" name="first_name" id="first_name" placeholder="First Name">
+                    <input type="text" class="input" name="first_name" id="first_name" placeholder="First Name" required >
                 </div>
                 <div class="input-field">
                     <i class="fal fa-user"></i>
-                    <input type="text" class="input" name="last_name" id="last_name" placeholder="Last Name">
+                    <input type="text" class="input" name="last_name" id="last_name" placeholder="Last Name"  required>
                 </div>
                 <div class="input-field">
                     <i class="fal fa-envelope"></i>
-                    <input type="email" class="input" name="email" id="email" placeholder="Email">
+                    <input type="email" class="input" name="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="input-field">
                     <i class="fal fa-lock"></i>
-                    <input type="password" class="input" name="password" id="password" placeholder="Password">
+                    <input type="password" class="input" name="password" id="password" placeholder="Password" required>
                     <i class="fal fa-eye show-password-btn pointer"></i>
                 </div>
                 <div class="input-field">
                     <i class="fal fa-lock"></i>
                     <input type="password" class="input" name="password_confirmation" id="confirm_password"
-                        placeholder="Confirm Password">
+                        placeholder="Confirm Password" required>
                     <i class="fal fa-eye show-password-btn pointer"></i>
                 </div>
                 <button type="submit" class="mb-10">SIGN UP</button>

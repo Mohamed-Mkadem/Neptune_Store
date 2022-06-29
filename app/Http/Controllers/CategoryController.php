@@ -59,9 +59,10 @@ class CategoryController extends Controller
 
     public function home()
     {
-        $categories = Category::paginate();
-        $products = Product::limit(3)->latest()->get();
+        $categories = Category::limit(3)->get();
+        $bestProduct = Product::orderBy('ordered', 'ASC')->limit(4)->get();
+        $newProduct = Product::limit(4)->latest()->get();
 
-        return view('customer.home', ['categories' => $categories, 'products' => $products]);
+        return view('customer.home', ['categories' => $categories, 'newProducts' => $newProduct, 'bestProducts' => $bestProduct]);
     }
 }
