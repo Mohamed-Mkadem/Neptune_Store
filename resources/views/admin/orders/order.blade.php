@@ -1,6 +1,9 @@
 @extends('layouts.admin_layout')
 @push('styles')
-    <link rel="stylesheet" href="/CSS/orders_products.css">
+<link rel="stylesheet" href="/CSS/orders_products.css">
+@endpush
+@push('title')
+    <title> Order - {{$order->id}} - NEPTUNE </title>
 @endpush
 @section('content')
     <main id="main">
@@ -48,7 +51,8 @@
                                 </td>
                                 <td class="{{ $order->status }} d-flex a-i-center j-c-center gap-15">
                                     <span>{{ $order->status }}</span>
-                                    <form action="{{route('updateOrder')}}" method="post" class="d-flex a-i-center j-c-center gap-15 order_update">
+                                    <form action="{{ route('updateOrder') }}" method="post"
+                                        class="d-flex a-i-center j-c-center gap-15 order_update">
                                         @csrf
                                         <select name="status" id="">
                                             <option value="">Update Status</option>

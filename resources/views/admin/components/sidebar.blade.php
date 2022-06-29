@@ -19,9 +19,9 @@
 
 
         <a href=" {{ route('products') }} " class=" {{ request()->is('product*') ? 'active' : '' }} ">
-            
-            
-            
+
+
+
             <i class="fal fa-tshirt"></i> <span>Products</span></a>
 
 
@@ -32,7 +32,8 @@
         <a href="tickets.html"> <i class="fal fa-user-headset"></i> <span>Tickets</span></a>
         <a href="tasks.html"> <i class="fal fa-tasks"></i> <span>Tasks</span></a>
         <a href="settings.html"> <i class="fal fa-cog"></i> <span>Settings</span></a>
-        <a href=""> <i class="fal fa-sign-out"></i> <span>Logout</span></a>
+        {{-- For styling purposes i created a logout route that support the get method --}}
+        <a href=" {{ route('logout') }} "> <i class="fal fa-sign-out"></i> <span>Logout</span></a>
     </div>
 
 </aside>

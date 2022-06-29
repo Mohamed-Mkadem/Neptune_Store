@@ -1,4 +1,7 @@
 @extends('layouts.admin_layout')
+@push('title')
+    <title> Dashboard - NEPTUNE </title>
+@endpush
 
 @section('content')
     <main id="main">
@@ -9,7 +12,7 @@
             <section class="content">
                 <!-- Title -->
                 <div class="title">
-                    <h2 class=" title-message">Hello Admin</h2>
+                    <h2 class=" title-message">Hello  {{Auth::user()->first_name}} </h2>
                     <a href=" {{ route('home') }} " target="_blank" class="visit-store">
                         <i class="fal fa-sign-in-alt"></i><span>Visit Store</span>
                     </a>

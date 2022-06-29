@@ -25,51 +25,58 @@ require __DIR__ . '/auth.php';
 
 
 
-// Dashboard Page
-Route::get('/dashboard', [DashboradController::class, 'index'])->name('dashboard');
 // Login Page
 Route::get('/admin', function () {
     return view('admin.login');
 })->name('adminLogin');
-// Categories 
-Route::get('categories', [CategoryController::class, 'index'])->name('categories');
-Route::get('category/{id}', [CategoryController::class, 'show'])->name('showCategory');
-Route::post('categories/add', [CategoryController::class, 'store'])->name('addCategory');
-Route::post('category/edit/{id}', [CategoryController::class, 'update'])->name('editCategory');
-Route::delete('categories/delete/{id}', [CategoryController::class, 'destroy'])->name('deleteCategory');
-// Sub Categories
-Route::post('subcategory/add', [SubCategoryController::class, 'store'])->name('addSubCategory');
-Route::post('subcategory/edit/{id}', [SubCategoryController::class, 'update'])->name('editSubCategory');
-Route::delete('subcategory/delete/{id}', [SubCategoryController::class, 'destroy'])->name('deleteSubCategory');
-Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->name('showSubCategory');
-// Products
-Route::get('products', [ProductController::class, 'index'])->name('products');
-Route::get('product/add', [ProductController::class, 'create'])->name('addProduct');
-Route::get('admin/product/{id}', [ProductController::class, 'show'])->name('showAdminProduct');
-Route::post('product/store', [ProductController::class, 'store'])->name('storeProduct');
-Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
-Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
-Route::post('product/update/{id}', [ProductController::class, 'update'])->name('updateProduct');
-// Orders
-Route::get('orders', [OrderController::class, 'customerIndex'])->name('customerOrders');
-Route::get('admin/orders', [OrderController::class, 'adminIndex'])->name('orders');
-Route::get('admin/order/{id}', [OrderController::class, 'adminShow'])->name('show');
-Route::get('order/{id}', [OrderController::class, 'customerShow'])->name('showOrder');
-Route::post('order/update', [OrderController::class, 'update'])->name('updateOrder');
+// Dashboard Pages
+Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
 
+
+    Route::get('/overview', [DashboradController::class, 'index'])->name('dashboard');
+
+    // Categories 
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+    Route::get('/show/{id}', [CategoryController::class, 'show'])->name('showCategory');
+    Route::post('/store', [CategoryController::class, 'store'])->name('addCategory');
+    Route::post('/edit/{id}', [CategoryController::class, 'update'])->name('editCategory');
+    Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('deleteCategory');
+
+    // Sub Categories
+    Route::post('subcategory/add', [SubCategoryController::class, 'store'])->name('addSubCategory');
+    Route::post('subcategory/edit/{id}', [SubCategoryController::class, 'update'])->name('editSubCategory');
+    Route::delete('subcategory/delete/{id}', [SubCategoryController::class, 'destroy'])->name('deleteSubCategory');
+    Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->name('showSubCategory');
+    // Products
+    Route::get('products', [ProductController::class, 'index'])->name('products');
+    Route::get('product/add', [ProductController::class, 'create'])->name('addProduct');
+    Route::get('/product/{id}', [ProductController::class, 'show'])->name('showAdminProduct');
+    Route::post('product/store', [ProductController::class, 'store'])->name('storeProduct');
+    Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
+    Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
+    Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('updateProduct');
+    // Orders
+    Route::get('/orders', [OrderController::class, 'adminIndex'])->name('orders');
+    Route::get('/order/{id}', [OrderController::class, 'adminShow'])->name('show');
+    Route::post('/order/update', [OrderController::class, 'update'])->name('updateOrder');
+});
 // Customer Pages
-Route::get('cart', [CartController::class, 'index'])->name('cart');
-Route::post('cartadd/', [CartController::class, 'store'])->name('addToCart');
-Route::post('cartupdate/', [CartController::class, 'update'])->name('updateCartItem');
-Route::get('cartremove/{id}', [CartController::class, 'destroy'])->name('removeItem');
 Route::get('/', [CategoryController::class, 'home'])->name('home');
-// Order Logic
-Route::get('checkout', [OrderController::class, 'create'])->name('checkout');
-Route::post('order/new', [OrderController::class, 'store'])->name('newOrder');
-
+Route::middleware('auth')->group(function (){
+    Route::get('cart', [CartController::class, 'index'])->name('cart');
+    Route::post('cartadd/', [CartController::class, 'store'])->name('addToCart');
+    Route::post('cartupdate/', [CartController::class, 'update'])->name('updateCartItem');
+    Route::get('cartremove/{id}', [CartController::class, 'destroy'])->name('removeItem');
+    // Order Logic
+    Route::get('/orders', [OrderController::class, 'customerIndex'])->name('customerOrders');
+    Route::get('checkout', [OrderController::class, 'create'])->name('checkout');
+    Route::post('order/new', [OrderController::class, 'store'])->name('newOrder');
+    Route::get('/order/{id}', [OrderController::class, 'customerShow'])->name('showOrder');
+});
+// Products Logic
 Route::get('collection', [ProductController::class, 'collection'])->name('collection');
+Route::get('collection/category/{id}', [ProductController::class, 'showCategoryProducts'])->name('showCategoryProducts');
 Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('showProduct');
 Route::get('filter/{id}', [ProductController::class, 'filter']);
 Route::get('product/', [ProductController::class, 'formSearch'])->name('formSearch');
-Route::get('collection/category/{id}', [ProductController::class, 'showCategoryProducts'])->name('showCategoryProducts');
 Route::get('filter-products', [ProductController::class, 'filter'])->name('filterProducts');

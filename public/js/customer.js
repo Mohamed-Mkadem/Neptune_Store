@@ -59,15 +59,15 @@ if (productShowcase) {
         productShowcase.classList.remove("list");
     }
 }
-if (window.innerWidth < 500) {
+if (window.innerWidth < 500 && productShowcase) {
     productShowcase.classList.add("list");
 }
-if (openFilterBtn) {
+if (openFilterBtn && filterForm) {
     openFilterBtn.addEventListener("click", () => {
         filterForm.classList.toggle("open");
     });
 }
-if (closeFilterBtn) {
+if (closeFilterBtn && filterForm) {
     closeFilterBtn.addEventListener("click", () => {
         filterForm.classList.toggle("open");
     });

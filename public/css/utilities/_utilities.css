@@ -172,6 +172,7 @@ a.deleteBtn {
     left: 0;
     z-index: 155;
     display: none;
+    padding: 15px;
 }
 .pop-up-holder.show {
     display: flex;
@@ -186,25 +187,29 @@ a.deleteBtn {
     font-weight: 600;
     font-family: var(--ff-roboto);
     border-radius: 5px;
-}
-.delete-modal.show {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
-.delete-modal.show i {
-    font-size: 30px;
-    color: var(--darkRed);
+.delete-modal.show {
 }
-.delete-modal.show .deleteMessage {
+.delete-modal i {
+    font-size: 30px;
+    color: var(--darkerBlueColor);
+}
+.delete-modal .deleteMessage {
     margin-bottom: 5px;
 }
-.delete-modal.show .buttons button {
+.delete-modal .buttons button {
     width: 90px;
     height: 35px;
     border: none;
+}
+.delete-modal .buttons .deleteBtn{
+    background-color: var(--darkerBlueColor);
+
 }
 .messages {
     padding: 20px 10px;

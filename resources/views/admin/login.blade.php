@@ -25,10 +25,17 @@
             <div class="errors">
                 <p class="error-message" id="errorMessage"></p>
             </div>
-            <form action="" method="post" id="adminForm">
+            @if ($errors->any())
+                <div class="errors mb-10">
+                    @foreach ($errors->all() as $error)
+                        <p class="error-message" id="errorMessage"> {{ $error }} </p>
+                    @endforeach
+                </div>
+            @endif
+            <form action=" {{ route('login') }} " method="post" id="adminForm">
                 @csrf
-                <input type="email" name="email"  id="adminEmail" placeholder="E-mail">
-                <input type="password" placeholder="Password" name="password"  id="adminPassword">
+                <input type="email" name="email" id="adminEmail" placeholder="E-mail">
+                <input type="password" placeholder="Password" name="password" id="adminPassword">
                 <button type="submit">Login</button>
             </form>
         </div>
@@ -43,15 +50,15 @@
             email = document.getElementById('adminEmail'),
             passowrd = document.getElementById('adminPassword'),
             errorMessage = document.getElementById('errorMessage');
-        form.addEventListener('submit', function(e){
-            if(email.value == ""){
+        form.addEventListener('submit', function(e) {
+            if (email.value == "") {
                 e.preventDefault();
                 errorMessage.innerHTML = "Please Enter a valid email";
             }
-            if(passowrd.value == ""){
+            if (passowrd.value == "") {
                 e.preventDefault();
                 errorMessage.innerHTML = "Please Enter a valid Password";
-                
+
             }
         })
     </script>

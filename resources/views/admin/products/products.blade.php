@@ -8,16 +8,16 @@
 @endpush
 
 @section('content')
-<div class="pop-up-holder show">
-    <div class="delete-modal">
-        <i class="fal fa-exclamation-circle"></i>
-        <p class="deleteMessage">This Item Are You Sure ?</p>
-        <div class="buttons">
-            <button class="deleteBtn" id="confirm_deletion" >Yes</button>
-            <button class="cancel" id="cancel_deletion">Cancel</button>
+    <div class="pop-up-holder ">
+        <div class="delete-modal">
+            <i class="fal fa-exclamation-circle"></i>
+            <p class="deleteMessage">Are You Sure You Want To Delete This Product?</p>
+            <div class="buttons d-flex gap-15">
+                <button class="deleteBtn" id="confirm_deletion">Yes</button>
+                <button class="cancel" id="cancel_deletion">Cancel</button>
+            </div>
         </div>
     </div>
-</div>
 
     <main id="main">
         <!-- Header -->
@@ -32,10 +32,18 @@
                     <a href=" {{ route('addProduct') }} " class="add-product new">+ Add Product</a>
                 </div>
                 <!-- Messages -->
-                <div class="messages d-none fail">
-
-                    <p class="message-body">Item Deleted Successfully</p>
-                </div>
+                @if (session()->has('success'))
+                    <div class="messages  success mb-10">
+                        <p class="message-body">{{ session()->get('success') }}</p>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="messages fail mb-10">
+                        @foreach ($errors->all() as $error)
+                            <p> {{ $error }} </p>
+                        @endforeach
+                    </div>
+                @endif
                 <!-- Start orders Table -->
                 <div class="table-responsive">
                     @if (count($products) > 0)
@@ -58,6 +66,7 @@
                                     <tr>
                                         <td># {{ $product->id }} </td>
                                         {{-- <td> <img src="{{ $product->image }}" width="30" alt=""> </td> --}}
+                                        <td>Image</td>
                                         <td><a
                                                 href=" {{ route('showAdminProduct', $product->id) }} ">{{ $product->name }}</a>
                                         </td>

@@ -31,7 +31,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        if ($request->user()->role == 'admin') {
+            return redirect()->route('orders');
+        }
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -42,6 +44,16 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+    public function adminDestroy(Request $request)
     {
         Auth::guard('web')->logout();
 

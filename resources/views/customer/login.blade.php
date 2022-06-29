@@ -35,7 +35,7 @@
                 </div>
                 <div class="input-field">
                     <i class="fal fa-lock"></i>
-                    <input type="password" class="input" name="passowrd" id="password" placeholder="Password">
+                    <input type="password" class="input" name="password" id="password" placeholder="Password">
                     <i class="fal fa-eye show-password-btn pointer"></i>
                 </div>
 
