@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -57,6 +58,9 @@ class ProductController extends Controller
             'image' => ['required', 'string'], // Add the url rule on the production
             'sub_category_id' => ['required']
         ]);
+        $request->merge([
+            'slug' =>  Str::slug($request->name) .'_' .  Str::uuid()
+        ]);
         $product = Product::create($request->all());
         $product->subCategories()->attach($request->sub_category_id);
 
@@ -70,10 +74,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $product = Product::findOrFail($id);
-        // dd($product);
+        $product = Product::where('slug', $slug)->first();
         $subCategories = $product->subCategories()->paginate();
         return view('admin.products.product', ['product' => $product, 'subCategories' => $subCategories]);
     }
@@ -156,20 +159,21 @@ class ProductController extends Controller
     }
 
     // Product Page Function
-    public function showProduct($id)
+    public function showProduct($slug)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('slug', $slug)->first();
 
         return view('customer.product', ['product' => $product]);
     }
 
-    public function showCategoryProducts($id)
+    public function showCategoryProducts($slug)
     {
         // Getting the target category
-        $category  = Category::findOrFail($id);
+        $category  = Category::where('slug', $slug)->first();
+        // dd($category->id);
         // Getting the subCategories that belongs to the target category
-        $subCategories = SubCategory::where("parent_id", $id)->get();
-
+        $subCategories = SubCategory::where("parent_id", $category->id)->get();
+        // dd($subCategories);
         // Pushing the "id"s of the subCategories to an array
         $ids = [];
         foreach ($subCategories as $subCat) {
@@ -264,5 +268,3 @@ class ProductController extends Controller
         return view('customer.search_results', ['searched_products' => $searched_products]);
     }
 }
-// I finished the creation of the main logic بفضل الله 
-// The problem of the pagination for the searched products 

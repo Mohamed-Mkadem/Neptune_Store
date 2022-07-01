@@ -3,9 +3,9 @@
 @import url(utilities/_utilities.css);
 
 body {
-  font-family: var(--ff-elmessiri);
-  transition: var(--transition);
-  background: var(--lightColor);
+    font-family: var(--ff-elmessiri);
+    transition: var(--transition);
+    background: var(--lightColor);
 }
 
 /* Components */
@@ -13,253 +13,253 @@ body {
 /* Aside Style */
 
 aside {
-  background-color: var(--mainColor);
-  transition: var(--transition);
-  flex-direction: column;
-  min-height: 100vh;
-  position: fixed;
-  left: 0;
-  font-family: var(--ff-elmessiri);
-  z-index: 100;
-  width: 250px;
-  overflow-x: visible;
+    background-color: var(--mainColor);
+    transition: var(--transition);
+    flex-direction: column;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    font-family: var(--ff-elmessiri);
+    z-index: 100;
+    width: 250px;
+    overflow-x: visible;
 }
 aside.expanded {
 }
 aside .aside-margin-toggler {
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  display: none;
-  font-size: 20px;
+    position: absolute;
+    right: 20px;
+    top: -40px;
+    font-size: 20px;
 }
+
 aside .logo {
-  color: var(--lightColor);
-  text-align: center;
-  margin-block: 40px;
-  letter-spacing: 3px;
-  font-size: 31px;
-  display: block;
+    color: var(--lightColor);
+    text-align: center;
+    margin-block: 40px;
+    letter-spacing: 3px;
+    font-size: 31px;
+    display: block;
 }
 aside .logo .letter-logo {
-  display: none;
+    display: none;
 }
 aside .aside-links {
-  display: flex;
-  flex-direction: column;
-  overflow-x: visible;
+    display: flex;
+    flex-direction: column;
+    overflow-x: visible;
 }
 aside .aside-links a {
-  color: var(--lightColor);
-  font-size: 20px;
-  padding: 10px 15px;
-  font-weight: 500;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  height: 45px;
-  overflow-x: visible;
-  min-width: max-content;
+    color: var(--lightColor);
+    font-size: 20px;
+    padding: 10px 15px;
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    height: 45px;
+    overflow-x: visible;
+    min-width: max-content;
 }
 aside .aside-links a i {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 aside .aside-links a:hover span {
-  display: inline-flex;
+    display: inline-flex;
 }
 aside .aside-links a:hover,
 aside .aside-links a.active {
-  color: var(--mainColor);
-  background-color: var(--lightColor);
+    color: var(--mainColor);
+    background-color: var(--lightColor);
 }
 
 /* Main Content Style */
 #main {
-  background-color: var(--lightColor);
-  min-height: 100vh;
-  color: var(--mainColor);
-  transition: var(--transition);
-  font-family: var(--ff-roboto);
-  /* margin-left: 250px; */
-  padding-bottom: 100px;
+    background-color: var(--lightColor);
+    min-height: 100vh;
+    color: var(--mainColor);
+    transition: var(--transition);
+    font-family: var(--ff-roboto);
+    /* margin-left: 250px; */
+    padding-bottom: 100px;
 }
 #main header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--whiteColor);
-  padding-inline: 20px;
-  height: 75px;
-  color: var(--mainColor);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--whiteColor);
+    padding-inline: 20px;
+    height: 75px;
+    color: var(--mainColor);
 }
 #main header i {
-  font-size: 25px;
-  cursor: pointer;
-  transition: var(--transition);
+    font-size: 25px;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 #main header h3.date {
-  letter-spacing: 3px;
-  font-weight: bold;
-  font-family: system-ui;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-family: system-ui;
 }
 #main header .top-menu-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 #main header .top-menu-actions a i {
-  font-size: 25px;
-  color: var(--mainColor);
+    font-size: 25px;
+    color: var(--mainColor);
 }
 
 /* Content */
 
 #main .content {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 #main .content .title {
-  display: flex;
-  justify-content: space-between;
-  padding-block: 20px;
-  font-family: var(--ff-elmessiri);
-  align-items: center;
-  color: var(--mainColor);
+    display: flex;
+    justify-content: space-between;
+    padding-block: 20px;
+    font-family: var(--ff-elmessiri);
+    align-items: center;
+    color: var(--mainColor);
 }
 #main .content .title-message {
-  font-size: 30px;
-  font-weight: bold;
+    font-size: 30px;
+    font-weight: bold;
 }
 #main .title a.visit-store {
-  font-size: 20px;
-  border: 1px solid var(--mainColor);
-  padding: 5px 10px;
-  border-radius: 4px;
-  color: var(--mainColor);
-  height: 40px;
-  transition: var(--transition);
+    font-size: 20px;
+    border: 1px solid var(--mainColor);
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: var(--mainColor);
+    height: 40px;
+    transition: var(--transition);
 }
 #main .content .title a.visit-store i {
-  margin-right: 11px;
-  font-size: 16px;
+    margin-right: 11px;
+    font-size: 16px;
 }
 #main .content .title a.visit-store:hover {
-  color: var(--mainColor);
-  background-color: var(--whiteColor);
+    color: var(--mainColor);
+    background-color: var(--whiteColor);
 }
 /* Start Quick Stats section */
 #main .quick-stats {
-  display: grid;
-  gap: 10px;
+    display: grid;
+    gap: 10px;
 }
 #main .quick-stats-item {
-  background: var(--whiteColor);
-  /* flex-basis: 23%; */
-  padding: 10px 15px;
-  transition: var(--transition);
-  cursor: pointer;
+    background: var(--whiteColor);
+    /* flex-basis: 23%; */
+    padding: 10px 15px;
+    transition: var(--transition);
+    cursor: pointer;
 }
-#main .quick-stats-item:hover{
-  transform: translateY(-3px);
+#main .quick-stats-item:hover {
+    transform: translateY(-3px);
 }
 #main .quick-stats-item h4 {
-  font-weight: 600;
-  font-size: 18px;
+    font-weight: 600;
+    font-size: 18px;
 }
 #main .quick-stats-item p {
-  font-size: 25px;
-  font-weight: 400;
-  margin-block: 10px;
+    font-size: 25px;
+    font-weight: 400;
+    margin-block: 10px;
 }
 #main .quick-stats-item .action-icon {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
 }
 #main .quick-stats-item .action-icon a {
-  text-decoration: underline;
-  color: var(--darkBlueColor);
+    text-decoration: underline;
+    color: var(--darkBlueColor);
 }
 
 #main .quick-stats-item .action-icon i {
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 2px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 2px;
 }
 #main .quick-stats-item:nth-child(1) .action-icon i {
-  background-color: var(--softGreenColor);
-  color: var(--darkerGreenColor);
+    background-color: var(--softGreenColor);
+    color: var(--darkerGreenColor);
 }
 #main .quick-stats-item:nth-child(2) .action-icon i {
-  background-color: var(--softBlueColor);
-  color: var(--darkerBlueColor);
+    background-color: var(--softBlueColor);
+    color: var(--darkerBlueColor);
 }
 #main .quick-stats-item:nth-child(3) .action-icon i {
-  background-color: var(--softYellowColor);
-  color: var(--softOrangeColor);
+    background-color: var(--softYellowColor);
+    color: var(--softOrangeColor);
 }
 #main .quick-stats-item:nth-child(4) .action-icon i {
-  background-color: var(--softBlueColor);
-  color: var(--darkBlueColor);
+    background-color: var(--softBlueColor);
+    color: var(--darkBlueColor);
 }
 
 /* Start Best Selling section */
 .row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 30px;
-  font-family: var(--ff-roboto);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+    font-family: var(--ff-roboto);
 }
 .row-item {
-  background: var(--whiteColor);
+    background: var(--whiteColor);
 
-  border-radius: 4px;
-  padding: 20px 10px;
+    border-radius: 4px;
+    padding: 20px 10px;
 }
 .row-item h4 {
-  margin-bottom: 15px;
-  font-size: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 .row-item .row-info {
 }
 .row-item .row-info table {
-  width: 100%;
+    width: 100%;
 }
 .row-item .row-info table tbody {
 }
 .row-item .row-info table tbody tr {
-  display: grid;
-  grid-template-columns: 50% 25% 25%;
-  border-bottom: 1px solid var(--softBlueColor);
-  margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    border-bottom: 1px solid var(--softBlueColor);
+    margin-bottom: 10px;
 }
 .row-item .row-info table tbody tr td:first-of-type {
-  display: flex;
+    display: flex;
 }
 .row-item .row-info table tbody tr.cat-row {
-  align-items: flex-end;
+    align-items: flex-end;
 }
 .row-item .row-info table tbody tr td {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 .row-item .row-info table tbody tr td img {
-  margin-right: 15px;
-  width: 45px;
+    margin-right: 15px;
+    width: 45px;
 }
 
 .row-item .row-info table tbody tr td h5 {
-  font-weight: 500;
-  font-size: 16px;
-  margin-bottom: 13px;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 13px;
 }
 .row-item .row-info table tbody tr td h5.product-name a,
 .row-item .row-info table tbody tr td h5.customer-name a {
-  color: inherit;
+    color: inherit;
 }
 .row-item .row-info table tbody tr td div span {
-  font-weight: 400;
-  color: var(--grayColor);
+    font-weight: 400;
+    color: var(--grayColor);
 }
 /* -------------------------------
 
@@ -269,7 +269,7 @@ Dark Mode
 /* Background colors */
 .dark #main,
 .dark body {
-  background-color: var(--darkBg);
+    background-color: var(--darkBg);
 }
 /* little soft background color for the contrast */
 .dark aside,
@@ -277,7 +277,7 @@ Dark Mode
 .dark #main .quick-stats-item,
 .dark .row .row-item,
 .dark ::-webkit-scrollbar-track {
-  background-color: var(--darkColor);
+    background-color: var(--darkColor);
 }
 /* Text Colors */
 .dark aside,
@@ -286,23 +286,22 @@ Dark Mode
 .dark #main .content .title,
 .dark #main .title a.visit-store,
 .dark #main {
-  color: var(--darkFontColor);
+    color: var(--darkFontColor);
 }
 /* Little bit soft color */
 .dark aside .aside-links a:hover,
 aside .aside-links a.active {
-  color: var(--darkColor);
+    color: var(--darkColor);
 }
 /* Light Background */
-.dark ::-webkit-scrollbar-thumb
-{
-  background-color:var(--softBlueColor);
+.dark ::-webkit-scrollbar-thumb {
+    background-color: var(--softBlueColor);
 }
 /* Border colors */
 .dark #main .quick-stats-item .action-icon a {
-  color: var(--grayColor);
+    color: var(--grayColor);
 }
 .dark #main .title a.visit-store,
 .row-item .row-info table tbody tr {
-  border-color: var(--grayColor);
+    border-color: var(--grayColor);
 }

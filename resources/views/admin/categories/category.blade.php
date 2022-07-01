@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-
+        @include('admin.components.confirm_deletion')
 
     <main id="main">
         <!-- Header -->
@@ -91,7 +91,7 @@
                                 @foreach ($subCategory as $subCat)
                                     <tr>
                                         <td>#{{ $subCat->id }} </td>
-                                        <td><a href=" {{ route('showSubCategory', $subCat->id) }}"
+                                        <td><a href=" {{ route('showSubCategory', $subCat->slug) }}"
                                                 class="underlined">{{ $subCat->name }}</a>
                                         </td>
                                         <td> {{ $subCat->products->count() }} </td>

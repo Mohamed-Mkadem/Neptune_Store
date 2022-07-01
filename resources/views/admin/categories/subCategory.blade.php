@@ -8,9 +8,7 @@
 @endpush
 
 @section('content')
-
-
-
+    @include('admin.components.confirm_deletion')
     <main id="main">
         <!-- Header -->
         @include('admin.components.header')
@@ -19,8 +17,14 @@
             <section class="content">
                 <!-- Title -->
                 <div class="title">
-                    <h2 class=" title-message"> {{ $subCategory->category->name }} / {{ $subCategory->name }} </h2>
+                    <div>
 
+                        <h2 class=" title-message"> {{ $subCategory->name }} </h2>
+                        <p class="breadCrumb">
+                            <a href=" {{ route('showCategory', $subCategory->category->slug) }} "> {{ $subCategory->category->name }} </a> /
+                            <a href=" {{ route('showSubCategory', $subCategory->slug) }} ">{{ $subCategory->name }}</a> 
+                        </p>
+                    </div>
                     <div class="buttons">
 
                         <i class="fal fa-edit edit pointer enableEdit"></i>
@@ -76,7 +80,10 @@
                             <thead>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Created at</th>
+                                <th>Added at</th>
+                                <th>Quantity</th>
+                                <th>Ordered</th>
+                                <th>Price</th>
                                 <th>Actions</th>
                             </thead>
                             <tbody>
@@ -84,9 +91,12 @@
                                     <tr>
                                         <td>#{{ $product->id }}</td>
                                         <td><a
-                                                href=" {{ route('showAdminProduct', $product->id) }} ">{{ $product->name }}</a>
+                                                href=" {{ route('showAdminProduct', $product->slug) }} ">{{ $product->name }}</a>
                                         </td>
                                         <td>{{ $product->created_at->format('d/m/yy') }}</td>
+                                        <td>{{ $product->quantity }}</td>
+                                        <td>{{ $product->ordered }}</td>
+                                        <td> <x-currency :amount="$product->price" /></td>
 
                                         <td>
                                             <form action=" {{ route('deleteProduct', $product->id) }} " method="post"

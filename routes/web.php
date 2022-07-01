@@ -1,12 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashboradController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboradController;
+use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\SubCategoryController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WishListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,14 +32,15 @@ Route::get('/admin', function () {
     return view('admin.login');
 })->name('adminLogin');
 // Dashboard Pages
-Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
+// Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
+Route::prefix('dashboard')->group(function () {
 
 
     Route::get('/overview', [DashboradController::class, 'index'])->name('dashboard');
 
     // Categories 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-    Route::get('/show/{id}', [CategoryController::class, 'show'])->name('showCategory');
+    Route::get('/show/{slug}', [CategoryController::class, 'show'])->name('showCategory');
     Route::post('/store', [CategoryController::class, 'store'])->name('addCategory');
     Route::post('/edit/{id}', [CategoryController::class, 'update'])->name('editCategory');
     Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('deleteCategory');
@@ -46,11 +49,11 @@ Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
     Route::post('subcategory/add', [SubCategoryController::class, 'store'])->name('addSubCategory');
     Route::post('subcategory/edit/{id}', [SubCategoryController::class, 'update'])->name('editSubCategory');
     Route::delete('subcategory/delete/{id}', [SubCategoryController::class, 'destroy'])->name('deleteSubCategory');
-    Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->name('showSubCategory');
+    Route::get('subcategory/show/{slug}', [SubCategoryController::class, 'show'])->name('showSubCategory');
     // Products
     Route::get('products', [ProductController::class, 'index'])->name('products');
     Route::get('product/add', [ProductController::class, 'create'])->name('addProduct');
-    Route::get('/product/{id}', [ProductController::class, 'show'])->name('showAdminProduct');
+    Route::get('/product/{slug}', [ProductController::class, 'show'])->name('showAdminProduct');
     Route::post('product/store', [ProductController::class, 'store'])->name('storeProduct');
     Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
     Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
@@ -62,7 +65,7 @@ Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
 });
 // Customer Pages
 Route::get('/', [CategoryController::class, 'home'])->name('home');
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     Route::post('cartadd/', [CartController::class, 'store'])->name('addToCart');
     Route::post('cartupdate/', [CartController::class, 'update'])->name('updateCartItem');
@@ -72,11 +75,25 @@ Route::middleware('auth')->group(function (){
     Route::get('checkout', [OrderController::class, 'create'])->name('checkout');
     Route::post('order/new', [OrderController::class, 'store'])->name('newOrder');
     Route::get('/order/{id}', [OrderController::class, 'customerShow'])->name('showOrder');
+    // WishList Logic
+    Route::get('whishlist', [WishListController::class, 'index'])->name('wishlist');
+    Route::post('whishlist/store', [WishListController::class, 'store'])->name('addWishlist');
+    Route::post('whishlist/remove/', [WishListController::class, 'destroy'])->name('removeWishlist');
 });
 // Products Logic
 Route::get('collection', [ProductController::class, 'collection'])->name('collection');
-Route::get('collection/category/{id}', [ProductController::class, 'showCategoryProducts'])->name('showCategoryProducts');
-Route::get('product/{id}', [ProductController::class, 'showProduct'])->name('showProduct');
+Route::get('collection/category/{slug}', [ProductController::class, 'showCategoryProducts'])->name('showCategoryProducts');
+Route::get('product/{slug}', [ProductController::class, 'showProduct'])->name('showProduct');
 Route::get('filter/{id}', [ProductController::class, 'filter']);
 Route::get('product/', [ProductController::class, 'formSearch'])->name('formSearch');
 Route::get('filter-products', [ProductController::class, 'filter'])->name('filterProducts');
+
+// Coming Soon Pages
+
+Route::get('about', [ComingSoonController::class, 'about'])->name('about');
+Route::get('settings', [ComingSoonController::class, 'settings'])->name('settings');
+Route::get('statistics', [ComingSoonController::class, 'statistics'])->name('statistics');
+Route::get('customers', [ComingSoonController::class, 'customers'])->name('customers');
+Route::get('tasks', [ComingSoonController::class, 'tasks'])->name('tasks');
+Route::get('tickets', [ComingSoonController::class, 'tickets'])->name('tickets');
+Route::get('faqs', [ComingSoonController::class, 'faqs'])->name('faqs');

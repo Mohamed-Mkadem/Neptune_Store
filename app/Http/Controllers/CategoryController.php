@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,9 +16,10 @@ class CategoryController extends Controller
     }
 
 
-    public function show($id)
+    public function show($slug)
     {
-        $category = Category::find($id);
+        $category = Category::where('slug', $slug)->first();
+        // dd($category);
         $subacategory = $category->subCategories()->withCount('products')->paginate(15);
         // dd($category);
         return view('admin.categories.category', ['category' => $category, 'subCategory' => $subacategory]);
@@ -42,7 +44,9 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'unique:categories'],
         ]);
-
+        $request->merge([
+            'slug' =>  Str::slug($request->name)
+        ]);
         $category =  Category::create($request->all());
 
         return redirect()->back()->with('success', 'Category Added Successfully');

@@ -24,11 +24,13 @@
                                 <td>
                                     <a href=" {{ route('removeItem', $cart_item->id) }} "><i
                                             class="fal fa-trash remove-product"></i></a>
-                             
+
                                     <img src=" {{ $cart_item->product->image }} " width="75" alt="">
                                 </td>
                                 <td>
-                                    <h3 class="name main">{{ $cart_item->product->name }}</h3>
+                                    <a href=" {{ route('showProduct', $cart_item->product->slug) }} ">
+                                        <h3 class="name main">{{ $cart_item->product->name }}</h3>
+                                    </a>
                                 </td>
                                 <td>
 
@@ -38,9 +40,9 @@
                                         <div class="quantity-holder">
                                             <div class="decBtn">-</div>
                                             <input name="quantity" readonly type="number" class="number" min="1"
-                                            value="{{ $cart_item->quantity }}">
+                                                value="{{ $cart_item->quantity }}">
                                             <div class="incBtn">+</div>
-                                            <input type="hidden" name="id" value="{{$cart_item->id}}">
+                                            <input type="hidden" name="id" value="{{ $cart_item->id }}">
                                         </div>
                                         <button type="submit" class="button"><i class="fal fa-sync-alt"></i></button>
                                     </form>
@@ -63,20 +65,20 @@
 
                     </tbody>
                 </table>
-                <div class="actions">
-                    <a href="{{route('checkout')}}" class="checkout">Checkout</a>
-                    <p class="total-cost">Total:
-                        <x-currency :amount="$total" />
-                    </p>
-                </div>
-            @else
-                <div class="empty-block bg-light">
-                    <h2 class="ff-elmessiri main">Your Cart Is Empty</h2>
-                    <a href=" {{ route('collection') }} ">Shop Now</a>
-                </div>
+            </div>
+            <div class="actions">
+                <a href="{{ route('checkout') }}" class="checkout">Checkout</a>
+                <p class="total-cost">Total:
+                    <x-currency :amount="$total" />
+                </p>
+            </div>
+        @else
+            <div class="empty-block bg-light">
+                <h2 class="ff-elmessiri main">Your Cart Is Empty</h2>
+                <a href=" {{ route('collection') }} ">Shop Now</a>
+            </div>
         @endif
 
     </div>
 
-    </div>
 @endsection

@@ -40,7 +40,7 @@
                             <div class="product-options">
                                 <a href="" class="add-to-cart btn"> <i class="fal fa-shopping-cart"></i> Add To
                                     Cart</a>
-                                <a href=" {{ route('showProduct', $product->id) }} " class="details btn"> <i
+                                <a href=" {{ route('showProduct', $product->slug) }} " class="details btn"> <i
                                         class="fal fa-eye"></i> Details</a>
                                 <a href="" class="save btn"> <i class="fal fa-heart"></i> Save </a>
                             </div>

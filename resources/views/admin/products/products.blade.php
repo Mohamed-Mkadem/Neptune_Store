@@ -8,17 +8,8 @@
 @endpush
 
 @section('content')
-    <div class="pop-up-holder ">
-        <div class="delete-modal">
-            <i class="fal fa-exclamation-circle"></i>
-            <p class="deleteMessage">Are You Sure You Want To Delete This Product?</p>
-            <div class="buttons d-flex gap-15">
-                <button class="deleteBtn" id="confirm_deletion">Yes</button>
-                <button class="cancel" id="cancel_deletion">Cancel</button>
-            </div>
-        </div>
-    </div>
 
+    @include('admin.components.confirm_deletion')
     <main id="main">
         <!-- Header -->
         @include('admin.components.header')
@@ -68,7 +59,7 @@
                                         {{-- <td> <img src="{{ $product->image }}" width="30" alt=""> </td> --}}
                                         <td>Image</td>
                                         <td><a
-                                                href=" {{ route('showAdminProduct', $product->id) }} ">{{ $product->name }}</a>
+                                                href=" {{ route('showAdminProduct', $product->slug) }} ">{{ $product->name }}</a>
                                         </td>
                                         <td>
                                             @foreach ($product->subCategories as $subCat)

@@ -43,6 +43,9 @@ class SubCategoryController extends Controller
             })],
             'parent_id' => ['required']
         ]);
+        $request->merge([
+            'slug' => $request->parent_id . '_' . $request->name
+        ]);
         $subCategory = SubCategory::create($request->all());
         return back()->with('success', 'The Sub-Category Added Successfully');
     }
@@ -53,9 +56,10 @@ class SubCategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(SubCategory $subCategory, $id)
+    public function show(SubCategory $subCategory, $slug)
     {
-        $subCategory = SubCategory::findOrFail($id);
+        $subCategory = SubCategory::where('slug', $slug)->first();
+        // dd($subCategory);
         $categories = Category::paginate();
         // dd($categories);
         // dd($subCategory);

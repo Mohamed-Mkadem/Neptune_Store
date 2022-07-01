@@ -1,0 +1,54 @@
+@import url(utilities/_reset.css);
+@import url(utilities/_media.css);
+@import url(utilities/_utilities.css);
+.main-wrapper {
+    background: var(--lightColor);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-wrapper .error-holder {
+}
+.main-wrapper .error-holder h1 {
+    letter-spacing: 12px;
+    font-size: clamp(30px, 90px, 120px);
+    line-height: 1;
+    margin-bottom: 30px;
+    animation: upAndDown 0.8s alternate-reverse infinite;
+}
+.main-wrapper .error-holder .coming-soon {
+    font-size: 70px;
+    animation: upAndDown 0.8s alternate-reverse infinite;
+}
+.main-wrapper .error-holder p {
+    font-size: 35px;
+    font-family: var(--ff-roboto);
+    color: var(--grayColor);
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+}
+.main-wrapper .error-holder a {
+    background: var(--mainColor);
+    color: var(--whiteColor);
+    padding: 15px 25px;
+    transition: var(--transition);
+    border-radius: 5px;
+    font-family: var(--ff-roboto);
+    border: 1px solid var(--mainColor);
+}
+.main-wrapper .error-holder a:hover {
+    color: var(--mainColor);
+    background-color: var(--whiteColor);
+}
+@keyframes upAndDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(15px);
+    }
+}

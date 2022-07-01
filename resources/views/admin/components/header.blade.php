@@ -9,7 +9,7 @@
 
     <div class="top-menu-actions">
         <i class="fal fa-eclipse-alt mode-switcher"></i>
-        <a href="settings.html">
+        <a href="{{route('settings')}}">
             <i class="fas fa-cog"></i>
         </a>
     </div>

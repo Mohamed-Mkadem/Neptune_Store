@@ -34,8 +34,8 @@
                 <li><a href=" {{ route('collection') }} "
                         class=" {{ request()->is('collection*') ? 'active' : '' }} ">
                         <i class="fal fa-tshirt"></i> <span>Collection</span> </a></li>
-                <li><a href=""> <i class="fal fa-tshirt"></i> <span>About</span> </a></li>
-                <li><a href=""> <i class="fal fa-envelope"></i> <span>Contact</span> </a></li>
+                <li><a href=" {{route('about')}} "> <i class="fal fa-tshirt"></i> <span>About</span> </a></li>
+                <li><a href="{{route('wishlist')}}"> <i class="fal fa-heart"></i> <span>WishList</span> </a></li>
                 <li><a href="{{ route('cart') }}" class=" {{ request()->is('cart') ? 'active' : '' }}"> <i
                             class="fal fa-shopping-cart"></i> <span>Cart</span> </a></li>
                 <li> <i class="fal fa-search pointer" id="show-search-form"></i></li>

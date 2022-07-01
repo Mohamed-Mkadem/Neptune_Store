@@ -140,6 +140,10 @@
     .home .nav-bar nav ul li a.active {
         background-color: var(--darkerBlueColor);
     }
+    .product-showcase.list .card .product-options {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 /* ------------------------------ */
 @media (max-width: 767px) {
@@ -187,6 +191,16 @@
     }
     .product-details .product-image-holder {
         width: 100% !important;
+    }
+    .add-new form {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .add-new form > * {
+        width: 100% !important;
+    }
+    .add-new form button {
+        height: 50px;
     }
 }
 @media (min-width: 500px) and (max-width: 767px) {

@@ -21,7 +21,7 @@
                     <div class="row-item">
                         <h3 class="cat-name"> {{ $category->name }} </h3>
                         <p class="cat-description">What Men Needs</p>
-                        <a href=" {{ route('showCategoryProducts', $category->id) }} " class="cat-link"> <i
+                        <a href=" {{ route('showCategoryProducts', $category->slug) }} " class="cat-link"> <i
                                 class="fal fa-arrow-to-right"></i> Shop Now</a>
                     </div>
                     <!-- End Row item -->
@@ -50,7 +50,7 @@
                                             class="fal fa-shopping-cart"></i></button>
 
                                 </form>
-                                <a href=" {{ route('showProduct', $product->id) }}  "><i class="fal fa-eye"></i></a>
+                                <a href=" {{ route('showProduct', $product->slug) }}  "><i class="fal fa-eye"></i></a>
                                 <a href=""><i class="fal fa-heart"></i></a>
                             </div>
                         </div>

@@ -9,6 +9,7 @@
 
 
 @section('content')
+    @include('admin.components.confirm_deletion')
 
 
         <main id="main">

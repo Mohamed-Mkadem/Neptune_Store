@@ -89,7 +89,7 @@
                     <div class="card">
                         <div class="product-image">
                             <img src=" {{ $product->image }} " alt="">
-                            
+
                             <div class="options">
                                 <form action=" {{ route('addToCart') }} " method="POST">
                                     @csrf
@@ -99,8 +99,13 @@
                                             class="fal fa-shopping-cart"></i></button>
 
                                 </form>
-                                <a href=" {{ route('showProduct', $product->id) }}  "><i class="fal fa-eye"></i></a>
-                                <a href=""><i class="fal fa-heart"></i></a>
+                                <a href=" {{ route('showProduct', $product->slug) }}  "><i class="fal fa-eye"></i></a>
+                                <form action="{{ route('addWishlist') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                    <button type="submit"><i class="fal fa-heart"></i></button>
+                                </form>
+                                {{-- <a href=" {{ route('addWishlist') }} "><i class="fal fa-heart"></i></a> --}}
                             </div>
                         </div>
                         <div class="product-info">
@@ -126,9 +131,14 @@
                                 </form>
 
 
-                                <a href=" {{ route('showProduct', $product->id) }} " class="details btn"> <i
+                                <a href=" {{ route('showProduct', $product->slug) }} " class="details btn"> <i
                                         class="fal fa-eye"></i> Details</a>
-                                <a href="" class="save btn"> <i class="fal fa-heart"></i> Save </a>
+                                <form action="{{ route('addWishlist') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                    <button type="submit" class="btn save"><i class="fal fa-heart"></i> Save</button>
+                                </form>
+                                {{-- <a href="" class="save btn"> <i class="fal fa-heart"></i> Save </a> --}}
                             </div>
                         </div>
                     </div>

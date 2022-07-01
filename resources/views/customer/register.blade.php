@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Neptune</title>
-    <link rel="shortcut icon" href="../Assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/Assets/favicon.png" type="image/x-icon">
     <!-- Css  -->
-    <link rel="stylesheet" href="../CSS/customer/home.css">
+    <link rel="stylesheet" href="/CSS/customer/home.css">
     <!-- FontAwesome Library -->
     <link href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro/4cac1a6/css/all.css" rel="stylesheet"
         type="text/css">

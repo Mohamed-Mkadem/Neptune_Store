@@ -76,20 +76,6 @@
                 {{-- Start Col --}}
                 <div class="col">
                     <div class="col_item">
-                        <h4>Categories</h4>
-                        <ul>
-
-                            <li> <a href="">Men</a> </li>
-                            <li> <a href="">Women</a> </li>
-                            <li> <a href="">Kids</a> </li>
-
-                        </ul>
-                    </div>
-                </div>
-                {{-- End col --}}
-                {{-- Start Col --}}
-                <div class="col">
-                    <div class="col_item">
                         <h4>Services</h4>
                         <ul>
 
@@ -108,10 +94,10 @@
                         <h4>Quick Links</h4>
                         <ul>
 
-                            <li> <a href="">Cart</a> </li>
-                            <li> <a href="">WishList</a> </li>
-                            <li> <a href="">Contact Us</a> </li>
-                            <li> <a href="">Faq's</a> </li>
+                            <li> <a href=" {{route('cart')}} ">Cart</a> </li>
+                            <li> <a href=" {{route('wishlist')}} ">WishList</a> </li>
+                            <li> <a href=" {{route('settings')}} ">Contact Us</a> </li>
+                            <li> <a href="{{route('faqs')}}">Faq's</a> </li>
 
                         </ul>
                     </div>

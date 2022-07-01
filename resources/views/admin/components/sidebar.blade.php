@@ -27,11 +27,11 @@
 
 
 
-        <a href="statistics.html"> <i class="fal fa-chart-bar"></i> <span>Statistics</span></a>
-        <a href="cutomers.html"> <i class="fal fa-user"></i> <span>Customers</span></a>
-        <a href="tickets.html"> <i class="fal fa-user-headset"></i> <span>Tickets</span></a>
-        <a href="tasks.html"> <i class="fal fa-tasks"></i> <span>Tasks</span></a>
-        <a href="settings.html"> <i class="fal fa-cog"></i> <span>Settings</span></a>
+        <a href="{{ route('statistics') }}"> <i class="fal fa-chart-bar"></i> <span>Statistics</span></a>
+        <a href="{{ route('customers') }}"> <i class="fal fa-user"></i> <span>Customers</span></a>
+        <a href="{{ route('tickets') }}"> <i class="fal fa-user-headset"></i> <span>Tickets</span></a>
+        <a href="{{ route('tasks') }}"> <i class="fal fa-tasks"></i> <span>Tasks</span></a>
+        <a href="{{ route('settings') }}"> <i class="fal fa-cog"></i> <span>Settings</span></a>
         {{-- For styling purposes i created a logout route that support the get method --}}
         <a href=" {{ route('logout') }} "> <i class="fal fa-sign-out"></i> <span>Logout</span></a>
     </div>

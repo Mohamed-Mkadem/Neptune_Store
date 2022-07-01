@@ -1,7 +1,3 @@
-@import url(utilities/_reset.css);
-@import url(utilities/_media.css);
-@import url(utilities/_utilities.css);
-
 /* The page that lists the orders and the products are similar so i created the same html structure with some difference and i used the same css sheet, */
 
 /* I did this to make the table responsive */
@@ -25,14 +21,14 @@ table.categories tr {
     grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
 }
 table.category tr {
-    grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
+    grid-template-columns: 100px 250px repeat(4, minmax(150px, 1fr)) 100px;
 }
 /* The layout of the order details page */
 table.order_items tr {
     grid-template-columns: 150px minmax(200px, 1fr) 150px 200px 200px;
 }
 table.order_details tr {
-    grid-template-columns: 100px minmax(200px, 1fr) 150px 100px  150px 300px;
+    grid-template-columns: 100px minmax(200px, 1fr) 150px 100px 150px 300px;
 }
 table.order_details tr td form button {
     color: var(--successColor);
@@ -45,7 +41,7 @@ table.order_details tr td form button:hover {
     color: var(--darkerGreenColor);
 }
 table.customer_orders tr {
-  grid-template-columns: 150px repeat(3, minmax(200px, 1fr));
+    grid-template-columns: 150px repeat(3, minmax(200px, 1fr));
 }
 /*  */
 table {
