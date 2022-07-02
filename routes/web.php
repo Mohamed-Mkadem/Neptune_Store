@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::post('order/new', [OrderController::class, 'store'])->name('newOrder');
     Route::get('/order/{id}', [OrderController::class, 'customerShow'])->name('showOrder');
     // WishList Logic
-    Route::get('whishlist', [WishListController::class, 'index'])->name('wishlist');
+    Route::get('wishlist', [WishListController::class, 'index'])->name('wishlist');
     Route::post('whishlist/store', [WishListController::class, 'store'])->name('addWishlist');
     Route::post('whishlist/remove/', [WishListController::class, 'destroy'])->name('removeWishlist');
 });

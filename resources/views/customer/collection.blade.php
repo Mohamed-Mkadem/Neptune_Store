@@ -105,7 +105,7 @@
                                     <input type="hidden" name="product_id" value=" {{ $product->id }} ">
                                     <button type="submit"><i class="fal fa-heart"></i></button>
                                 </form>
-                                {{-- <a href=" {{ route('addWishlist') }} "><i class="fal fa-heart"></i></a> --}}
+                             
                             </div>
                         </div>
                         <div class="product-info">

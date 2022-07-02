@@ -12,8 +12,9 @@ class WishListController extends Controller
     public function index()
     {
         $saved = WishList::select('product_id')->where('user_id', Auth::id())->get();
+
         $products = Product::whereIn('id', $saved)->get();
-        // dd($products);
+
         return view('customer.wishList', ['products' => $products]);
     }
     public function store(Request $request)
@@ -34,6 +35,7 @@ class WishListController extends Controller
             'user_id' => Auth::id()
         ])->first();
         $wishlist_item->destroy($wishlist_item->id);
-        return view('customer.wishlist')->with('success', 'item deleted successfully');
+
+        return redirect()->route('wishlist')->with('success', 'item deleted successfully');
     }
 }

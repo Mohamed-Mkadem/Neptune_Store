@@ -657,12 +657,12 @@ footer .home-row.footer {
     font-family: var(--ff-elmessiri);
     letter-spacing: 2px;
 }
-.product-details .product-info .product-name-save a {
+.product-details .product-info .product-name-save button  {
     font-size: 20px;
     color: var(--mainColor);
     transition: var(--transition);
 }
-.product-details .product-info .product-name-save a:hover {
+.product-details .product-info .product-name-save  button:hover {
     color: var(--darkRed);
 }
 .product-details .product-info .product-description {

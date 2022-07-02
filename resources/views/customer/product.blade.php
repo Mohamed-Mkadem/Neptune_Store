@@ -26,7 +26,12 @@
             <div class="product-info">
                 <div class="product-name-save">
                     <h2> {{ $product->name }} </h2>
-                    <a href="#"> <i class="fal fa-heart"></i> </a>
+                    <form action="{{ route('addWishlist') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                        <button type="submit"><i class="fal fa-heart"></i></button>
+                    </form>
+                   
                 </div>
                 <div class="product-categories">
                     @foreach ($product->subCategories as $subCat)

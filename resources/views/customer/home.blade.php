@@ -51,7 +51,11 @@
 
                                 </form>
                                 <a href=" {{ route('showProduct', $product->slug) }}  "><i class="fal fa-eye"></i></a>
-                                <a href=""><i class="fal fa-heart"></i></a>
+                                 <form action="{{ route('addWishlist') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                    <button type="submit"><i class="fal fa-heart"></i></button>
+                                </form>
                             </div>
                         </div>
                         <div class="product-info">
@@ -89,7 +93,11 @@
 
                                 </form>
                                 <a href=" {{ route('showProduct', $product->id) }}  "><i class="fal fa-eye"></i></a>
-                                <a href=""><i class="fal fa-heart"></i></a>
+                               <form action="{{ route('addWishlist') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                    <button type="submit"><i class="fal fa-heart"></i></button>
+                                </form>
                             </div>
                         </div>
                         <div class="product-info">
