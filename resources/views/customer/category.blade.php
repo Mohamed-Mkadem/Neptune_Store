@@ -25,7 +25,7 @@
                             <img src=" {{ $product->image }} " alt="">
                             <div class="options">
                                 <a href=""><i class="fal fa-shopping-cart"></i></a>
-                                <a href=" {{ route('showProduct', $product->id) }}  "><i class="fal fa-eye"></i></a>
+                                <a href=" {{ route('showProduct', $product->slug) }}  "><i class="fal fa-eye"></i></a>
                                 <a href=""><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
