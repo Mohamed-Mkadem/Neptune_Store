@@ -14,7 +14,7 @@ class WishListController extends Controller
         $saved = WishList::select('product_id')->where('user_id', Auth::id())->get();
         $products = Product::whereIn('id', $saved)->get();
         // dd($products);
-        return view('customer.wishlist', ['products' => $products]);
+        return view('customer.wishList', ['products' => $products]);
     }
     public function store(Request $request)
     {

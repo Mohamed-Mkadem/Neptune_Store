@@ -1,3 +1,9 @@
+/* Importing Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap');
+
+
 /* Custom properties */
 :root {
     --mainColor: #405189;
@@ -19,8 +25,8 @@
     --grayColor: #777;
     --softRed: #ff8c84;
     --darkRed: #c10000;
-    --ff-elmessiri: "el messiri";
-    --ff-cairo: "cairo";
+    --ff-elmessiri: "El Messiri";
+    --ff-cairo: "Cairo";
     --ff-roboto: "Roboto";
     --transition: 0.3s ease;
     scroll-behavior: smooth;
