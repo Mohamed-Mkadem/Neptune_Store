@@ -65,11 +65,17 @@ if (window.innerWidth < 500 && productShowcase) {
 if (openFilterBtn && filterForm) {
     openFilterBtn.addEventListener("click", () => {
         filterForm.classList.toggle("open");
+        // To prevent the scroll when the filter form is open
+        document.body.style.maxHeight = "100%";
+        document.body.style.overflowY = "hidden";
     });
 }
 if (closeFilterBtn && filterForm) {
     closeFilterBtn.addEventListener("click", () => {
         filterForm.classList.toggle("open");
+        // To enable the scroll when the filter form is closed
+        document.body.style.maxHeight = "max-content";
+        document.body.style.overflowY = "visible";
     });
 }
 //

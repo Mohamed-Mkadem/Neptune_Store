@@ -9,7 +9,7 @@
             <section class="content">
                 <!-- Title -->
 
-                    <h2 class=" title-message ff-elmessiri main">Order Informations:</h2>
+                    <h2 class=" title-message ff-elmessiri main mt-15">Order Informations:</h2>
 
                 {{-- Messages --}}
                 @if (session()->has('success'))
@@ -25,11 +25,10 @@
                     </div>
                 @endif
                 <!-- Start orders Table -->
-                <div class="table-responsive">
+                <div class="table-responsive mb-15">
                     <table class="order_details">
                         <thead>
                             <th>Order ID</th>
-                            <th>Customer Name</th>
                             <th>Date</th>
                             <th>N° Items</th>
                             <th>Cost</th>
@@ -39,7 +38,6 @@
 
                             <tr>
                                 <td>#{{ $order->id }}</td>
-                                <td>{{ $order->customer_name }}</td>
                                 <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->no_items }}</td>
                                 <td>
@@ -55,10 +53,10 @@
                 </div>
 
 
-                    <h2 class=" title-message ff-elmessiri main">Order Details:</h2>
+                    <h2 class=" title-message ff-elmessiri main mt-15">Order Details:</h2>
 
 
-                <div class="table-responsive">
+                <div class="table-responsive mb-55">
                     <table class="order_items">
                         <thead>
                             <th>Product ID</th>

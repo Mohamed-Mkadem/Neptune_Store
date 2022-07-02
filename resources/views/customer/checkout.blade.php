@@ -6,6 +6,20 @@
 @section('content')
     <div class="container">
         <h2 class="title">Checkout:</h2>
+
+        @if (session()->has('success'))
+            <div class="messages  success mt-15 mb-10">
+                <p class="message-body">{{ session()->get('success') }}</p>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="messages fail mt-15 mb-10">
+                @foreach ($errors->all() as $error)
+                    <p> {{ $error }} </p>
+                @endforeach
+            </div>
+        @endif
+
         <div class="checkout-holder ">
             <div class="order-info row-item">
                 <h4>Shipping Informations:</h4>
@@ -23,7 +37,7 @@
                         <input type="text" name="city" placeholder="City" required>
 
                         <select name="country" id="" required>
-                            @foreach (Symfony\Component\Intl\Countries::getNames() as  $country)
+                            @foreach (Symfony\Component\Intl\Countries::getNames() as $country)
                                 @if ($country !== 'Israel')
                                     <option value="{{ $country }}">{{ $country }}</option>
                                 @endif

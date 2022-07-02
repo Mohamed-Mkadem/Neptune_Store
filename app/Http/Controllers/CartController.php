@@ -40,7 +40,7 @@ class CartController extends Controller
 
         ]);
 
-        return redirect()->back()->with('success', 'Added bi najé7');
+        return redirect()->back()->with('success', 'Item Added Successfully');
     }
 
     public function update(Request $request)

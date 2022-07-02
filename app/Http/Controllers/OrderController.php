@@ -59,7 +59,8 @@ class OrderController extends Controller
             'address_line_one' => ['required', 'string'],
             'postal_code' => ['required'],
             'city' => 'required',
-            'country' => 'required'
+            'country' => 'required',
+            'payment_method' => 'required'
         ]);
         DB::beginTransaction();
         try {
@@ -97,7 +98,7 @@ class OrderController extends Controller
             DB::rollBack();
             throw $e;
         }
-        return redirect()->back()->with('success', 'order created Successfully');
+        return redirect()->back()->with('success', 'Order created Successfully');
     }
 
     /**

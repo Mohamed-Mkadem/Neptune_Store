@@ -57,8 +57,8 @@
                                 @foreach ($products as $product)
                                     <tr>
                                         <td># {{ $product->id }} </td>
-                                        {{-- <td> <img src="{{ $product->image }}" width="30" alt=""> </td> --}}
-                                        <td>Image</td>
+                                        <td> <img src="{{ $product->image }}" width="30" alt=""> </td>
+                                        
                                         <td><a
                                                 href=" {{ route('showAdminProduct', $product->slug) }} ">{{ $product->name }}</a>
                                         </td>

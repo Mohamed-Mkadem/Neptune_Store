@@ -13,7 +13,6 @@
                 @auth
                     <div class="d-flex a-i-center gap-15 ">
                         <a href=" {{ route('customerOrders') }} " class="main "> My Orders </a>
-                        <p class="main"> {{ request()->user()->first_name }} </p>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="main logout-btn">Logout</button>

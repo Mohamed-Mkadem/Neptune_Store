@@ -55,7 +55,7 @@ class ProductController extends Controller
             'quantity' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'string'],
             'policy' => ['required', 'string'],
-            'image' => ['required', 'string'], // Add the url rule on the production
+            'image' => ['required', 'string', 'url'], //Don't forget to Add the url rule on the production
             'sub_category_id' => ['required']
         ]);
         $request->merge([
@@ -208,7 +208,7 @@ class ProductController extends Controller
 
     public function filter(Request $request)
     {
-        //    $category =  Category::findOrFail($request->input('category_id'));
+     
         if ($request->has('category_id')) {
             // Getting the target category
             $category =  Category::findOrFail($request->input('category_id'));
@@ -219,7 +219,7 @@ class ProductController extends Controller
                 $subCategories = SubCategory::where('parent_id', $category->id)->get();
             }
             
-            // Extracting the ids andputting them in array
+            // Extracting the ids and putting them in array
             $sub_categories_ids = [];
             foreach ($subCategories as $subCat) {
                 $sub_categories_ids[] = $subCat->id;

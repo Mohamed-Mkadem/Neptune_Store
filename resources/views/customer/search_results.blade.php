@@ -6,7 +6,7 @@
 @include('customer.components.filter_form')
 @section('content')
     @if (count($searched_products) > 0)
-        <div class="container">
+        <div class="container customer">
             {{-- Layout Section --}}
             <div class="filter-bar">
                 <h4 class="main ff-elmessiri"> {{ $searched_products->count() }} Results:</h4>

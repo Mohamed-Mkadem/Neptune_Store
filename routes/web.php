@@ -27,7 +27,7 @@ require __DIR__ . '/auth.php';
 
 
 
-// Login Page
+// Admin Login Page
 Route::get('/admin/login', function () {
     return view('admin.login');
 })
@@ -35,9 +35,6 @@ Route::get('/admin/login', function () {
 ->name('adminLogin');
 // Dashboard Pages
 Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
-
-
-
     Route::get('/overview', [DashboradController::class, 'index'])->name('dashboard');
 
     // Categories 

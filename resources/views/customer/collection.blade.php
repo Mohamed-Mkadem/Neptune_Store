@@ -68,7 +68,7 @@
         </div>
     @endif
     {{-- Start product Showcase --}}
-    <div class="container">
+    <div class="container customer">
         {{-- Messages --}}
         @if (session()->has('success'))
             {{-- <div class="alert alert-success">
@@ -80,7 +80,7 @@
         @endif
         @if ($products->count() == 0)
             <div class="product-showcase" id="product-showcase">
-                {{-- Start Card --}}
+                
                 <h2 class="empty main ff-elmessiri"> There is no Products To Show </h2>
             </div>
         @else
