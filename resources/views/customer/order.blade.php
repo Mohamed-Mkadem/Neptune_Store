@@ -1,7 +1,7 @@
 @extends('layouts.customer_layout')
 @section('title')
     <title> Order - NEPTUNE </title>
-    <link rel="stylesheet" href=" {{ asset('CSS/orders_products.css') }} ">
+    <link rel="stylesheet" href=" {{ asset('css/orders_products.css') }} ">
 @endsection
 
 @section('content')

@@ -8,7 +8,7 @@
     @yield('title')
     <link rel="shortcut icon" href="/Assets/favicon.png" type="image/x-icon">
     {{-- Css --}}
-    <link rel="stylesheet" href=" {{ asset('CSS/customer/home.css') }} ">
+    <link rel="stylesheet" href=" {{ asset('css/customer/home.css') }} ">
     {{-- FontAwesome Library --}}
     <link href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro/4cac1a6/css/all.css" rel="stylesheet"
         type="text/css">
@@ -114,7 +114,7 @@
     </footer>
 </div>
 
-<script src="/JS/customer.js"></script>
+<script src="/js/customer.js"></script>
 @stack('script')
 </body>
 

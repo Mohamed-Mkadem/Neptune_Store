@@ -3,8 +3,8 @@
     <title> {{ $subCategory->category->name }} / {{ $subCategory->name }} - NEPTUNE </title>
 @endpush
 @push('styles')
-    <link rel="stylesheet" href="/CSS/categories.css">
-    <link rel="stylesheet" href="/CSS/orders_products.css">
+    <link rel="stylesheet" href="/css/categories.css">
+    <link rel="stylesheet" href="/css/orders_products.css">
 @endpush
 
 @section('content')

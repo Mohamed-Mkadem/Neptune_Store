@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 @push('styles')
-    <link rel="stylesheet" href="/CSS/orders_products.css">
+    <link rel="stylesheet" href="/css/orders_products.css">
 @endpush
 @push('title')
     <title> Orders - NEPTUNE </title>

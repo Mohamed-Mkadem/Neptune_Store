@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Neptune</title>
     <!-- main layout -->
-    <!-- <link rel="stylesheet" href="../CSS/dashboard.css"> -->
+    <!-- <link rel="stylesheet" href="../css/dashboard.css"> -->
     <!-- main layout -->
-    <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="stylesheet" href="/css/login.css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="../Assets/favicon.png" type="image/x-icon">
     <!-- FontAwesome Library -->
@@ -44,7 +44,7 @@
         </div>
     </div>
     <!-- Including Javascript -->
-    <script src="/JS/dashboard.js"></script>
+    <script src="/js/dashboard.js"></script>
     <script>
         let form = document.getElementById('adminForm'),
             email = document.getElementById('adminEmail'),

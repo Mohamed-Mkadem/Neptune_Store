@@ -3,8 +3,8 @@
     <title> New Product - NEPTUNE </title>
 @endpush
 @push('styles')
-    <link rel="stylesheet" href="/CSS/categories.css">
-    <link rel="stylesheet" href="/CSS/product.css">
+    <link rel="stylesheet" href="/css/categories.css">
+    <link rel="stylesheet" href="/css/product.css">
 @endpush
 
 @section('content')

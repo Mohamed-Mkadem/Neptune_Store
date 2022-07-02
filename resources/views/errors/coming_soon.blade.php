@@ -8,7 +8,7 @@
     <title>Coming Soon - Neptune</title>
     <link rel="shortcut icon" href="/Assets/favicon.png" type="image/x-icon">
     <!-- Css  -->
-    <link rel="stylesheet" href="{{ asset('CSS/errors.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/errors.css') }}">
     <!-- FontAwesome Library -->
     <link href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro/4cac1a6/css/all.css" rel="stylesheet"
         type="text/css">
