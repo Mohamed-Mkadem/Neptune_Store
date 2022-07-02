@@ -19,11 +19,16 @@
         <div class="error-holder">
             <h1 class="error-number main ff-elmessiri">403</h1>
             <p class="error-message">Access Denied</p>
-            @if (Auth::user()->role == 'admin')
-            <a href=" {{route('dashboard')}} " class="cta">Dashboard</a>
-            @else
-            <a href="{{route('home')}}" class="cta">Home Page</a>
-            @endif
+            @auth
+                @if (Auth::user()->role == 'admin')
+                    <a href=" {{ route('dashboard') }} " class="cta">Dashboard</a>
+                @else
+                    <a href=" {{ route('home') }} " class="cta">Home Page</a>
+                @endif
+            @endauth
+            @guest
+                <a href=" {{ route('home') }} " class="cta">Home Page</a>
+            @endguest
         </div>
     </div>
 </body>

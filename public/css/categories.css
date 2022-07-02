@@ -21,6 +21,9 @@
 .add-new form input:focus {
     border-color: var(--darkColor);
 }
+.add-new.add-new-subcategory form input{
+    width: 70%;
+}
 .dark .add-new {
     background-color: var(--darkColor);
 }

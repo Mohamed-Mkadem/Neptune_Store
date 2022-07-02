@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-        @include('admin.components.confirm_deletion')
+    @include('admin.components.confirm_deletion')
 
     <main id="main">
         <!-- Header -->
@@ -58,12 +58,14 @@
                         @endforeach
                     </div>
                 @endif
-                {{-- Edit the category name --}}
+                {{-- Edit the category name and slogan --}}
                 <div class="add-new">
                     <form action=" {{ route('editCategory', $category->id) }} " method="post">
                         @csrf
                         <input type="text" name="name" value=" {{ $category->name }} " id="cat_name"
                             class="enableEditInput" placeholder="Category Name" required readonly>
+                        <input class="enableEditInput" type="text" name="slogan" value=" {{ $category->slogan }} "
+                            readonly id="cat_slogan" placeholder="Category Slogan">
                         <button type="submit" class="editBtn">Edit Category</button>
                     </form>
                 </div>
@@ -77,8 +79,8 @@
                         <button type="submit" class="new">New Sub-Category</button>
                     </form>
                 </div>
-                <div class="table-responsive">
-                    @if (count($subCategory) > 0)
+                @if (count($subCategory) > 0)
+                    <div class="table-responsive">
                         <table class="category">
                             <thead>
                                 <th>ID</th>
@@ -91,7 +93,7 @@
                                 @foreach ($subCategory as $subCat)
                                     <tr>
                                         <td>#{{ $subCat->id }} </td>
-                                        <td><a href=" {{ route('showSubCategory', $subCat->slug) }}"
+                                        <td><a href=" {{ route('showSubCategory', $subCat->id) }}"
                                                 class="underlined">{{ $subCat->name }}</a>
                                         </td>
                                         <td> {{ $subCat->products->count() }} </td>
@@ -115,11 +117,14 @@
 
                             </tbody>
                         </table>
-                </div>
-            @else
-                <div class="empty">
-                    <h2 class="emptyMessage">This Category hasn't Any Sub-Category</h2>
-                </div>
+                    </div>
+                    <div class="pagination-holder">
+                        {{ $subCategory->links() }}
+                    </div>
+                @else
+                    <div class="empty">
+                        <h2 class="emptyMessage">This Category hasn't Any Sub-Category</h2>
+                    </div>
                 @endif
             </section>
         </div>

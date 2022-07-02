@@ -55,13 +55,13 @@
                         </div>
                         <div class="row three">
                             <input type="number" class="row-item" name="cost_price" id=""
-                                placeholder="Cost Price">
-                            <input type="number" class="row-item" name="price" placeholder="Price" id="">
-                            <input type="number" class="row-item" name="quantity" id="" placeholder="Quantity">
+                                placeholder="Cost Price" required>
+                            <input type="number" class="row-item" name="price" placeholder="Price" id="" required>
+                            <input type="number" class="row-item" name="quantity" id="" placeholder="Quantity" required>
                         </div>
                         <div class="row">
-                            <textarea class="row-item" placeholder="Description" name="description" id="" cols="30" rows="10"></textarea>
-                            <textarea class="row-item" placeholder="Return Policy" name="policy" id="" cols="30" rows="10"></textarea>
+                            <textarea class="row-item" placeholder="Description" name="description" id="" cols="30" rows="10" required></textarea>
+                            <textarea class="row-item" placeholder="Return Policy" name="policy" id="" cols="30" rows="10" required></textarea>
                         </div>
                         <div class="row three">
                             <!-- Start Row item -->

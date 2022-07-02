@@ -6,10 +6,14 @@
     <title> Order - {{$order->id}} - NEPTUNE </title>
 @endpush
 @section('content')
+    @include('admin.components.confirm_deletion')
     <main id="main">
         <!-- Header -->
         @include('admin.components.header')
         <div class="container">
+
+                
+           
             <section class="content">
                 <!-- Title -->
                 <div class="title">
@@ -52,7 +56,7 @@
                                 <td class="{{ $order->status }} d-flex a-i-center j-c-center gap-15">
                                     <span>{{ $order->status }}</span>
                                     <form action="{{ route('updateOrder') }}" method="post"
-                                        class="d-flex a-i-center j-c-center gap-15 order_update">
+                                        class="d-flex a-i-center j-c-center gap-15 order_update .delete_item">
                                         @csrf
                                         <select name="status" id="">
                                             <option value="">Update Status</option>
@@ -103,6 +107,7 @@
                     </table>
                 </div>
             </section>
+
         </div>
     </main>
 @endsection

@@ -16,9 +16,9 @@ class CategoryController extends Controller
     }
 
 
-    public function show($slug)
+    public function show($id)
     {
-        $category = Category::where('slug', $slug)->first();
+        $category = Category::findOrFail($id);
         // dd($category);
         $subacategory = $category->subCategories()->withCount('products')->paginate(15);
         // dd($category);
@@ -31,7 +31,8 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $request->validate([
-            'name' => ['required', 'unique:categories'],
+            'name' => ['required', "unique:categories,name,$id"],
+            'slogan' => ['required', 'string']
         ]);
         $category->update($request->all());
         return redirect()->back()->with('success', 'Category updated successfully');
@@ -43,6 +44,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => ['required', 'unique:categories'],
+            'slogan' => ['required', 'string', 'max:60']
         ]);
         $request->merge([
             'slug' =>  Str::slug($request->name)
@@ -57,8 +59,14 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route('categories')->with('success', 'Category Deleted Successfully');
+        $category = Category::findOrFail($id);
+        // dd($category->subCategories->count());
+        if($category->subCategories->count() > 0){
+            return redirect()->back()->with('newErrors', 'Cannot Delete A Category that have sub Categories');
+        }else{
+            Category::destroy($id);
+            return redirect()->route('categories')->with('success', 'Category Deleted Successfully');
+        }
     }
 
     public function home()

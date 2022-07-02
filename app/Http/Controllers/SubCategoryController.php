@@ -56,14 +56,17 @@ class SubCategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(SubCategory $subCategory, $slug)
+    public function show(SubCategory $subCategory, $id)
     {
-        $subCategory = SubCategory::where('slug', $slug)->first();
+        $subCategory = SubCategory::findOrFail($id);
+        // $subCategory = SubCategory::where('id', $id)->with('products')->paginate();
+        $products = $subCategory->products()->paginate();
         // dd($subCategory);
+        // dd($products);
         $categories = Category::paginate();
         // dd($categories);
         // dd($subCategory);
-        return view('admin.categories.subCategory', ['subCategory' => $subCategory, 'categories' => $categories]);
+        return view('admin.categories.subCategory', ['subCategory' => $subCategory, 'categories' => $categories, 'products' => $products]);
     }
 
     /**
@@ -93,7 +96,7 @@ class SubCategoryController extends Controller
             })],
             'parent_id' => ['required', 'integer']
         ]);
-
+        
         $subCategory->update($request->all());
 
         return back()->with('success', 'SubCategory Updated successfully');

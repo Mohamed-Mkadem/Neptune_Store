@@ -31,6 +31,15 @@
                         <p class="message-body">{{ session()->get('success') }}</p>
                     </div>
                 @endif
+                @if (session()->has('newErrors'))
+                    {{-- <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div> --}}
+                    <div class="messages fail mb-10">
+                        <p> {{ session()->get('newErrors') }} </p>
+                        {{-- <p class="message-body">{{ session()->get('success') }}</p> --}}
+                    </div>
+                @endif
                 @if ($errors->any())
                     <div class="messages fail mb-10">
                         @foreach ($errors->all() as $error)
@@ -44,7 +53,7 @@
 
                         <input  type="text" name="name" id="cat_name" placeholder="Category Name"
                             required>
-                        <input   type="text" name="slogan" id="cat_slogan" placeholder="Category Slogan" required>
+                        <input   type="text" name="slogan" id="cat_slogan" placeholder="Category Slogan" >
 
                         <button type="submit" class="new">Add Category</button>
                     </form>
@@ -64,7 +73,7 @@
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td> #{{ $category->id }} </td>
-                                        <td><a href=" {{ route('showCategory', $category->slug) }} " class="underlined">
+                                        <td><a href=" {{ route('showCategory', $category->id) }} " class="underlined">
                                                 {{ $category->name }}
                                             </a></td>
                                         <td>{{ $category->created_at->format('d-m-yy') }} </td>

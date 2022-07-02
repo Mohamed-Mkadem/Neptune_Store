@@ -21,8 +21,9 @@
 
                         <h2 class=" title-message"> {{ $subCategory->name }} </h2>
                         <p class="breadCrumb">
-                            <a href=" {{ route('showCategory', $subCategory->category->slug) }} "> {{ $subCategory->category->name }} </a> /
-                            <a href=" {{ route('showSubCategory', $subCategory->slug) }} ">{{ $subCategory->name }}</a> 
+                            <a href=" {{ route('showCategory', $subCategory->category->id) }} ">
+                                {{ $subCategory->category->name }} </a> /
+                            <a href=" {{ route('showSubCategory', $subCategory->id) }} ">{{ $subCategory->name }}</a>
                         </p>
                     </div>
                     <div class="buttons">
@@ -65,10 +66,12 @@
                             class="enableEditInput" readonly placeholder="subCategory Name" required>
 
                         <select name="parent_id" id="" class="enableEditInput pointer">
+                            <option value="">Category</option>
                             @foreach ($categories as $item)
                                 <option value=" {{ $item->id }} "> {{ $item->name }} </option>
                             @endforeach
                         </select>
+
                         <button type="submit" class="editBtn">Edit subCategory</button>
                     </form>
                 </div>
@@ -76,7 +79,7 @@
                 <h2 class="sub-title">Products</h2>
                 @if (count($subCategory->products) > 0)
                     <div class="table-responsive">
-                        <table class="category">
+                        <table class="subCategory">
                             <thead>
                                 <th>ID</th>
                                 <th>Name</th>
@@ -87,7 +90,7 @@
                                 <th>Actions</th>
                             </thead>
                             <tbody>
-                                @foreach ($subCategory->products as $product)
+                                @foreach ($products as $product)
                                     <tr>
                                         <td>#{{ $product->id }}</td>
                                         <td><a
@@ -96,7 +99,9 @@
                                         <td>{{ $product->created_at->format('d/m/yy') }}</td>
                                         <td>{{ $product->quantity }}</td>
                                         <td>{{ $product->ordered }}</td>
-                                        <td> <x-currency :amount="$product->price" /></td>
+                                        <td>
+                                            <x-currency :amount="$product->price" />
+                                        </td>
 
                                         <td>
                                             <form action=" {{ route('deleteProduct', $product->id) }} " method="post"
@@ -114,6 +119,9 @@
 
                             </tbody>
                         </table>
+                    </div>
+                    <div class="pagination-holder">
+                        {{ $products->links() }}
                     </div>
                 @else
                     <div class="empty">

@@ -144,6 +144,9 @@
         flex-direction: column;
         text-align: center;
     }
+    #main .content .title-message{
+        text-align: center;
+    }
 }
 /* ------------------------------ */
 @media (max-width: 767px) {
@@ -198,10 +201,12 @@
     }
     .add-new form > * {
         width: 100% !important;
+        height: 50px;
     }
     .add-new form button {
         height: 50px;
     }
+
 }
 @media (min-width: 500px) and (max-width: 767px) {
     .details .main-info {

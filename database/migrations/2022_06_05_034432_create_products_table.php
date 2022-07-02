@@ -24,7 +24,6 @@ return new class extends Migration
             $table->integer('ordered')->default(0);           
             $table->text('description');
             $table->text('policy');
-
             $table->softDeletes();
             $table->timestamps();
         });

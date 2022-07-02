@@ -20,7 +20,7 @@
                     <!-- Start Row item -->
                     <div class="row-item">
                         <h3 class="cat-name"> {{ $category->name }} </h3>
-                        <p class="cat-description">What Men Needs</p>
+                        <p class="cat-description">{{$category->slogan}}</p>
                         <a href=" {{ route('showCategoryProducts', $category->slug) }} " class="cat-link"> <i
                                 class="fal fa-arrow-to-right"></i> Shop Now</a>
                     </div>

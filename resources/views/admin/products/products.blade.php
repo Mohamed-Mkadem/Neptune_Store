@@ -36,8 +36,9 @@
                     </div>
                 @endif
                 <!-- Start orders Table -->
+
+                @if (count($products) > 0)
                 <div class="table-responsive">
-                    @if (count($products) > 0)
                         <table class="products">
 
                             <thead>
@@ -95,13 +96,13 @@
 
                             </tbody>
                         </table>
-                        <div class="pagination-holder">
-                            {{ $products->links() }}
-                        </div>
+                    </div>
+                    <div class="pagination-holder">
+                        {{ $products->links() }}
+                    </div>
                     @else
                         <h2 class="empty">You didn't have any products yet!</h2>
                     @endif
-                </div>
 
 
             </section>

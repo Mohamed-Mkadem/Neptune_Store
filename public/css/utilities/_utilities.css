@@ -303,6 +303,10 @@ ul.pagination .page-item a  {
     color: var(--mainColor) ;
 
 }
+ul.pagination .page-item,
+ul.pagination .page-item a{
+    color: var(--lightColor);
+}
 ul.pagination .page-item.disabled {
     cursor: no-drop;
     color: var(--grayColor);

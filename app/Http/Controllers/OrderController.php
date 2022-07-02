@@ -97,7 +97,7 @@ class OrderController extends Controller
             DB::rollBack();
             throw $e;
         }
-        return redirect()->route('home');
+        return redirect()->back()->with('success', 'order created Successfully');
     }
 
     /**

@@ -17,11 +17,13 @@ table.products tr {
     grid-template-columns: 100px 100px minmax(250px, 1fr) minmax(150px, 1fr) 100px 150px 100px 100px 100px;
 }
 /* The layout of the categories page */
+table.category tr,
 table.categories tr {
     grid-template-columns: 150px repeat(3, minmax(200px, 1fr)) 150px;
 }
-table.category tr {
-    grid-template-columns: 100px 250px repeat(4, minmax(150px, 1fr)) 100px;
+table.subCategory tr{
+      grid-template-columns: 100px minmax(250px, 1fr) repeat(3, 150px) 150px 100px;
+
 }
 /* The layout of the order details page */
 table.order_items tr {

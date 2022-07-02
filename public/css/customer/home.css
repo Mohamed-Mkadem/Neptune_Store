@@ -954,7 +954,7 @@ h2.title {
 .empty-block {
     text-align: center;
     padding-block: 55px;
-    height: calc(100vh - 414px); /* 200px navbar and 214px footer*/
+    min-height: calc(100vh - 414px); /* 200px navbar and 214px footer*/
 }
 
 .empty-block a {

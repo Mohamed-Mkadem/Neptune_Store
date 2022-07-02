@@ -42,9 +42,6 @@
 .login-wrapper .login-form input:focus {
   border-color: var(--lightColor);
 }
-.login-wrapper .login-form input:invalid {
-  border-color: var(--darkRed);
-}
 
 .login-wrapper .login-form button {
   height: 45px;

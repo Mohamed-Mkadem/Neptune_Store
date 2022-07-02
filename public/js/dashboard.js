@@ -1,6 +1,3 @@
-
-
-
 // Setting the Variables
 layoutToggler = document.getElementById("layoutToggler");
 aside = document.getElementById("aside");
@@ -13,7 +10,7 @@ popUpHolder = document.querySelector(".pop-up-holder");
 deleteModal = document.querySelector(".delete-modal");
 deleteForm = document.getElementById("delete_form");
 enableBtn = document.querySelector(".enableEdit");
-editCategory = document.querySelector(".enableEditInput");
+editCategoryInputs = document.querySelectorAll(".enableEditInput");
 updateOrderForms = document.querySelectorAll(".order_update");
 mainWrapper = document.querySelector(".main-wrapper");
 
@@ -33,11 +30,7 @@ if (layoutToggler) {
 if (window.localStorage.preferedLayout == "full-width") {
     theBody.classList.add("full-width");
 }
-// To close the sidebar in small screen
-
 if (asideMarginToggler) {
-
-
     asideMarginToggler.addEventListener("click", () => {
         if (theBody.classList.contains("full-width")) {
             window.localStorage.preferedLayout = "boxed";
@@ -48,11 +41,11 @@ if (asideMarginToggler) {
         }
     });
 }
-if(innerWidth < 767){
-    window.addEventListener('load',  ()=>{
-        theBody.classList.add('full-width')
-        window.localStorage.preferedLayout = "boxed";  
-    })
+if (innerWidth < 767) {
+    window.addEventListener("load", () => {
+        theBody.classList.add("full-width");
+        window.localStorage.preferedLayout = "boxed";
+    });
 }
 // Dark mode logic
 if (modeToggler) {
@@ -76,7 +69,7 @@ window.onclick = function (event) {
     }
 };
 
-
+// The logic of the deletion confirmation
 let forms = document.querySelectorAll(".delete_item");
 confirmDelete = document.getElementById("confirm_deletion");
 cancelDeletion = document.getElementById("cancel_deletion");
@@ -97,13 +90,16 @@ if (forms) {
     });
 }
 
-// Edit Category name logic
+// Edit Category  logic
 
-if (enableBtn && editCategory) {
+if (enableBtn && editCategoryInputs) {
     enableBtn.addEventListener("click", () => {
-        editCategory.removeAttribute("readonly");
+        editCategoryInputs.forEach((input) => {
+            input.removeAttribute("readonly");
+        });
     });
 }
+// The confirmation of the Update the status of the form if it's canceled
 if (updateOrderForms) {
     updateOrderForms.forEach((form) => {
         form.addEventListener("submit", (e) => {
@@ -111,12 +107,14 @@ if (updateOrderForms) {
                 form.firstElementChild.nextElementSibling.value === "Canceled"
             ) {
                 e.preventDefault();
-                if (
-                    confirm("Are You Sure You Want To Cancel This Order") ===
-                    true
-                ) {
+                popUpHolder.classList.add("show");
+                confirmDelete.addEventListener("click", () => {
                     e.target.submit();
-                }
+                });
+
+                cancelDeletion.addEventListener("click", () => {
+                    popUpHolder.classList.remove("show");
+                });
             }
         });
     });

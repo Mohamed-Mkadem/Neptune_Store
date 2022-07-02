@@ -22,8 +22,8 @@
     <div class="login-wrapper">
         <div class="login-form">
             <h2 class="logo">NEPTUNE</h2>
-            <div class="errors">
-                <p class="error-message" id="errorMessage"></p>
+            <div class="errors" id="errors">
+
             </div>
             @if ($errors->any())
                 <div class="errors mb-10">
@@ -34,8 +34,8 @@
             @endif
             <form action=" {{ route('login') }} " method="post" id="adminForm">
                 @csrf
-                <input type="email" name="email" id="adminEmail" placeholder="E-mail">
-                <input type="password" placeholder="Password" name="password" id="adminPassword">
+                <input type="email" name="email" id="adminEmail" placeholder="E-mail" required>
+                <input type="password" placeholder="Password" name="password" id="adminPassword" required>
                 <button type="submit">Login</button>
             </form>
         </div>
@@ -44,21 +44,26 @@
         </div>
     </div>
     <!-- Including Javascript -->
-    <script src="../JS/dashboard.js"></script>
+    <script src="/JS/dashboard.js"></script>
     <script>
         let form = document.getElementById('adminForm'),
             email = document.getElementById('adminEmail'),
             passowrd = document.getElementById('adminPassword'),
-            errorMessage = document.getElementById('errorMessage');
+            errorsHolder = document.getElementById('errors');
         form.addEventListener('submit', function(e) {
             if (email.value == "") {
                 e.preventDefault();
-                errorMessage.innerHTML = "Please Enter a valid email";
+                let mailMessage = document.createElement('p');
+                mailMessage.setAttribute('class', 'error-message');
+                mailMessage.innerHTML = "Please Enter a valid email";
+                errorsHolder.appendChild(mailMessage)
             }
             if (passowrd.value == "") {
                 e.preventDefault();
-                errorMessage.innerHTML = "Please Enter a valid Password";
-
+                let passwordMessage = document.createElement('p');
+                passwordMessage.setAttribute('class', 'error-message');
+                passwordMessage.innerHTML = "Please Enter a Password";
+                errorsHolder.appendChild(passwordMessage)
             }
         })
     </script>

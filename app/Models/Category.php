@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = 'categories';
-    protected $fillable = ['id', 'name', 'slug', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'name', 'slug','slogan', 'created_at', 'updated_at'];
 
     public function subCategories()
     {
@@ -17,7 +17,6 @@ class Category extends Model
             SubCategory::class,
             'parent_id',
             'id'
-            
         );
     }
 }

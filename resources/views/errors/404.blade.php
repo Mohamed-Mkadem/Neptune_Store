@@ -19,7 +19,17 @@
         <div class="error-holder">
             <h1 class="error-number main ff-elmessiri">404</h1>
             <p class="error-message">URL Not Found</p>
-            <a href="" class="cta">Home Page</a>
+            @auth
+                @if (Auth::user()->role == 'admin')
+                    <a href=" {{ route('dashboard') }} " class="cta">Dashboard</a>
+                @else
+                    <a href=" {{ route('home') }} " class="cta">Home Page</a>
+                @endif
+            @endauth
+            @guest
+                <a href=" {{ route('home') }} " class="cta">Home Page</a>
+            @endguest
+
         </div>
     </div>
 </body>

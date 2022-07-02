@@ -28,19 +28,21 @@ require __DIR__ . '/auth.php';
 
 
 // Login Page
-Route::get('/admin', function () {
+Route::get('/admin/login', function () {
     return view('admin.login');
-})->name('adminLogin');
+})
+->middleware('guest')
+->name('adminLogin');
 // Dashboard Pages
-// Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
-Route::prefix('dashboard')->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'role'])->group(function () {
+
 
 
     Route::get('/overview', [DashboradController::class, 'index'])->name('dashboard');
 
     // Categories 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-    Route::get('/show/{slug}', [CategoryController::class, 'show'])->name('showCategory');
+    Route::get('categories/show/{id}', [CategoryController::class, 'show'])->name('showCategory');
     Route::post('/store', [CategoryController::class, 'store'])->name('addCategory');
     Route::post('/edit/{id}', [CategoryController::class, 'update'])->name('editCategory');
     Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('deleteCategory');
@@ -49,7 +51,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('subcategory/add', [SubCategoryController::class, 'store'])->name('addSubCategory');
     Route::post('subcategory/edit/{id}', [SubCategoryController::class, 'update'])->name('editSubCategory');
     Route::delete('subcategory/delete/{id}', [SubCategoryController::class, 'destroy'])->name('deleteSubCategory');
-    Route::get('subcategory/show/{slug}', [SubCategoryController::class, 'show'])->name('showSubCategory');
+    Route::get('subcategory/show/{id}', [SubCategoryController::class, 'show'])->name('showSubCategory');
     // Products
     Route::get('products', [ProductController::class, 'index'])->name('products');
     Route::get('product/add', [ProductController::class, 'create'])->name('addProduct');

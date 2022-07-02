@@ -54,16 +54,16 @@
                             </div>
                             <div class="row three">
                                 <input type="number" class="row-item"
-                                    value=" {{ old('cost_price', $product->cost_price) }} " name="cost_price"
-                                    id="" placeholder="Cost Price">
-                                <input type="number" class="row-item" value=" {{ old('price', $product->price) }} "
-                                    name="price" placeholder="Price" id="">
-                                <input type="number" class="row-item" value=" {{ old('quantity', $product->quantity) }} "
-                                    name="quantity" id="" placeholder="Quantity">
+                                    value="{{ old('cost_price', $product->cost_price) }}" name="cost_price"
+                                    id="" placeholder="Cost Price" required>
+                                <input type="number" class="row-item" value="{{ old('price', $product->price) }}"
+                                    name="price" placeholder="Price" id="" required>
+                                <input type="number" class="row-item" value="{{ old('quantity', $product->quantity) }}"
+                                    name="quantity" id="" placeholder="Quantity" required>
                             </div>
                             <div class="row">
-                                <textarea class="row-item" placeholder="Description" name="description" id="" cols="30" rows="10">{{ old('description', $product->description) }}</textarea>
-                                <textarea class="row-item" placeholder="Return Policy" name="policy" id="" cols="30" rows="10">{{ old('policy', $product->policy) }}</textarea>
+                                <textarea class="row-item" placeholder="Description" required name="description" id="" cols="30" rows="10">{{ old('description', $product->description) }}</textarea>
+                                <textarea class="row-item" placeholder="Return Policy" required name="policy" id="" cols="30" rows="10">{{ old('policy', $product->policy) }}</textarea>
                             </div>
                             <div class="row three">
                                 <!-- Start Row item -->

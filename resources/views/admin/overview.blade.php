@@ -37,7 +37,7 @@
                         <h4>Orders</h4>
                         <p>{{ $ordersCount }}</p>
                         <div class="action-icon">
-                            <a href="">View All Orders</a>
+                            <a href=" {{route('orders')}} ">View All Orders</a>
                             <i class="fal fa-shopping-bag"></i>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <h4>Products</h4>
                         <p>{{ $products }}</p>
                         <div class="action-icon">
-                            <a href="">View All Products</a>
+                            <a href=" {{route('products')}}">View All Products</a>
                             <i class="fal fa-tshirt"></i>
                         </div>
                     </div>
