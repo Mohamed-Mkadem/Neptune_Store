@@ -6,6 +6,19 @@
 
 @section('content')
     <div class="container">
+        <!-- Messages -->
+        @if (session()->has('success'))
+            <div class="messages  success mt-15">
+                <p class="message-body">{{ session()->get('success') }}</p>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="messages fail mb-10">
+                @foreach ($errors->all() as $error)
+                    <p> {{ $error }} </p>
+                @endforeach
+            </div>
+        @endif
         <section class="product-details">
             <div class="product-image-holder">
                 <img src="{{ $product->image }}" alt="">
@@ -26,7 +39,11 @@
                         {!! $product->description !!}
                     </ul>
                 </div>
-                <p class="product-price"><x-currency :amount=" $product->price"  />  <span> <x-currency :amount=" $product->price * 1.1"  />  </span>  </p>
+                <p class="product-price">
+                    <x-currency :amount="$product->price" /> <span>
+                        <x-currency :amount="$product->price * 1.1" />
+                    </span>
+                </p>
                 <div class="cart-options">
                     <form action="{{ route('addToCart') }}" method="post">
                         @csrf
@@ -37,8 +54,7 @@
                                 <input type="hidden" name="product_id" value=" {{ $product->id }} ">
                                 <div onclick="inc()">+</div>
                             </div>
-                            <button class=" btn addToCartBtn"> <i
-                                    class="fal fa-shopping-cart"></i> Add To Cart
+                            <button class=" btn addToCartBtn"> <i class="fal fa-shopping-cart"></i> Add To Cart
                             </button>
                         </div>
                     </form>

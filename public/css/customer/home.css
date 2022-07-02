@@ -630,9 +630,12 @@ footer .home-row.footer {
     padding: 20px;
     background-color: var(--whiteColor);
 }
-
+.product-details .product-image-holder {
+    height: 400px;
+}
 .product-details .product-image-holder img {
     width: 100%;
+    height: 100%;
 }
 .product-details .product-info {
     /* border: 1px solid black; */
