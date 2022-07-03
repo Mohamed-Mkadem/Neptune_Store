@@ -46,7 +46,10 @@
 ::-webkit-scrollbar-track {
     background: var(--lightColor);
 }
-
+td img {
+    width: 50px;
+    aspect-ratio: 1;
+}
 /* Handle */
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
