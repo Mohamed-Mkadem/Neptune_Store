@@ -26,7 +26,7 @@
                 @endif
                 <!-- Start orders Table -->
                 <div class="table-responsive mb-15">
-                    <table class="order_details">
+                    <table class="order_details customer">
                         <thead>
                             <th>Order ID</th>
                             <th>Date</th>

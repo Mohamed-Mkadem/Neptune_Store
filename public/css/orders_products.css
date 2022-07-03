@@ -32,6 +32,10 @@ table.order_items tr {
 table.order_details tr {
     grid-template-columns: 100px repeat(4, minmax(200px, 1fr)) 300px ;
 }
+table.order_details.customer tr{
+    grid-template-columns: 100px repeat(3, minmax(200px, 1fr)) 300px ;
+
+}
 table.order_details tr td form button {
     color: var(--successColor);
     font-size: 18px;
