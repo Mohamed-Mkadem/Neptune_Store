@@ -123,7 +123,7 @@
                             <div class="description row-item">
                                 <h4>Description</h4>
                                 <ul style="list-style: circle ;     margin-left: 20px">
-                                    {{ $product->description }}
+                                    {!! $product->description !!}
                                 </ul>
                             </div>
                             <div class="return-policy row-item">
