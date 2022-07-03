@@ -56,8 +56,8 @@
                         <div class="row three">
                             <input type="number" class="row-item" name="cost_price" id=""
                                 placeholder="Cost Price" required>
-                            <input type="number" class="row-item" name="price" placeholder="Price" id="" required>
-                            <input type="number" class="row-item" name="quantity" id="" placeholder="Quantity" required>
+                            <input type="number" class="row-item" step="0.01" name="price" placeholder="Price" id="" required>
+                            <input type="number" class="row-item" step="0.01" name="quantity" id="" placeholder="Quantity" required>
                         </div>
                         <div class="row">
                             <textarea class="row-item" placeholder="Description" name="description" id="" cols="30" rows="10" required></textarea>
