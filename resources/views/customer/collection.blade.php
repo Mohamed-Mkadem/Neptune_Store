@@ -138,7 +138,7 @@
                                     <input type="hidden" name="product_id" value=" {{ $product->id }} ">
                                     <button type="submit" class="btn save"><i class="fal fa-heart"></i> Save</button>
                                 </form>
-                                {{-- <a href="" class="save btn"> <i class="fal fa-heart"></i> Save </a> --}}
+                              
                             </div>
                         </div>
                     </div>
