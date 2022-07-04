@@ -7,6 +7,11 @@
 @section('content')
     @if (count($searched_products) > 0)
         <div class="container customer">
+            @if (session()->has('success'))
+                <div class="messages  success mb-10">
+                    <p class="message-body">{{ session()->get('success') }}</p>
+                </div>
+            @endif
             {{-- Layout Section --}}
             <div class="filter-bar">
                 <h4 class="main ff-elmessiri"> {{ $searched_products->count() }} Results:</h4>

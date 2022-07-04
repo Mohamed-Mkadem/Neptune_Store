@@ -26,9 +26,20 @@
                         <div class="product-image">
                             <img src=" {{ $product->image }} " alt="">
                             <div class="options">
-                                <a href=""><i class="fal fa-shopping-cart"></i></a>
+                                <form action=" {{ route('addToCart') }} " method="POST">
+                                    @csrf
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                    <button type="submit" class="addToCartBtn"><i
+                                            class="fal fa-shopping-cart"></i></button>
+
+                                </form>
                                 <a href=" {{ route('showProduct', $product->slug) }}  "><i class="fal fa-eye"></i></a>
-                                <a href=""><i class="fal fa-heart"></i></a>
+                                <form action="{{ route('addWishlist') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                    <button type="submit"><i class="fal fa-heart"></i></button>
+                                </form>
                             </div>
                         </div>
                         <div class="product-info">
@@ -40,11 +51,23 @@
                             </div>
                             <span class="product-price">${{ $product->price }} </span>
                             <div class="product-options">
-                                <a href="" class="add-to-cart btn"> <i class="fal fa-shopping-cart"></i> Add To
-                                    Cart</a>
+                                <form action="{{ route('addToCart') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+
+                                    <button type="submit" class="btn addToCartBtn"><i class="fal fa-shopping-cart"></i> Add
+                                        To Cart </button>
+                                </form>
+
+
                                 <a href=" {{ route('showProduct', $product->slug) }} " class="details btn"> <i
                                         class="fal fa-eye"></i> Details</a>
-                                <a href="" class="save btn"> <i class="fal fa-heart"></i> Save </a>
+                                <form action="{{ route('addWishlist') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value=" {{ $product->id }} ">
+                                    <button type="submit" class="btn save"><i class="fal fa-heart"></i> Save</button>
+                                </form>
                             </div>
                         </div>
                     </div>

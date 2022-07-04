@@ -12,6 +12,11 @@
 
 @section('content')
     <div class="container">
+        @if (session()->has('success'))
+            <div class="messages  success mb-10">
+                <p class="message-body">{{ session()->get('success') }}</p>
+            </div>
+        @endif
         @if ($products->count() > 0)
             <div class="filter-bar">
                 <h4 class="main ff-elmessiri"> {{ $products->count() }} Products:</h4>
