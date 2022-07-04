@@ -11,12 +11,15 @@
 
 
 @section('content')
-    {{-- Include the grid/list switchers --}}
-    <div class="container">
-        @include('customer.components.filter-bar')
-    </div>
     <div class="container">
         @if ($products->count() > 0)
+            <div class="filter-bar">
+                <h4 class="main ff-elmessiri"> {{ $products->count() }} Products:</h4>
+                <div class="options">
+                    <i class="fal fa-th grid pointer gridLayout"></i>
+                    <i class="fal fa-list list pointer listLayout"></i>
+                </div>
+            </div>
             <div class="product-showcase" id="product-showcase">
                 {{-- Start Card --}}
                 @foreach ($products as $product)

@@ -80,11 +80,6 @@ if (closeFilterBtn && filterForm) {
 }
 //
 
-// if(catButtons){
-//     catButtons.forEach((btn) =>{
-//         btn.addEventListener('click', ()=>)
-//     })
-// }
 
 function getSubCategories(id) {
     var myRequest = new XMLHttpRequest();

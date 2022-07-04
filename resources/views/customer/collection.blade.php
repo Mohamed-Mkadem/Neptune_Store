@@ -23,7 +23,7 @@
                         <label class="pointer">
                             <input class="catBtn" data-category="{{ $category->name }}"
                                 onclick="getSubCategories({{ $category->id }})" type="radio" name="category_id"
-                                id="{{ $category->id }}" value="{{ $category->id }}">
+                                id="cat_{{ $category->id }}" value="{{ $category->id }}">
                             {{ $category->name }}
                         </label>
                     @endforeach
