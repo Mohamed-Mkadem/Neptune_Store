@@ -72,7 +72,7 @@ class CategoryController extends Controller
     public function home()
     {
         $categories = Category::limit(3)->get();
-        $bestProduct = Product::orderBy('ordered', 'ASC')->limit(4)->get();
+        $bestProduct = Product::orderBy('ordered', 'DESC')->limit(4)->get();
         $newProduct = Product::limit(4)->latest()->get();
 
         return view('customer.home', ['categories' => $categories, 'newProducts' => $newProduct, 'bestProducts' => $bestProduct]);
