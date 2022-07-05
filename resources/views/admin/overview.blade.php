@@ -72,7 +72,7 @@
                                             <td>
                                                 <img src=" {{ $product->image }} " width="30" alt="">
                                                 <div>
-                                                    <h5 class="product-name"> <a href="">{{ $product->name }}</a>
+                                                    <h5 class="product-name"> <a href=" {{route('showAdminProduct', $product->slug)}} ">{{ $product->name }}</a>
                                                     </h5>
                                                     <span class="added-date">{{ $product->created_at }}</span>
                                                 </div>
