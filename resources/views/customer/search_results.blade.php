@@ -3,8 +3,8 @@
     <title> {{ request()->input('target') }} - NEPTUNE </title>
 @endsection
 
-@include('customer.components.filter_form')
 @section('content')
+{{-- @include('customer.components.filter_form') --}}
     @if (count($searched_products) > 0)
         <div class="container customer">
             @if (session()->has('success'))
