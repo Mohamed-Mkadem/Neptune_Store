@@ -5,7 +5,7 @@
 @section('showcase_message')
     <div class="showcase ">
         <q class="ff-elmessiri">We don't do Fashion, We do <span>Greatness</span> </q>
-        <a href="#collection" class="explore light">Explore</a>
+        <a href="#categories" class="explore light">Explore</a>
     </div>
 @endsection
 

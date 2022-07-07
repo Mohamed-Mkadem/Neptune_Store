@@ -28,7 +28,7 @@ require __DIR__ . '/auth.php';
 
 
 // Admin Login Page
-Route::get('/admin/login', function () {
+Route::get('/admin/login/neptune', function () {
     return view('admin.login');
 })
 ->middleware('guest')
