@@ -59,7 +59,7 @@ class ProductController extends Controller
             'sub_category_id' => ['required']
         ]);
         $request->merge([
-            'slug' =>  Str::slug($request->name) .'_' .  Str::uuid()
+            'slug' =>  Str::slug($request->name) . '_' .  Str::uuid()
         ]);
         $product = Product::create($request->all());
         $product->subCategories()->attach($request->sub_category_id);
@@ -134,18 +134,13 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         // dd($product->ordered);
-        if($product->ordered > 0){
+        if ($product->ordered > 0) {
             $product->destroy($id);
             return redirect(route('products'))->with('success', 'Product Deleted Successfully');
-        }else{
+        } else {
             $product->forceDelete();
             return redirect(route('products'))->with('success', 'Product Deleted Successfully');
         }
-
-
-
-        
-
     }
 
 
@@ -208,7 +203,7 @@ class ProductController extends Controller
 
     public function filter(Request $request)
     {
-     
+
         if ($request->has('category_id')) {
             // Getting the target category
             $category =  Category::findOrFail($request->input('category_id'));
@@ -218,7 +213,7 @@ class ProductController extends Controller
             } else {
                 $subCategories = SubCategory::where('parent_id', $category->id)->get();
             }
-            
+
             // Extracting the ids and putting them in array
             $sub_categories_ids = [];
             foreach ($subCategories as $subCat) {
