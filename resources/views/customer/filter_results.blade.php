@@ -74,11 +74,7 @@
                     {{-- End Card --}}
                 @endforeach
             </div>
-            {!! $products->appends([
-                'min' => request()->input('min'),
-                'max' => request()->input('max'),
-                'subCategory' => request()->input('subCategory'),
-                'subCategories' => request()->input('subCategories')])->links() !!}
+            {!! $products->appends(request()->input())->links() !!}
         </div>
     @else
         <div class="product-showcase">

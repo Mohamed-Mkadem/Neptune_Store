@@ -237,7 +237,8 @@ class ProductController extends Controller
 
             $products = Product::whereIn('id', $products_ids)
                 ->whereBetween('price', [$min, $max])
-                ->paginate();
+                ->paginate(1);
+
             // dd($products);
             return view('customer.filter_results', ['products' => $products]);
         } else {
@@ -246,7 +247,8 @@ class ProductController extends Controller
             $max = $request->input('max') ?? 100000;
 
 
-            $products = Product::whereBetween('price', [$min, $max])->paginate();
+            $products = Product::whereBetween('price', [$min, $max])->paginate(1);
+
             // dd($products);
             return view('customer.filter_results', ['products' => $products]);
         }
