@@ -92,7 +92,7 @@
                                             class="fal fa-shopping-cart"></i></button>
 
                                 </form>
-                                <a href=" {{ route('showProduct', $product->id) }}  "><i class="fal fa-eye"></i></a>
+                                <a href=" {{ route('showProduct', $product->slug) }}  "><i class="fal fa-eye"></i></a>
                                <form action="{{ route('addWishlist') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value=" {{ $product->id }} ">
